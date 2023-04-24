@@ -672,4 +672,6 @@ https://wiki.gentoo.org/wiki/Project:GURU
 
 https://github.com/InBetweenNames/gentooLTO
 
+https://github.com/2b57/toolchain-clang
+
 https://github.com/clang-musl-overlay/clang-musl-overlay
