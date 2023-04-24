@@ -90,7 +90,7 @@ Una vez que se ha formateado el disco, se deben establecer los subvolúmenes de 
 - `o=defaults,x-mount.mkdir` [x]
 - `o_btrfs=$o,commit=120,compress=lzo,rw,space_cache,ssd,noatime,nodev,nosuid` [x]
 - `o_boot=$o,nosuid,nodev,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro` [x] # Sistemas UEFI
-- `o_lboot=$o,nosuid,nodev,noatime,fmask=022,dmask=022,errors=remount-ro` # Sistemas BOOT
+- `o_lboot=$o,nosuid,nodev,noatime,errors=remount-ro` # Sistemas BOOT
 - `mkdir -p /mnt/gentoo` [x]
 - `mount -t btrfs LABEL=BTRFS /mnt/gentoo`
 - `btrfs subvolume create /mnt/gentoo/@`
@@ -235,7 +235,7 @@ Para entrar al sistema operativo Gentoo, ejecuta los siguientes comandos:
 - `o=defaults,x-mount.mkdir` [x]
 - `o_btrfs=$o,commit=120,compress=lzo,rw,space_cache,ssd,noatime,nodev,nosuid` [x]
 - `o_boot=$o,nosuid,nodev,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro` [x]
-- `o_lboot=$o,nosuid,nodev,noatime,fmask=022,dmask=022,errors=remount-ro` [x]
+- `o_lboot=$o,nosuid,nodev,noatime,errors=remount-ro` [x]
 
 Luego, debes sincronizar los paquetes para el gestor "Portage" y establecer el repositorio de musl. Pero primero, debes elegir un servidor y asegurarte de que el perfil correcto esté seleccionado:
 - `emerge-webrsync`
