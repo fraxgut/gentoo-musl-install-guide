@@ -71,7 +71,8 @@ Se debe realizar una limpieza total del disco utilizando los siguientes comandos
 - `sgdisk --zap-all $DRIVE`
 
 A continuación, se debe proceder a crear la partición y encriptarla (donde "NOMBRE" es el nombre del sistema anfitrión y "xxx" es el número del disco):
-- `sgdisk --clear --new=1:0:+1GiB --typecode=1:ef00 --change-name=1:EFI --new=2:0:0 --typecode=2:8300 --change-name=2:NOMBRE_xxx_sys $DRIVE`
+1. `sgdisk --clear --new=1:0:+1GiB --typecode=1:ef00 --change-name=1:EFI --new=2:0:0 --typecode=2:8300 --change-name=2:NOMBRE_xxx_sys $DRIVE`# Sistemas UEFI
+2. - `sgdisk --clear --new=1:0:+1GiB --typecode=1:ef02 --change-name=1:BOOT --new=2:0:0 --typecode=2:8300 --change-name=2:NOMBRE_xxx_sys $DRIVE` # Sistemas BOOT
 - `cryptsetup --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 5000 --key-size 512 --pbkdf argon2id --use-random --verify-passphrase luksFormat /dev/disk/by-partlabel/NOMBRE_xxx_sys`
 - `cryptsetup open /dev/disk/by-partlabel/NOMBRE_xxx_sys root` [x]
 
@@ -81,7 +82,8 @@ Posteriormente, se debe configurar el sistema LVM:
 - `lvcreate -l +100%FREE NOMBRE_vg1 --name lv1`
 
 Después de crear el sistema LVM, se debe formatear el disco para tener un sistema de archivos:
-- `mkfs.vfat -F 32 -n EFI /dev/disk/by-partlabel/EFI`
+1. `mkfs.vfat -F 32 -n EFI /dev/disk/by-partlabel/EFI` # Sistemas UEFI
+2. `mkfs.ext2 -n BOOT /dev/disk/by-partlabel/BOOT` # Sistemas BOOT
 - `mkfs.btrfs --force --label BTRFS /dev/mapper/NOMBRE_vg1-lv1`
 
 Una vez que se ha formateado el disco, se deben establecer los subvolúmenes de BTRFS junto con el montaje:
@@ -102,7 +104,8 @@ Una vez que se ha formateado el disco, se deben establecer los subvolúmenes de 
 - `mkdir -p /mnt/gentoo/var/cache`
 - `mount -t btrfs -o $o_btrfs,subvol=@home LABEL=BTRFS /mnt/gentoo/home` [x]
 - `mount -t btrfs -o $o_btrfs,subvol=@snapshots LABEL=BTRFS /mnt/gentoo/.snapshots` [x]
-- `mount -o $o_boot LABEL=EFI /mnt/gentoo/boot` [x]
+1. `mount -o $o_boot LABEL=EFI /mnt/gentoo/boot` [x] # Sistemas UEFI
+2. `mount -o $o_boot LABEL=BOOT /mnt/gentoo/boot` [x]
 - `btrfs subvolume create /mnt/gentoo/var/tmp`
 - `btrfs subvolume create /mnt/gentoo/var/swap`
 - `btrfs subvolume create /mnt/gentoo/opt`
@@ -596,7 +599,8 @@ Luego, para compilar el kernel y crear la imagen de inicio, debes ejecutar los s
 Ahora queda la configuración final, principalmente, montar los dispostivos al inicio, fijar el nombre para el sistema, colocar una contraseña segura y establecer una conexión a internet. Personalmente uso NetworkManager por su TUI, pero hay opciones más minimalistas si se desea (como netirfc). 
 
 Primero, hay que crear el archivo fstab:
-- `UEFI_UUID=$(blkid -s UUID -o value /dev/disk/by-partlabel/EFI)`
+1. `UEFI_UUID=$(blkid -s UUID -o value /dev/disk/by-partlabel/EFI)`
+2. `BOOT_UUID=$(blkid -s UUID -o value /dev/disk/by-partlabel/BOOT)`
 - `LUKS_UUID=$(blkid -s UUID -o value /dev/disk/by-partlabel/NOMBRE_xxx_sys)`
 - `ROOT_UUID=$(blkid -s UUID -o value /dev/mapper/NOMBRE_vg1-lv1)`
 - `cat luks-$LUKS_UUID UUID=$LUKS_UUID none luks`
@@ -605,6 +609,7 @@ Primero, hay que crear el archivo fstab:
 ```
 /dev/mapper/luks-$LUKS_UUID	/	btrfs	$o_btrfs,subvol=@	0	1
 UUID=$UEFI_UUID	/boot	vfat	$o_boot	0	2
+UUID=$BOOT_UUID	/boot	ext2	$o_boot	0	2
 /dev/mapper/luks-$LUKS_UUID	/home	btrfs	$o_btrfs,subvol=@home	0	2
 /dev/mapper/luks-$LUKS_UUID	/.snapshots	btrfs	$o_btrfs,subvol=@snapshots	0	2
 tmpfs	/tmp	tmpfs	defaults,nosuid,nodev	0	0
@@ -643,7 +648,7 @@ Finalmente se debe configurar GRUB:
 - `emerge -uvDN @world`
 - `mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars` # Solo si es necesario
 1. `grub-install --target=x86_64-efi --efi-directory=/boot --recheck --bootloader-id="GRUB"` # Si esto falla, hay que verificar que el sistema esté en UEFI o probar otro sistema, como rEFInd
-2. `grub-install --target=i386-pc --boot-directory=/boot --recheck --bootloader-id="GRUB"` # Para sistemas sin UEFI.
+2. `grub-install --target=i386-pc --boot-directory=/boot --recheck --bootloader-id="GRUB" /dev/ndx` # Para sistemas sin UEFI *(reemplazar ndx con tu disco)*
 
 Hay que editar la configuración de GRUB (precisamente "GRUB_CMDLINE_LINUX_DEFAULT") mediante `nvim /etc/default/grub` *(puede añadirse splash para el uso de Plymouth)*:
 
