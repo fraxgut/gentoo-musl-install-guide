@@ -654,6 +654,7 @@ Hay que editar la configuración de GRUB (precisamente "GRUB_CMDLINE_LINUX_DEFAU
 
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=$LUKS_UUID:luks-$LUKS_UUID root=/dev/mapper/luks-$LUKS_UUID # reemplaza $LUKS_UUID con el valor correspondiente
+GRUB_ENABLE_CRYPTODISK=y
 ```
 
 Con eso, se puede terminar la configuración y reiniciar el sistema para verificar que todo esté funcionando correctamente:
