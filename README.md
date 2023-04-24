@@ -642,7 +642,8 @@ Finalmente se debe configurar GRUB:
 - `emerge sys-boot/grub sys-boot/os-prober dev-libs/libisoburn sys-fs/mdadm`
 - `emerge -uvDN @world`
 - `mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars` # Solo si es necesario
-- `grub-install --target=x86_64-efi --efi-directory=/boot --recheck --bootloader-id="GRUB"` # Si esto falla, hay que verificar que el sistema esté en UEFI o probar otro sistema, como rEFInd
+1. `grub-install --target=x86_64-efi --efi-directory=/boot --recheck --bootloader-id="GRUB"` # Si esto falla, hay que verificar que el sistema esté en UEFI o probar otro sistema, como rEFInd
+2. `grub-install --target=i386-pc --boot-directory=/boot --recheck --bootloader-id="GRUB"` # Para sistemas sin UEFI.
 
 Hay que editar la configuración de GRUB (precisamente "GRUB_CMDLINE_LINUX_DEFAULT") mediante `nvim /etc/default/grub` *(puede añadirse splash para el uso de Plymouth)*:
 
