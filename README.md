@@ -83,13 +83,14 @@ Posteriormente, se debe configurar el sistema LVM:
 
 Después de crear el sistema LVM, se debe formatear el disco para tener un sistema de archivos:
 1. `mkfs.vfat -F 32 -n EFI /dev/disk/by-partlabel/EFI` # Sistemas UEFI
-2. `mkfs.ext2 -n BOOT /dev/disk/by-partlabel/BOOT` # Sistemas BOOT
+2. `mkfs.ext2 -L BOOT -b 4096 /dev/disk/by-partlabel/BOOT` # Sistemas BOOT
 - `mkfs.btrfs --force --label BTRFS /dev/mapper/NOMBRE_vg1-lv1`
 
 Una vez que se ha formateado el disco, se deben establecer los subvolúmenes de BTRFS junto con el montaje:
 - `o=defaults,x-mount.mkdir` [x]
 - `o_btrfs=$o,commit=120,compress=lzo,rw,space_cache,ssd,noatime,nodev,nosuid` [x]
-- `o_boot=defaults,nosuid,nodev,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro` [x]
+- `o_boot=defaults,nosuid,nodev,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro` [x] # Sistemas UEFI
+- `o_lboot=defaults,nosuid,nodev,noatime,fmask=022,dmask=022,errors=remount-ro` # Sistemas BOOT
 - `mkdir -p /mnt/gentoo` [x]
 - `mount -t btrfs LABEL=BTRFS /mnt/gentoo`
 - `btrfs subvolume create /mnt/gentoo/@`
@@ -105,7 +106,7 @@ Una vez que se ha formateado el disco, se deben establecer los subvolúmenes de 
 - `mount -t btrfs -o $o_btrfs,subvol=@home LABEL=BTRFS /mnt/gentoo/home` [x]
 - `mount -t btrfs -o $o_btrfs,subvol=@snapshots LABEL=BTRFS /mnt/gentoo/.snapshots` [x]
 1. `mount -o $o_boot LABEL=EFI /mnt/gentoo/boot` [x] # Sistemas UEFI
-2. `mount -o $o_boot LABEL=BOOT /mnt/gentoo/boot` [x]
+2. `mount -o $o_lboot LABEL=BOOT /mnt/gentoo/boot` [x] # Sistemas BOOT
 - `btrfs subvolume create /mnt/gentoo/var/tmp`
 - `btrfs subvolume create /mnt/gentoo/var/swap`
 - `btrfs subvolume create /mnt/gentoo/opt`
@@ -609,7 +610,7 @@ Primero, hay que crear el archivo fstab:
 ```
 /dev/mapper/luks-$LUKS_UUID	/	btrfs	$o_btrfs,subvol=@	0	1
 UUID=$UEFI_UUID	/boot	vfat	$o_boot	0	2
-UUID=$BOOT_UUID	/boot	ext2	$o_boot	0	2
+UUID=$BOOT_UUID	/boot	ext2	$o_lboot	0	2
 /dev/mapper/luks-$LUKS_UUID	/home	btrfs	$o_btrfs,subvol=@home	0	2
 /dev/mapper/luks-$LUKS_UUID	/.snapshots	btrfs	$o_btrfs,subvol=@snapshots	0	2
 tmpfs	/tmp	tmpfs	defaults,nosuid,nodev	0	0
