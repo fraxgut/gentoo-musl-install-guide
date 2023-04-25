@@ -236,7 +236,7 @@ Para entrar al sistema operativo Gentoo, ejecuta los siguientes comandos:
 - `o_btrfs=$o,commit=120,compress=lzo,rw,space_cache,ssd,noatime,nodev,nosuid` [x]
 - `o_boot=$o,nosuid,nodev,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro` [x] # Sistemas UEFI
 - `o_lboot=$o,nosuid,nodev,noatime,errors=remount-ro` [x] # Sistemas BOOT
-- `DRIvE=/dev/ndx` [x] #reemplazar ndx con el número de disco
+- `DRIVE=/dev/ndx` [x] #reemplazar ndx con el número de disco
 
 Luego, debes sincronizar los paquetes para el gestor "Portage" y establecer el repositorio de musl. Pero primero, debes elegir un servidor y asegurarte de que el perfil correcto esté seleccionado:
 - `emerge-webrsync`
@@ -665,7 +665,7 @@ Con eso, se puede terminar la configuración y reiniciar el sistema para verific
 - `reboot`
 
 #### Solución de problemas
-Ahora el sistema debería iniciar correctamente en GRUB. Si no funciona, hay que cambiarlo por LILO o rEFInd. En el caso de que no funcione después de introducir la contraseña LUKS, hay que modificar el archivo "fstab" y la configuración de GRUB "GRUB_CMDLINE_LINUX_DEFAULT".
+Ahora el sistema debería iniciar correctamente en GRUB. Si no funciona, hay que cambiarlo por LILO o rEFInd. En el caso de que no funcione después de introducir la contraseña LUKS, hay que modificar el archivo "fstab" y la configuración de GRUB "GRUB_CMDLINE_LINUX_DEFAULT". Es común que el 
 
 #### Enlaces de interés
 https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
