@@ -75,7 +75,7 @@ Descubre si tu sistema es UEFI o BIOS y procede con los pasos correspondientes:
 
 A continuación, se debe proceder a crear la partición y encriptarla (donde "NOMBRE" es el nombre del sistema anfitrión y "xxx" es el número del disco):
 1. `sgdisk --clear --new=1:0:+1GiB --typecode=1:ef00 --change-name=1:EFI --new=2:0:0 --typecode=2:8300 --change-name=2:NOMBRE_xxx_sys $DRIVE`# Sistemas UEFI
-2. `sgdisk --clear --new=1:0:+1MiB --typecode=1:ef02 --change-name=1:GRUB --new=2:0:+1GiB --typecode=2:8300 --change-name=3:BOOT --new=2:0:0 --typecode=3:8300 --change-name=3:NOMBRE_xxx_sys $DRIVE` # Sistemas BOOT
+2. `sgdisk --clear --new=1:0:+1MiB --typecode=1:ef02 --change-name=1:GRUB --new=2:0:+1GiB --typecode=2:8300 --change-name=2:BOOT --new=3:0:0 --typecode=3:8300 --change-name=3:NOMBRE_xxx_sys $DRIVE` # Sistemas BOOT
 - `cryptsetup --type luks2 --cipher aes-xts-plain64 --hash sha512 --iter-time 5000 --key-size 512 --pbkdf argon2id --use-random --verify-passphrase luksFormat /dev/disk/by-partlabel/NOMBRE_xxx_sys`
 - `cryptsetup open /dev/disk/by-partlabel/NOMBRE_xxx_sys root` [x]
 
