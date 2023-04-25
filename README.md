@@ -234,8 +234,9 @@ Para entrar al sistema operativo Gentoo, ejecuta los siguientes comandos:
 - `export PS1="(chroot) ${PS1}"` [x]
 - `o=defaults,x-mount.mkdir` [x]
 - `o_btrfs=$o,commit=120,compress=lzo,rw,space_cache,ssd,noatime,nodev,nosuid` [x]
-- `o_boot=$o,nosuid,nodev,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro` [x]
-- `o_lboot=$o,nosuid,nodev,noatime,errors=remount-ro` [x]
+- `o_boot=$o,nosuid,nodev,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro` [x] # Sistemas UEFI
+- `o_lboot=$o,nosuid,nodev,noatime,errors=remount-ro` [x] # Sistemas BOOT
+- `DRIvE=/dev/ndx` [x] #reemplazar ndx con el número de disco
 
 Luego, debes sincronizar los paquetes para el gestor "Portage" y establecer el repositorio de musl. Pero primero, debes elegir un servidor y asegurarte de que el perfil correcto esté seleccionado:
 - `emerge-webrsync`
@@ -650,7 +651,7 @@ Finalmente se debe configurar GRUB:
 - `emerge -uvDN @world`
 - `mount -o remount,rw,nosuid,nodev,noexec --types efivarfs efivarfs /sys/firmware/efi/efivars` # Solo si es necesario
 1. `grub-install --target=x86_64-efi --efi-directory=/boot --recheck --bootloader-id="GRUB"` # Si esto falla, hay que verificar que el sistema esté en UEFI o probar otro sistema, como rEFInd
-2. `grub-install --target=i386-pc --boot-directory=/boot --recheck --bootloader-id="GRUB" /dev/ndx` # Para sistemas sin UEFI *(reemplazar ndx con tu disco)*
+2. `grub-install --target=i386-pc --boot-directory=/boot --recheck --bootloader-id="GRUB" $DRIVE` # Para sistemas sin UEFI *(reemplazar ndx con tu disco)*
 
 Hay que editar la configuración de GRUB (precisamente "GRUB_CMDLINE_LINUX_DEFAULT") mediante `nvim /etc/default/grub` *(puede añadirse splash para el uso de Plymouth)*:
 
