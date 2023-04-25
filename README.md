@@ -641,7 +641,7 @@ Hay que instalar NetworkManager mediante la fijación de la bandera USE "network
 También es un buen momento para instalar otros programas necesarios:
 - `echo "sys-process/snooze ~amd64" >> /etc/portage/package.accept_keywords`
 - `emerge app-admin/metalog sys-process/snooze sys-apps/mlocate net-misc/chrony`
-- `rc-update add metalog default && rc-update add sshd default && rc-update add chronyd default && rc-update add lvm boot`
+- `rc-update add metalog default && rc-update add sshd default && rc-update add chronyd default && rc-update add lvm boot && rc-update add dmcrypt boot`
 
 Finalmente se debe configurar GRUB:
 - `echo "sys-fs/cryptsetup argon2 -static-libs" >> /etc/portage/package.use`
