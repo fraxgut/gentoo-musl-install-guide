@@ -664,6 +664,9 @@ Con eso, se puede terminar la configuración y reiniciar el sistema para verific
 - `grub-mkconfig -o /boot/grub/grub.cfg`
 - `reboot`
 
+#### Solución de problemas
+Ahora el sistema debería iniciar correctamente en GRUB. Si no funciona, hay que cambiarlo por LILO o rEFInd. En el caso de que no funcione después de introducir la contraseña LUKS, hay que modificar el archivo "fstab" y la configuración de GRUB "GRUB_CMDLINE_LINUX_DEFAULT".
+
 #### Enlaces de interés
 https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
 
