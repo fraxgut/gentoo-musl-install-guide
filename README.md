@@ -320,7 +320,7 @@ Como se está trabajando en un sistema MUSL hay que hacer algunos arreglos para 
 - `eselect repository enable guru` # repositorio GURU
 - `emerge --sync`
 - `rm -rf /etc/portage/package.use /etc/portage/package.accept_keywords /etc/portage/package.license /etc/portage/package.mask` 
-- `echo "sys-apps/musl-locales **" >> /etc/portage/package.accept_keywords`
+- `echo "sys-apps/musl-locales ~amd64" >> /etc/portage/package.accept_keywords`
 - `emerge sys-apps/musl-locales emerge sys-libs/timezone-data net-misc/ntp  app-arch/lz4 dev-libs/lzo sys-fs/btrfs-progs sys-fs/cryptsetup sys-fs/lvm2 sys-apps/kbd sys-apps/sed sys-apps/grep app-crypt/gnupg dev-libs/openssl app-shells/zsh app-shells/zsh-completions app-shells/gentoo-zsh-completions`
 - `TZ="Country/City"` *(reemplaza "Country/City" con los datos correspondientes)*
 - `export TZ="Country/City"` *(fija la variable TZ al horario que se desee `ls /usr/share/zoneinfo`)*
@@ -344,7 +344,7 @@ Como se está trabajando en un sistema MUSL hay que hacer algunos arreglos para 
 Primero, se puede instalar el paquete "linux-firmware" o omitir si no se quiere trabajar con código que no sea completamente libre. No obstante, para la mayoría de los sistemas, es recomendable instalarlo. Se utilizará el kernel "zen-sources" en esta guía.
 
 - `echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" >> /etc/portage/package.license`
-- `echo "sys-kernel/zen-sources **" >> /etc/portage/package.accept_keywords`
+- `echo "sys-kernel/zen-sources ~amd64" >> /etc/portage/package.accept_keywords`
 - `emerge sys-kernel/linux-firmware sys-kernel/zen-sources sys-kernel/dracut`
 - `eselect kernel list`
 - `eselect kernel set "x"` *(cambia x por el kernel que necesitas)*
@@ -670,7 +670,64 @@ Con eso, se puede terminar la configuración y reiniciar el sistema para verific
 - `reboot`
 
 #### Solución de problemas
-Ahora el sistema debería iniciar correctamente en GRUB. Si no funciona, hay que cambiarlo por LILO o rEFInd. En el caso de que no funcione después de introducir la contraseña LUKS, hay que modificar el archivo "fstab" y la configuración de GRUB "GRUB_CMDLINE_LINUX_DEFAULT". Es común que el 
+Ahora el sistema debería iniciar correctamente en GRUB. Si no funciona, hay que cambiarlo por LILO o rEFInd. En el caso de que no funcione después de introducir la contraseña LUKS, hay que modificar el archivo "fstab" y la configuración de GRUB "GRUB_CMDLINE_LINUX_DEFAULT". Es común que alguno de estos no funcione correctamente dependiendo de tu sistema. También aprovecha de establecer una conexión a internet con `nmtui` o el gestor de redes que hayas instalado.
+
+#### Activando GentooLTO
+Ahora se convertirá el sistema a LTO, para eso, hay que ejecutar los siguientes comandos:
+- `eselect repository enable mv`
+- `eselect repository enable lto`
+- `echo sys-config/ltoize ~amd64`
+- `echo app-portage/lto-rebuild ~amd64`
+- `emerge sys-config/ltoize app-portage/lto-rebuild`
+
+Hay que hacer unos cambios, `nvim /etc/portage/make.conf`:
+
+```
+NTHREADS="1"
+source /etc/portage/make.conf.lto.defines
+#COMMON_FLAGS="-march=native -O2 -pipe"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${C_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+CHOST="x86_64-gentoo-linux-musl"
+MAKEOPTS="-j${NTHREADS}"
+EMERGE_DEFAULT_OPTS="--jobs ${NTHREADS} --load-average ${NTHREADS}"
+#PORTAGE_SCHEDULING_POLICY="idle"
+PORTAGE_NICENESS="19"
+PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"
+```
+
+Finalmente hay que ejecutar los siguientes comandos:
+- `lto-rebuild -r && emerge -e --keep-going @world`
+
+#### LLVM/Clang
+Hay que ejecutar los siguientes comandos:
+- `eselect repository add toolchain-clang git https://github.com/2b57/toolchain-clang.git`
+- `emaint sync -r toolchain-clang`
+- `cd /var/db/repos/toolchain-clang`
+- `git clone https://github.com/gentoo/releng.git && cd`
+- `nvim /etc/portage/repos.conf/clang-musl.conf`
+
+```
+[clang-musl]
+sync-uri = https://github.com/clang-musl-overlay/clang-musl-overlay.git
+sync-type = git
+location = /var/db/repos/clang-musl
+sync-depth = 1
+```
+
+Luego:
+- `emerge --sync`
+- `eselect profile set --force "x"` # *(reemplazar x con el número correspondiente a clang-musl/hardened)*
+- `emerge -c && emerge sys-devel/llvm-conf`
+- `llvm-conf --enable-native-links --enable-clang-wrappers --enable-binutils-wrappers llvm-14`
+- `emerge -1euDN @world`
+
+Si un archivo falla en instalar revisar acá para parches (https://github.com/clang-musl-overlay/gentoo-patchset).
+
+#### Conclusión
+Ahora deberías tener un sistema Gentoo Hardened LLVM amd64 con musl y kernel zen, completamente optimizado.
 
 #### Enlaces de interés
 https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
