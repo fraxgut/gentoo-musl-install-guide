@@ -596,7 +596,7 @@ add_dracutmodules+=" btrfs crypt crypt-gpg crypt-loop dm fs-lib i18n img-lib lvm
 
 Luego, para compilar el kernel y crear la imagen de inicio, debes ejecutar los siguientes comandos:
 - `make -j$(nproc) && make -j$(nproc) modules_install && make -j$(nproc) install`
-- `dracut -H --kver $(cat /usr/src/linux/include/config/kernel.release)`
+- `dracut -H --force --kver $(cat /usr/src/linux/include/config/kernel.release)`
                                                                                                                                  
 ##### Configuración final (pre-reinicio)
 Ahora queda la configuración final, principalmente, montar los dispostivos al inicio, fijar el nombre para el sistema, colocar una contraseña segura y establecer una conexión a internet. Personalmente uso NetworkManager por su TUI, pero hay opciones más minimalistas si se desea (como netirfc). 
