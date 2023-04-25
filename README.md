@@ -609,6 +609,8 @@ Primero, hay que crear el archivo fstab:
 2. `BOOT_UUID=$(blkid -s UUID -o value /dev/disk/by-partlabel/BOOT)`
 - `LUKS_UUID=$(blkid -s UUID -o value /dev/disk/by-partlabel/NOMBRE_xxx_sys)`
 - `ROOT_UUID=$(blkid -s UUID -o value /dev/mapper/NOMBRE_vg1-lv1)`
+- `SWAP_UUID=$(findmnt -no UUID -T /var/swap/swapfile)`
+- `RESUME=$(btrfs inspect-internal map-swapfile -r /var/swap/swapfile)` # para GRUB
 - `cat luks-$LUKS_UUID UUID=$LUKS_UUID none luks`
 - `cat <<EOF > /etc/fstab`:
 
@@ -639,7 +641,7 @@ Hay que instalar NetworkManager mediante la fijación de la bandera USE "network
 También es un buen momento para instalar otros programas necesarios:
 - `echo "sys-process/snooze ~amd64" >> /etc/portage/package.accept_keywords`
 - `emerge app-admin/metalog sys-process/snooze sys-apps/mlocate net-misc/chrony`
-- `rc-update add metalog default && rc-update add sshd default && rc-update add chronyd default`
+- `rc-update add metalog default && rc-update add sshd default && rc-update add chronyd default && rc-update add lvm boot`
 
 Finalmente se debe configurar GRUB:
 - `echo "sys-fs/cryptsetup argon2 -static-libs" >> /etc/portage/package.use`
@@ -659,7 +661,7 @@ Finalmente se debe configurar GRUB:
 Hay que editar la configuración de GRUB (precisamente "GRUB_CMDLINE_LINUX_DEFAULT") mediante `nvim /etc/default/grub` *(puede añadirse splash para el uso de Plymouth)*:
 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet cryptdevice=UUID=$LUKS_UUID:luks-$LUKS_UUID root=/dev/mapper/luks-$LUKS_UUID # reemplaza $LUKS_UUID con el valor correspondiente
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet rd.luks.uuid=$LUKS_UUID rd.lvm.vg=vol00 cryptdevice=UUID=$LUKS_UUID:luks-$LUKS_UUID root=/dev/mapper/luks-$LUKS_UUID resume=$SWAP_UUID resume_offset=$RESUME" # reemplaza $LUKS_UUID con el valor correspondiente
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
