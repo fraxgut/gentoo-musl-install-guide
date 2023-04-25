@@ -661,7 +661,7 @@ Finalmente se debe configurar GRUB:
 Hay que editar la configuración de GRUB (precisamente "GRUB_CMDLINE_LINUX_DEFAULT") mediante `nvim /etc/default/grub` *(puede añadirse splash para el uso de Plymouth)*:
 
 ```
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet dolvm rd.luks.uuid=luks-$LUKS_UUID rd.lvm.lv=1984_vg1-lv1 cryptdevice=UUID=$LUKS_UUID root=/dev/mapper/NOMBRE_vg1-lv1 rootfstype=btrfs resume=UUID=$SWAP_UUID resume_offset=$RESUME"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet dolvm rd.luks.uuid=luks-$LUKS_UUID rd.lvm.lv=NOMBRE_vg1/lv1 cryptdevice=UUID=$LUKS_UUID root=/dev/mapper/NOMBRE_vg1-lv1 rootfstype=btrfs resume=UUID=$SWAP_UUID resume_offset=$RESUME selinux=0"
 GRUB_ENABLE_CRYPTODISK=y
 ```
 
