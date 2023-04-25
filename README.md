@@ -70,6 +70,9 @@ Se debe realizar una limpieza total del disco utilizando los siguientes comandos
 - `cryptsetup close container`
 - `sgdisk --zap-all $DRIVE`
 
+Descubre si tu sistema es UEFI o BIOS y procede con los pasos correspondientes:
+- `[ -d /sys/firmware/efi ] && echo UEFI || echo BIOS`
+
 A continuación, se debe proceder a crear la partición y encriptarla (donde "NOMBRE" es el nombre del sistema anfitrión y "xxx" es el número del disco):
 1. `sgdisk --clear --new=1:0:+1GiB --typecode=1:ef00 --change-name=1:EFI --new=2:0:0 --typecode=2:8300 --change-name=2:NOMBRE_xxx_sys $DRIVE`# Sistemas UEFI
 2. `sgdisk --clear --new=1:0:+1GiB --typecode=1:ef02 --change-name=1:BOOT --new=2:0:0 --typecode=2:8300 --change-name=2:NOMBRE_xxx_sys $DRIVE` # Sistemas BOOT
