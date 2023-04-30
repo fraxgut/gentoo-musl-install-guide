@@ -722,7 +722,7 @@ Luego:
 - `echo "LLVM=1 LLVM_IAS=1" >> /etc/portage/env/kernel-clang && mkdir /etc/portage/package.env`
 - `echo "sys-kernel/* kernel-clang" >> /etc/portage/package.env/custom`
 - `echo "sys-devel/llvm *FLAGS-="-fipa-pta"" >> /etc/portage/package.cflags/ltoworkarounds.conf`
-- `emerge sys-devel/clang sys-devel/llvm sys-libs/compiler-rt sys-libs/llvm-libunwind sys-devel/lld`
+- `emerge --keep-going sys-devel/clang sys-devel/llvm sys-libs/compiler-rt sys-libs/llvm-libunwind sys-devel/lld`
 - `eselect profile set --force "x"` # *(reemplazar x con el número correspondiente a clang-musl/hardened)*
 - `emerge -c && emerge sys-devel/llvm-conf`
 - `llvm-conf --enable-native-links --enable-clang-wrappers --enable-binutils-wrappers llvm-14`
