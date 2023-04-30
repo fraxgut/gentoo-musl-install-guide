@@ -672,34 +672,6 @@ Con eso, se puede terminar la configuración y reiniciar el sistema para verific
 #### Solución de problemas
 Ahora el sistema debería iniciar correctamente en GRUB. Si no funciona, hay que cambiarlo por LILO o rEFInd. En el caso de que no funcione después de introducir la contraseña LUKS, hay que modificar el archivo "fstab" y la configuración de GRUB "GRUB_CMDLINE_LINUX_DEFAULT". Es común que alguno de estos no funcione correctamente dependiendo de tu sistema. También aprovecha de establecer una conexión a internet con `nmtui` o el gestor de redes que hayas instalado.
 
-#### Activando GentooLTO
-Ahora se convertirá el sistema a LTO, para eso, hay que ejecutar los siguientes comandos:
-- `eselect repository enable mv`
-- `eselect repository enable lto`
-- `echo sys-config/ltoize ~amd64`
-- `echo app-portage/lto-rebuild ~amd64`
-- `emerge sys-config/ltoize app-portage/lto-rebuild`
-
-Hay que hacer unos cambios, `nvim /etc/portage/make.conf`:
-
-```
-NTHREADS="1"
-source /etc/portage/make.conf.lto.defines
-#COMMON_FLAGS="-march=native -O2 -pipe"
-CFLAGS="${COMMON_FLAGS}"
-CXXFLAGS="${C_FLAGS}"
-FCFLAGS="${COMMON_FLAGS}"
-FFLAGS="${COMMON_FLAGS}"
-CHOST="x86_64-gentoo-linux-musl"
-MAKEOPTS="-j${NTHREADS}"
-EMERGE_DEFAULT_OPTS="--jobs ${NTHREADS} --load-average ${NTHREADS}"
-#PORTAGE_SCHEDULING_POLICY="idle"
-PORTAGE_NICENESS="19"
-PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"
-```
-
-Finalmente hay que ejecutar los siguientes comandos:
-- `lto-rebuild -r && emerge -e --keep-going @world`
 
 #### LLVM/Clang
 Hay que ejecutar los siguientes comandos:
@@ -729,6 +701,36 @@ Luego:
 - `emerge -1euDN @world`
 
 Si un archivo falla en instalar revisar acá para parches (https://github.com/clang-musl-overlay/gentoo-patchset).
+
+#### Activando GentooLTO
+Ahora se convertirá el sistema a LTO, para eso, hay que ejecutar los siguientes comandos:
+- `eselect repository enable mv`
+- `eselect repository enable lto`
+- `echo sys-config/ltoize ~amd64`
+- `echo app-portage/lto-rebuild ~amd64`
+- `emerge sys-config/ltoize app-portage/lto-rebuild`
+
+Hay que hacer unos cambios, `nvim /etc/portage/make.conf`:
+
+```
+NTHREADS="1"
+source /etc/portage/make.conf.lto.defines
+#COMMON_FLAGS="-march=native -O2 -pipe"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${C_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+CHOST="x86_64-gentoo-linux-musl"
+MAKEOPTS="-j${NTHREADS}"
+EMERGE_DEFAULT_OPTS="--jobs ${NTHREADS} --load-average ${NTHREADS}"
+#PORTAGE_SCHEDULING_POLICY="idle"
+PORTAGE_NICENESS="19"
+PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"
+```
+
+Finalmente hay que ejecutar los siguientes comandos:
+- `lto-rebuild -r && emerge -e --keep-going @world`
+
 
 #### Conclusión
 Ahora deberías tener un sistema Gentoo Hardened LLVM amd64 con musl y kernel zen, completamente optimizado.
