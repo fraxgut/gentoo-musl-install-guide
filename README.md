@@ -296,7 +296,7 @@ LINGUAS="es-CL es-ES es en-US en"
                                                                    
 # USE Flags:                                                       
 DISABLE="-alsa -gnome -kde -pipewire -pulseaudio -qt -qt5 -qt6 -X" 
-ENABLE="argon2 btrfs device-mapper lto lvm lz4 lzo mount networkmanager pgo readline savedconfig srvdir symlink zsh zsh-completions"                                  
+ENABLE="argon2 btrfs default-libcxx device-mapper lto lvm lz4 lzo mount networkmanager pgo readline savedconfig srvdir symlink zsh zsh-completions"                                  
 USE="${DISABLE} ${ENABLE}"                                         
                                                                    
 # Features:
