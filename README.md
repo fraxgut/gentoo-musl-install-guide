@@ -729,7 +729,7 @@ PORTAGE_NICENESS="19"
 PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"                                  
 ```
 - `source /etc/profile && env-update && source .zshrc`
-- `llvm-conf --enable-native-links --enable-clang-wrappers --enable-binutils-wrappers llvm-14`
+- `llvm-conf --enable-native-links --enable-clang-wrappers --enable-binutils-wrappers llvm-x` # Reemplazar "x" con la versión correspondiente
 - `emerge -1euDN @world`
 
 Si un archivo falla en instalar revisar acá para parches (https://github.com/clang-musl-overlay/gentoo-patchset).
