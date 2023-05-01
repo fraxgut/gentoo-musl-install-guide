@@ -275,15 +275,16 @@ En este punto, se puede realizar una revisión del archivo /etc/portage/make.con
                                                                     
 # CUSTOM VARIABLES                                                  
 # Compilation:                                                      
-NTHREADS="1"                                                        
+NTHREADS="auto"
+NPROC=1
 COMMON_FLAGS="-march=native -O2 -pipe"                              
 CFLAGS="${COMMON_FLAGS}"                                            
 CXXFLAGS="${COMMON_FLAGS}"                                          
 FCFLAGS="${COMMON_FLAGS}"                                           
 FFLAGS="${COMMON_FLAGS}"                                            
 CHOST="x86_64-gentoo-linux-musl"                                    
-MAKEOPTS="-j${NTHREADS}"                                            
-EMERGE_DEFAULT_OPTS="--jobs ${NTHREADS} --load-average ${NTHREADS}" 
+MAKEOPTS="-j${NPROC}"                                            
+EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${NPROC}" 
 #PORTAGE_SCHEDULING_POLICY="idle"                                  
 PORTAGE_NICENESS="19"                                              
 PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"        
@@ -697,6 +698,37 @@ Luego:
 - `emerge --keep-going sys-devel/clang sys-devel/llvm sys-libs/compiler-rt sys-libs/llvm-libunwind sys-devel/lld`
 - `eselect profile set --force "x"` # *(reemplazar x con el número correspondiente a clang-musl/hardened)*
 - `emerge -c && emerge sys-devel/llvm-conf`
+
+Hay que hacer unos cambios, `nvim /etc/portage/make.conf`:
+
+```
+# CUSTOM VARIABLES                                                                           
+# Clang/LLVM:                                                                                
+CC="clang"                                                                                   
+CXX="clang++"                                                                                
+AR="llvm-ar"                                                                                 
+NM="llvm-nm"                                                                                 
+RANLIB="llvm-ranlib"                                                                         
+                                                                                             
+# Compilation:                                                                               
+NTHREADS="auto"                                                                              
+NPROC="1"                                                                                    
+#source /etc/portage/make.conf.lto.defines                                                   
+COMMON_FLAGS="-march=native -O2 -pipe"                                                       
+#CFLAGS="-march=native ${CFLAGS} -pipe"                                                      
+CFLAGS="${COMMON_FLAGS}"                                                                     
+CXXFLAGS="${CFLAGS}"                                                                         
+FCFLAGS="${COMMON_FLAGS}"                                                                    
+FFLAGS="${COMMON_FLAGS}"                                                                     
+LDFLAGS="${LDFLAGS} -fuse-ld=lld -rtlib=compiler-rt -unwindlib=libunwind -Wl,--as-needed"    
+CHOST="x86_64-gentoo-linux-musl"                                                             
+MAKEOPTS="-j${NPROC}"                                                                        
+EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${NPROC}"                                
+#PORTAGE_SCHEDULING_POLICY="idle"                                                            
+PORTAGE_NICENESS="19"                                                                        
+PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"                                  
+```
+- `source /etc/profile && env-update && source .zshrc`
 - `llvm-conf --enable-native-links --enable-clang-wrappers --enable-binutils-wrappers llvm-14`
 - `emerge -1euDN @world`
 
