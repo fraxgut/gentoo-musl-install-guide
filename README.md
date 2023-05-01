@@ -256,7 +256,7 @@ Luego, debes sincronizar los paquetes para el gestor "Portage" y establecer el r
 
 En este punto, se puede realizar una revisión del archivo /etc/portage/make.conf, si se desea. Es importante fijar las banderas USE necesarias para tu dispositivo. El documento que se mostrará a continuación es solo un ejemplo en particular y no debe ser imitado en su totalidad. Para obtener más información, visita la página https://wiki.gentoo.org/wiki//etc/portage/make.conf para posibles cambios. También puedes añadir `ACCEPT_KEYWORDS="~amd64"` si quieres tener un sistema actualizado. A continuación se presentan los comandos para este sistema en particular:
 - `echo 'CPU_FLAGS_X86="'$(cpuid2cpuflags | grep -o 'CPU_FLAGS_X86: .*' | paste -sd " " | sed 's/CPU_FLAGS_X86: //')'"' >> /etc/portage/make.conf`
-- `nvim /etc/portage/make.conf`
+Hay que modificar el archivo `nvim /etc/portage/make.conf`, especialmente revisar las banderas USE:
 
 ```
 # /etc/portage/make.conf
@@ -296,7 +296,7 @@ LINGUAS="es-CL es-ES es en-US en"
                                                                    
 # USE Flags:                                                       
 DISABLE="-alsa -gnome -kde -pipewire -pulseaudio -qt -qt5 -qt6 -X" 
-ENABLE="argon2 btrfs default-libcxx device-mapper lto lvm lz4 lzo mount networkmanager pgo readline savedconfig srvdir symlink zsh zsh-completions"                                  
+ENABLE="argon2 btrfs clang coreboot default-compiler-rt default-libcxx default-lld device-mapper fpm llvm llvm-libunwind lto lvm lz4 lzo mount nginx networkmanager pgo polly qemu readline srvdir truetype vim-syntax zsh zsh-completions"                                  
 USE="${DISABLE} ${ENABLE}"                                         
                                                                    
 # Features:
