@@ -676,6 +676,8 @@ Ahora el sistema debería iniciar correctamente en GRUB. Si no funciona, hay que
 
 #### LLVM/Clang
 Hay que ejecutar los siguientes comandos:
+- `echo "sys-libs/llvm-libunwind static-libs" >> /etc/portage/package.use`
+- `emerge sys-devel/clang sys-devel/llvm sys-libs/compiler-rt sys-libs/llvm-libunwind sys-devel/lld sys-libs/libcxx sys-libs/libcxxabi`
 - `eselect repository add toolchain-clang git https://github.com/2b57/toolchain-clang.git`
 - `emaint sync -r toolchain-clang`
 - `cd /var/db/repos/toolchain-clang`
@@ -695,9 +697,9 @@ Luego:
 - `echo "LLVM=1 LLVM_IAS=1" >> /etc/portage/env/kernel-clang && mkdir /etc/portage/package.env`
 - `echo "sys-kernel/* kernel-clang" >> /etc/portage/package.env/custom`
 - `echo "sys-devel/llvm *FLAGS-="-fipa-pta"" >> /etc/portage/package.cflags/ltoworkarounds.conf`
-- `emerge --keep-going sys-devel/clang sys-devel/llvm sys-libs/compiler-rt sys-libs/llvm-libunwind sys-devel/lld`
 - `eselect profile set --force "x"` # *(reemplazar x con el número correspondiente a clang-musl/hardened)*
 - `emerge -c && emerge sys-devel/llvm-conf`
+- `emerge --keep-going sys-devel/clang sys-devel/llvm sys-libs/compiler-rt sys-libs/llvm-libunwind sys-devel/lld`
 
 Hay que hacer unos cambios, `nvim /etc/portage/make.conf`:
 
