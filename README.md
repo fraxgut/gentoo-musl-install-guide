@@ -747,13 +747,13 @@ Hay que hacer unos cambios, `nvim /etc/portage/make.conf`:
 # Compilation:                                                                               
 NTHREADS="auto"                                                                              
 NPROC="1"                                                                                    
-#source /etc/portage/make.conf.lto.defines                                                   
-COMMON_FLAGS="-march=native -O2 -pipe"                                                       
-#CFLAGS="-march=native ${CFLAGS} -pipe"                                                      
-CFLAGS="${COMMON_FLAGS}"                                                                     
+source /etc/portage/make.conf.lto.defines                                                   
+#COMMON_FLAGS="-march=native -O2 -pipe"                                                       
+CFLAGS="-march=native ${CFLAGS} -pipe"                                                      
+#CFLAGS="${COMMON_FLAGS}"                                                                     
 CXXFLAGS="${CFLAGS}"                                                                         
-FCFLAGS="${COMMON_FLAGS}"                                                                    
-FFLAGS="${COMMON_FLAGS}"                                                                     
+#FCFLAGS="${COMMON_FLAGS}"                                                                    
+#FFLAGS="${COMMON_FLAGS}"                                                                     
 LDFLAGS="${LDFLAGS} -fuse-ld=lld -rtlib=compiler-rt -unwindlib=libunwind -Wl,--as-needed"    
 CHOST="x86_64-gentoo-linux-musl"                                                             
 MAKEOPTS="-j${NPROC}"                                                                        
