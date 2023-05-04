@@ -81,7 +81,7 @@ A continuación, se debe proceder a crear la partición y encriptarla (donde "NO
 
 Posteriormente, se debe configurar el sistema LVM:
 - `pvcreate /dev/mapper/root`
-- `vgcreate clientes_vg1 /dev/mapper/root`
+- `vgcreate NOMBRE_vg1 /dev/mapper/root`
 - `lvcreate -l +100%FREE NOMBRE_vg1 --name lv1`
 
 Después de crear el sistema LVM, se debe formatear el disco para tener un sistema de archivos:
