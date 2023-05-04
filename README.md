@@ -739,7 +739,8 @@ Si un archivo falla en instalar revisar acá para parches (https://github.com/cl
 #### Activando GentooLTO
 Ahora se convertirá el sistema a LTO, para eso, hay que ejecutar los siguientes comandos:
 - `eselect repository enable mv`
-- `eselect repository enable lto`
+- `eselect repository enable lto-overlay`
+- `emaint sync -a`
 - `echo sys-config/ltoize ~amd64`
 - `echo app-portage/lto-rebuild ~amd64`
 - `emerge sys-config/ltoize app-portage/lto-rebuild`
