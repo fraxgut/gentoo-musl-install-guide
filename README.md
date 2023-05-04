@@ -739,7 +739,7 @@ Ahora se convertirá el sistema a LTO, para eso, hay que ejecutar los siguientes
 - `emaint sync -a`
 - `echo sys-config/ltoize ~amd64`
 - `echo app-portage/lto-rebuild ~amd64`
-- `emerge sys-config/ltoize app-portage/lto-rebuild`
+- `I_KNOW_WHAT_I_AM_DOING=y emerge sys-config/ltoize app-portage/lto-rebuild`
 
 Hay que hacer unos cambios, `nvim /etc/portage/make.conf`:
 
