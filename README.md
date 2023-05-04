@@ -184,7 +184,7 @@ Monta algunos directorios adicionales:
 - `mount -t tmpfs -o nosuid,nodev,noexec shm /dev/shm` [x]
 - `chmod 1777 /dev/shm /run/shm` [x] *(si /run/shm no existe, no es ningún problema)*
 
-Es importante revisar el archivo "make.conf" para configurar algunas variables básicas. Este archivo se puede modificar posteriormente según sea necesario. Por ahora, solo es necesario hacer algunos cambios básicos. Abre el archivo "make.conf" con vim (modifica la variable "NTHREADS" a gusto):
+Es importante revisar el archivo "make.conf" para configurar algunas variables básicas. Este archivo se puede modificar posteriormente según sea necesario. Por ahora, solo es necesario hacer algunos cambios básicos. Abre el archivo "make.conf" con vim (modifica la variable "NPROC" a gusto):
 - `vim /mnt/gentoo/etc/portage/make.conf`
 
 ```
@@ -202,15 +202,16 @@ Es importante revisar el archivo "make.conf" para configurar algunas variables b
 
 # CUSTOM VARIABLES
 # Compilation
-NTHREADS="${nproc}"
+NTHREADS="auto"
+NPROC="$(nproc)"
 COMMON_FLAGS="-march=native -O2 -pipe"
 CFLAGS="${COMMON_FLAGS}"
 CXXFLAGS="${COMMON_FLAGS}"
 FCFLAGS="${COMMON_FLAGS}"
 FFLAGS="${COMMON_FLAGS}"
 CHOST="x86_64-gentoo-linux-musl"
-MAKEOPTS="-j${NTHREADS}"
-EMERGE_DEFAULT_OPTS="--jobs ${NTHREADS} --load-average ${NTHREADS}"
+MAKEOPTS="-j${NPROC}"
+EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${NPROC}"
 #PORTAGE_SCHEDULING_POLICY="idle"
 PORTAGE_NICENESS="19"
 PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"
@@ -703,15 +704,7 @@ Luego:
 
 Hay que hacer unos cambios, `nvim /etc/portage/make.conf`:
 
-```
-# CUSTOM VARIABLES                                                                           
-# Clang/LLVM:                                                                                
-CC="clang"                                                                                   
-CXX="clang++"                                                                                
-AR="llvm-ar"                                                                                 
-NM="llvm-nm"                                                                                 
-RANLIB="llvm-ranlib"                                                                         
-                                                                                             
+```                                                                                             
 # Compilation:                                                                               
 NTHREADS="auto"                                                                              
 NPROC="1"                                                                                    
@@ -730,6 +723,7 @@ EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${NPROC}"
 PORTAGE_NICENESS="19"                                                                        
 PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"                                  
 ```
+
 - `source /etc/profile && env-update && source .zshrc`
 - `llvm-conf --enable-native-links --enable-clang-wrappers --enable-binutils-wrappers llvm-x` # Reemplazar "x" con la versión correspondiente
 - `emerge -1euDN @world`
@@ -748,18 +742,22 @@ Ahora se convertirá el sistema a LTO, para eso, hay que ejecutar los siguientes
 Hay que hacer unos cambios, `nvim /etc/portage/make.conf`:
 
 ```
-NTHREADS="1"
-source /etc/portage/make.conf.lto.defines
-#COMMON_FLAGS="-march=native -O2 -pipe"
-CFLAGS="${COMMON_FLAGS}"
-CXXFLAGS="${C_FLAGS}"
-FCFLAGS="${COMMON_FLAGS}"
-FFLAGS="${COMMON_FLAGS}"
-CHOST="x86_64-gentoo-linux-musl"
-MAKEOPTS="-j${NTHREADS}"
-EMERGE_DEFAULT_OPTS="--jobs ${NTHREADS} --load-average ${NTHREADS}"
-#PORTAGE_SCHEDULING_POLICY="idle"
-PORTAGE_NICENESS="19"
+# Compilation:                                                                               
+NTHREADS="auto"                                                                              
+NPROC="1"                                                                                    
+#source /etc/portage/make.conf.lto.defines                                                   
+COMMON_FLAGS="-march=native -O2 -pipe"                                                       
+#CFLAGS="-march=native ${CFLAGS} -pipe"                                                      
+CFLAGS="${COMMON_FLAGS}"                                                                     
+CXXFLAGS="${CFLAGS}"                                                                         
+FCFLAGS="${COMMON_FLAGS}"                                                                    
+FFLAGS="${COMMON_FLAGS}"                                                                     
+LDFLAGS="${LDFLAGS} -fuse-ld=lld -rtlib=compiler-rt -unwindlib=libunwind -Wl,--as-needed"    
+CHOST="x86_64-gentoo-linux-musl"                                                             
+MAKEOPTS="-j${NPROC}"                                                                        
+EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${NPROC}"                                
+#PORTAGE_SCHEDULING_POLICY="idle"                                                            
+PORTAGE_NICENESS="19"                                                                        
 PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"
 ```
 
