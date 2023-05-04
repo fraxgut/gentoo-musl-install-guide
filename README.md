@@ -619,8 +619,8 @@ Primero, hay que crear el archivo fstab:
 /dev/mapper/luks-$LUKS_UUID	/	btrfs	$o_btrfs,subvol=@	0	1
 UUID=$UEFI_UUID	/boot	vfat	$o_boot	0	2
 UUID=$BOOT_UUID	/boot	ext2	$o_lboot	0	2
-/dev/mapper/luks-$LUKS_UUID	/home	btrfs	$o_btrfs,subvol=@home	0	2
-/dev/mapper/luks-$LUKS_UUID	/.snapshots	btrfs	$o_btrfs,subvol=@snapshots	0	2
+/dev/mapper/NOMBRE_vg1-lv1	/home	btrfs	$o_btrfs,subvol=@home	0	2
+/dev/mapper/NOMBRE_vg1-lv1	/.snapshots	btrfs	$o_btrfs,subvol=@snapshots	0	2
 tmpfs	/tmp	tmpfs	defaults,nosuid,nodev	0	0
 /var/swap/swapfile none swap sw 0 0
 EOF
