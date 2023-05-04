@@ -678,6 +678,8 @@ Ahora el sistema debería iniciar correctamente en GRUB. Si no funciona, hay que
 #### LLVM/Clang
 Hay que ejecutar los siguientes comandos:
 - `echo "sys-libs/llvm-libunwind static-libs" >> /etc/portage/package.use`
+- `echo "sys-libs/libcxx static-libs" >> /etc/portage/package.use`
+- `echo "sys-libs/libcxxabi static-libs" >> /etc/portage/package.use`
 - `emerge sys-devel/clang sys-devel/llvm sys-libs/compiler-rt sys-libs/llvm-libunwind sys-devel/lld sys-libs/libcxx sys-libs/libcxxabi`
 - `eselect repository add toolchain-clang git https://github.com/2b57/toolchain-clang.git`
 - `emaint sync -r toolchain-clang`
