@@ -612,7 +612,7 @@ Primero, hay que crear el archivo fstab:
 - `ROOT_UUID=$(blkid -s UUID -o value /dev/mapper/NOMBRE_vg1-lv1)`
 - `SWAP_UUID=$(findmnt -no UUID -T /var/swap/swapfile)`
 - `RESUME=$(btrfs inspect-internal map-swapfile -r /var/swap/swapfile)` # para GRUB
-- `cat luks-$LUKS_UUID UUID=$LUKS_UUID none luks`
+- `echo "luks-$LUKS_UUID UUID=$LUKS_UUID none luks" >> /etc/crypttab`
 - `cat <<EOF > /etc/fstab`:
 
 ```
