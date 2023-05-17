@@ -730,6 +730,11 @@ PORTAGE_IONICE_COMMAND="/usr/local/bin/io-priority \${PID}"
 - `llvm-conf --enable-native-links --enable-clang-wrappers --enable-binutils-wrappers llvm-x` # Reemplazar "x" con la versión correspondiente
 - `emerge -1euDN @world`
 
+Luego, para compilar el kernel con LLVM, se deben ejecutar los siguientes comandos:
+- `cd /usr/src/linux`
+- `LLVM=1 LLVM_IAS=1 make -j$(nproc) && LLVM=1 LLVM_IAS=1  make -j$(nproc) modules_install && LLVM=1 LLVM_IAS=1 make -j$(nproc) install`
+- `dracut -H --force --kver $(cat /usr/src/linux/include/config/kernel.release)`
+
 Si un archivo falla en instalar revisar acá para parches (https://github.com/clang-musl-overlay/gentoo-patchset).
 
 #### Activando GentooLTO
