@@ -1,5 +1,5 @@
 ### Guía para la instalación de Gentoo GNU Linux AMD64 (Hardened MUSL) // (BTRFS + LUKS + LVM + LTO + LLVM + Zen)
-*@fraxgut* - *VPL+ACR* - *Guia_InstalarGentoo.md*
+*@fraxgut* - *VPL+ACR* - *README.md*
 
 #### Descargar un sistema para la instalación
 Para la instalación de Gentoo, no es necesario utilizar la imagen oficial del sistema operativo, aunque es una opción válida que se puede descargar desde su portal.
