@@ -77,20 +77,8 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-<!-- GETTING STARTED -->
-## Getting Started
-
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
+<!-- PREREQUISITOS -->
+## Prerequisitos
 #### Descargar un sistema para la instalación
 Para la instalación de Gentoo, no es necesario utilizar la imagen oficial del sistema operativo, aunque es una opción válida que se puede descargar desde su portal.
 Personalmente, sugiero utilizar SystemRescueCD, ya que personalmente lo considero una herramienta confiable y efectiva para el proceso de instalación. Puedes descargarlo desde el siguiente enlace: https://www.system-rescue.org/Download/.
@@ -122,6 +110,8 @@ El proceso es sencillo: descarga la imagen, ingrésala en tu software de virtual
 
 ##### Conexión remota (caso 3)
 Si prefieres no realizar el proceso de instalación tú mismo, comunícate con tu proveedor para que pueda insertar la imagen que necesitas en tu sistema. Él se encargará de realizar el caso 1 o caso 2 por ti.
+
+## Instalación
 
 #### Primeros pasos
 Los primeros pasos consisten en realizar una conexión a internet exitosa, establecer una contraseña segura para el usuario administrador y asegurar el sistema mediante la configuración de SSH, si es necesario.
@@ -878,33 +868,29 @@ https://github.com/2b57/toolchain-clang
 
 https://github.com/clang-musl-overlay/clang-musl-overlay
 
-<!-- ROADMAP -->
-## Roadmap
+<!-- HOJA DE RUTA -->
+## Hoja de Ruta
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [X] Gentoo GNU Linux AMD64
+    - [X] BTRFS
+    - [X] LVM
+    - [X] Musl
+    - [X] LLVM/Clang
+    - [X] Zen kernel
+    - [X] LTO
+    - [ ] SELinux
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+Consulte la [discusión](https://github.com/github_username/fraxgut/guia-instalacion-gentoo) para ver la lista completa de funciones propuestas (y problemas conocidos).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- CONTRIBUIR -->
 ## Contribuir
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Las contribuciones son lo que hace que la comunidad de código abierto sea un lugar increíble para aprender, inspirar y crear. Cualquier contribución que hagas será **muy apreciada**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Si tienes alguna sugerencia para mejorar esto, por favor haz un fork del repositorio y crea un pull request. También puedes abrir una incidencia con la etiqueta "enhancement".
+No olvides darle una estrella al proyecto. Gracias de nuevo.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -913,7 +899,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENCIA -->
 ## Licencia
 
-Distributed under the VPL+ACR License. See `LICENCE.txt` for more information.
+Distribuido bajo la licencia VPL+ACR. Consulte `LICENCE.txt` para más información.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
