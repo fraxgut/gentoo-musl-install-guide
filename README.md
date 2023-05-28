@@ -30,7 +30,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/fraxgut/guia-instalacion-gentoo">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -39,14 +39,12 @@
   <p align="center">
     Variante: AMD64 Hardened MUSL (BTRFS + LUKS + LVM + LTO + LLVM + Zen)
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/fraxgut/guia-instalacion-gentoo"><strong>Explorar el repositorio »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/fraxgut/guia-instalacion-gentoo/issues">Reportar Errores</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/fraxgut/guia-instalacion-gentoo/issues">Solicitar Mejoras</a>
   </p>
 </div>
 
@@ -54,27 +52,16 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Índice</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#licence">Licencia</a></li>
-    <li><a href="#contact">Contacto</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#sobre-el-proyecto">Sobre el Proyecto</a></li>
+    <li><a href="#prerequisitos">Prerequisitos</a></li>
+    <li><a href="#instalacion">Instalación</a></li>
+    <li><a href="#hoja-de-ruta">Hoja de ruta</a></li>
+    <li><a href="#contribuir">Contribuir</a></li>
+    <li><a href="#licencia">Licencia</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#reconocimientos">Reconocimientos</a></li>
   </ol>
 </details>
 
