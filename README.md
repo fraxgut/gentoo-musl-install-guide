@@ -10,7 +10,7 @@
 
 
 
-<!-- PROJECT SHIELDS -->
+<!-- ESCUDOS PROYECTO -->
 <!--
 *** I'm using markdown "reference style" links for readability.
 *** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
@@ -29,7 +29,7 @@
 
 
 
-<!-- PROJECT LOGO -->
+<!-- LOGO PROYECTO -->
 <br />
 <div align="center">
   <a href="https://github.com/fraxgut/guia-instalacion-gentoo">
@@ -113,7 +113,7 @@ Si prefieres no realizar el proceso de instalación tú mismo, comunícate con t
 
 <p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
-<!-- INSTALACION -->
+<!-- INSTALACIÓN -->
 ## Instalación
 
 #### Primeros pasos
