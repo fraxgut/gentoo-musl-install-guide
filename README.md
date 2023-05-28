@@ -52,7 +52,7 @@
 
 
 
-<!-- TABLE OF CONTENTS -->
+<!-- ÍNDICE -->
 <details>
   <summary>Índice</summary>
   <ol>
@@ -72,9 +72,9 @@
 <!-- SOBRE EL PROYECTO -->
 ## Sobre el proyecto
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+Este tutorial en GitHub te guiará paso a paso en la instalación de Gentoo, una distribución de Linux altamente personalizable. En particular, se enfoca en la instalación de Gentoo amd64 con el compilador LLVM (Clang) y Musl, utilizando el kernel Zen y el sistema de archivos Btrfs. Además, se incorporará próximamente información sobre la configuración de SELinux para brindar una mayor seguridad a tu sistema. 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
 
 <!-- PREREQUISITOS -->
@@ -882,7 +882,7 @@ https://github.com/clang-musl-overlay/clang-musl-overlay
 
 Consulte la [discusión](https://github.com/github_username/fraxgut/guia-instalacion-gentoo) para ver la lista completa de funciones propuestas (y problemas conocidos).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
 <!-- CONTRIBUIR -->
 ## Contribuir
@@ -892,7 +892,7 @@ Las contribuciones son lo que hace que la comunidad de código abierto sea un lu
 Si tienes alguna sugerencia para mejorar esto, por favor haz un fork del repositorio y crea un pull request. También puedes abrir una incidencia con la etiqueta "enhancement".
 No olvides darle una estrella al proyecto. Gracias de nuevo.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
 
 
@@ -901,7 +901,7 @@ No olvides darle una estrella al proyecto. Gracias de nuevo.
 
 Distribuido bajo la licencia VPL+ACR. Consulte `LICENCE.txt` para más información.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
 
 
@@ -912,7 +912,7 @@ Franco Gutiérrez - [@fraxgut](https://twitter.com/fraxgut) - contacto@fraxgut.n
 
 Proyecto: [https://github.com/fraxgut/guia-instalacion-gentoo](https://github.com/fraxgut/guia-instalacion-gentoo)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
 
 
@@ -923,7 +923,7 @@ Proyecto: [https://github.com/fraxgut/guia-instalacion-gentoo](https://github.co
 * []()
 * []()
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
 
 
