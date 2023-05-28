@@ -949,7 +949,7 @@ Proyecto: [https://github.com/fraxgut/guia-instalacion-gentoo](https://github.co
 [stars-url]: https://github.com/fraxgut/guia-instalacion-gentoo/stargazers
 [issues-shield]: https://img.shields.io/github/issues/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge
 [issues-url]: https://github.com/fraxgut/guia-instalacion-gentoo/issues
-[license-shield]: https://img.shields.io/github/license/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/badge/LICENCE-VPL%2BACR-%2362A98B?style=for-the-badge
 [license-url]: https://github.com/fraxgut/guia-instalacion-gentoo/blob/main/LICENCE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/fraxgut
