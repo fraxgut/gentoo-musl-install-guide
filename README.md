@@ -113,6 +113,7 @@ Si prefieres no realizar el proceso de instalación tú mismo, comunícate con t
 
 <p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
+<!-- INSTALACION -->
 ## Instalación
 
 #### Primeros pasos
@@ -890,7 +891,7 @@ No olvides darle una estrella al proyecto. Gracias de nuevo.
 <!-- LICENCIA -->
 ## Licencia
 
-Distribuido bajo la licencia VPL+ACR. Consulte `LICENCE.txt` para más información.
+Distribuido bajo la licencia VPL+ACR. Consulte `LICENCE` para más información.
 
 <p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
@@ -910,7 +911,7 @@ Proyecto: [https://github.com/fraxgut/guia-instalacion-gentoo](https://github.co
 <!-- RECONOCIMIENTOS -->
 ## Reconocimientos
 
-* [Guía de Instalación Gentoo](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation) - Comunidad Gentoo
+* [Guía de Instalación Gentoo](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation)
 * [Proyecto MUSL](https://wiki.gentoo.org/wiki/Project:Musl)
 * [Proyecto GURU](https://wiki.gentoo.org/wiki/Project:GURU)
 * [gentooLTO](https://github.com/InBetweenNames/gentooLTO)
