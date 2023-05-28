@@ -111,6 +111,8 @@ El proceso es sencillo: descarga la imagen, ingrésala en tu software de virtual
 ##### Conexión remota (caso 3)
 Si prefieres no realizar el proceso de instalación tú mismo, comunícate con tu proveedor para que pueda insertar la imagen que necesitas en tu sistema. Él se encargará de realizar el caso 1 o caso 2 por ti.
 
+<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
+
 ## Instalación
 
 #### Primeros pasos
