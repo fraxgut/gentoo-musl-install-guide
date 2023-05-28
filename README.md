@@ -34,10 +34,10 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Guía para la instalación de Gentoo GNU Linux AMD64 (Hardened MUSL) // (BTRFS + LUKS + LVM + LTO + LLVM + Zen)</h3>
+<h3 align="center">Guía para la instalación de Gentoo GNU Linux</h3>
 
   <p align="center">
-    *@fraxgut* - *VPL+ACR* - *README.md*
+    Variante: AMD64 Hardened MUSL (BTRFS + LUKS + LVM + LTO + LLVM + Zen)
     <br />
     <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
     <br />
