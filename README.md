@@ -950,7 +950,7 @@ Proyecto: [https://github.com/fraxgut/guia-instalacion-gentoo](https://github.co
 [issues-shield]: https://img.shields.io/github/issues/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge
 [issues-url]: https://github.com/fraxgut/guia-instalacion-gentoo/issues
 [license-shield]: https://img.shields.io/github/license/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge
-[license-url]: https://github.com/fraxgut/guia-instalacion-gentoo/blob/master/LICENCE.txt
+[license-url]: https://github.com/fraxgut/guia-instalacion-gentoo/blob/main/LICENCE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/fraxgut
 [product-screenshot]: images/screenshot.png
