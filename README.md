@@ -857,18 +857,7 @@ Finalmente hay que ejecutar los siguientes comandos:
 #### Conclusión
 Ahora deberías tener un sistema Gentoo Hardened LLVM amd64 con musl y kernel zen, completamente optimizado.
 
-#### Enlaces de interés
-https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation
-
-https://wiki.gentoo.org/wiki/Project:Musl
-
-https://wiki.gentoo.org/wiki/Project:GURU
-
-https://github.com/InBetweenNames/gentooLTO
-
-https://github.com/2b57/toolchain-clang
-
-https://github.com/clang-musl-overlay/clang-musl-overlay
+<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
 <!-- HOJA DE RUTA -->
 ## Hoja de Ruta
@@ -921,9 +910,12 @@ Proyecto: [https://github.com/fraxgut/guia-instalacion-gentoo](https://github.co
 <!-- RECONOCIMIENTOS -->
 ## Reconocimientos
 
-* []()
-* []()
-* []()
+* [Guía de Instalación Gentoo](https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation) - Comunidad Gentoo
+* [Proyecto MUSL](https://wiki.gentoo.org/wiki/Project:Musl)
+* [Proyecto GURU](https://wiki.gentoo.org/wiki/Project:GURU)
+* [gentooLTO](https://github.com/InBetweenNames/gentooLTO)
+* [toolchain-clang](https://github.com/2b57/toolchain-clang)
+* [clang-musl-overlay](https://github.com/clang-musl-overlay/clang-musl-overlay)
 
 <p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
