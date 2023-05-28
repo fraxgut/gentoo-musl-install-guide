@@ -58,7 +58,7 @@
   <ol>
     <li><a href="#sobre-el-proyecto">Sobre el Proyecto</a></li>
     <li><a href="#prerequisitos">Prerequisitos</a></li>
-    <li><a href="#instalacion">Instalación</a></li>
+    <li><a href="#instalación">Instalación</a></li>
     <li><a href="#hoja-de-ruta">Hoja de ruta</a></li>
     <li><a href="#contribuir">Contribuir</a></li>
     <li><a href="#licencia">Licencia</a></li>
