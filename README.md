@@ -817,7 +817,8 @@ Luego, para compilar el kernel con LLVM, se deben ejecutar los siguientes comand
 - `cd /usr/src/linux`
 - `LLVM=1 LLVM_IAS=1 make -j$(nproc) && LLVM=1 LLVM_IAS=1  make -j$(nproc) modules_install && LLVM=1 LLVM_IAS=1 make -j$(nproc) install`
 - `dracut -H --force --kver $(cat /usr/src/linux/include/config/kernel.release)`
-
+- `grub-mkconfig -o /boot/grub/grub.cfg`
+- 
 Si un archivo falla en instalar revisar acá para parches (https://github.com/clang-musl-overlay/gentoo-patchset).
 
 #### Activando GentooLTO
