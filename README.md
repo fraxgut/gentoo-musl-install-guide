@@ -1,5 +1,12 @@
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+<!--
+README.md
+@fraxgut
+VPL+ACR
+Guía de instalación de Gentoo
+-->
+
 <a name="readme-top"></a>
+
 <!--
 *** Gracias por revisar esta guía de instalación de Gentoo.
 *** Si tienes sugerencias para mejorarla, por favor haz un fork y crea un Pull Request
@@ -8,14 +15,27 @@
 -->
 
 <!-- ESCUDOS PROYECTO -->
-<div align="center">
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![VPL+ACR License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-</div>
+<p align="center">
+  <a href="https://github.com/fraxgut/guia-instalacion-gentoo/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge" alt="Contribuidores"/>
+  </a>
+  <a href="https://github.com/fraxgut/guia-instalacion-gentoo/network/members">
+    <img src="https://img.shields.io/github/forks/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge" alt="Forks"/>
+  </a>
+  <a href="https://github.com/fraxgut/guia-instalacion-gentoo/stargazers">
+    <img src="https://img.shields.io/github/stars/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge" alt="Stars"/>
+  </a>
+  <a href="https://github.com/fraxgut/guia-instalacion-gentoo/issues">
+    <img src="https://img.shields.io/github/issues/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge" alt="Issues"/>
+  </a>
+  <a href="https://github.com/fraxgut/guia-instalacion-gentoo/blob/main/LICENCE">
+    <img src="https://img.shields.io/badge/LICENCE-VPL%2BACR-%2362A98B?style=for-the-badge" alt="Licence"/>
+  </a>
+  <a href="https://linkedin.com/in/fraxgut">
+    <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&amp;logo=linkedin&amp;colorB=555" alt="LinkedIn"/>
+  </a>
+</p>
+
 
 <!-- LOGO PROYECTO -->
 <br />
@@ -1355,19 +1375,3 @@ Recursos y proyectos útiles que inspiraron o se usaron como referencia:
 *   [Plantilla Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-[contributors-shield]: https://img.shields.io/github/contributors/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge
-[contributors-url]: https://github.com/fraxgut/guia-instalacion-gentoo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge
-[forks-url]: https://github.com/fraxgut/guia-instalacion-gentoo/network/members
-[stars-shield]: https://img.shields.io/github/stars/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge
-[stars-url]: https://github.com/fraxgut/guia-instalacion-gentoo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge
-[issues-url]: https://github.com/fraxgut/guia-instalacion-gentoo/issues
-[license-shield]: https://img.shields.io/badge/LICENCE-VPL%2BACR-%2362A98B?style=for-the-badge
-[license-url]: https://github.com/fraxgut/guia-instalacion-gentoo/blob/main/LICENCE
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/fraxgut
-
-
