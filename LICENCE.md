@@ -27,7 +27,7 @@ A continuación, se detallan los términos y condiciones precisos para la copia,
 *   «Fuente Correspondiente» para una obra en forma de Código Objeto significa todo el código fuente necesario para generar, instalar y (para una obra ejecutable) ejecutar el Código Objeto y Modificar la obra, incluyendo los scripts para controlar dichas actividades. Sin embargo, no incluye las Bibliotecas del Sistema de la obra, ni herramientas de propósito general o programas libres generalmente disponibles que se utilizan sin modificar en la realización de dichas actividades pero que no son parte de la obra.
 *   «La Afirmación Sagrada» se refiere a la frase precisa: **«Cristo ha Resucitado»**.
 *   «Avisos Legales Apropiados» significa, en la medida en que una interfaz de usuario interactiva incluya una característica conveniente y prominentemente visible que (1) muestre un aviso de copyright apropiado, (2) muestre La Afirmación Sagrada como se requiere en la Sección 3b, (3) informe al usuario que no hay garantía para la obra (excepto en la medida en que se proporcionen garantías), (4) informe a los licenciatarios que pueden Transmitir la obra bajo esta Licencia, y (5) informe al usuario cómo ver una copia de esta Licencia. Si la interfaz presenta una lista de comandos u opciones de usuario, como un menú, un elemento destacado en la lista cumple este criterio.
-*   «Licencia Compatible con LPC» significa una licencia que impone obligaciones sustancialmente equivalentes a esta Licencia, particularmente en lo referente a la propagación de la Fuente Correspondiente, la condición de CompartirIgual (ShareAlike), y la inclusión de La Afirmación Sagrada, y que es designada como compatible por el **Instituto de Obras Digitales Cristianas (IODC)**. (Inicialmente, solo esta Licencia misma es Compatible con LPC).
+*   «Licencia Compatible con LPC» significa una licencia que impone obligaciones sustancialmente equivalentes a esta Licencia, particularmente en lo referente a la propagación de la Fuente Correspondiente, la condición de Compartir Igual (ShareAlike), y la inclusión de La Afirmación Sagrada, y que es designada como compatible por el **Instituto de Obras Digitales Cristianas (IODC)**. (Inicialmente, solo esta Licencia misma es Compatible con LPC).
 
 **1. Permisos Básicos.**
 
@@ -47,24 +47,24 @@ Cuando Usted Transmite una Obra Cubierta, renuncia a cualquier poder legal para 
 
 El ejercicio por su parte de los derechos concedidos en la Sección 1 está expresamente sujeto a las siguientes condiciones:
 
-    a. **Atribución.** Si Usted Transmite el Programa o una Versión Modificada, Usted debe:
-        i. Conservar lo siguiente si es suministrado por El Autor con el Programa:
-            1. Identificación del Autor o Autores del Programa y de cualquier otra persona designada para recibir atribución, de cualquier manera razonable solicitada por El Autor (incluso mediante seudónimo si así se designa);
-            2. Un aviso de copyright;
-            3. Un aviso que se refiera a esta Licencia (la **Licentia Publica Christiana (LPC)**);
-            4. Un aviso que se refiera a la exención de garantías;
-            5. Un URI o hipervínculo al Programa o a esta Licencia en la medida en que sea razonablemente factible;
-        ii. Indicar si Usted Modificó el Programa y conservar una indicación de cualquier modificación previa; e
-        iii. Indicar que el Programa está licenciado bajo esta Licencia (la **Licentia Publica Christiana (LPC)**), e incluir el texto de, o el URI o hipervínculo a, esta Licencia.
+a. **Atribución.** Si Usted Transmite el Programa o una Versión Modificada, Usted debe:
+    i. Conservar lo siguiente si es suministrado por El Autor con el Programa:
+        1. Identificación del Autor o Autores del Programa y de cualquier otra persona designada para recibir atribución, de cualquier manera razonable solicitada por El Autor (incluso mediante seudónimo si así se designa);
+        2. Un aviso de copyright;
+        3. Un aviso que se refiera a esta Licencia (la **Licentia Publica Christiana (LPC)**);
+        4. Un aviso que se refiera a la exención de garantías;
+        5. Un URI o hipervínculo al Programa o a esta Licencia en la medida en que sea razonablemente factible;
+    ii. Indicar si Usted Modificó el Programa y conservar una indicación de cualquier modificación previa; e
+    iii. Indicar que el Programa está licenciado bajo esta Licencia (la **Licentia Publica Christiana (LPC)**), e incluir el texto de, o el URI o hipervínculo a, esta Licencia.
 
-    Usted puede satisfacer las condiciones de la Sección 3a de cualquier manera razonable basada en el medio, los medios y el contexto en el que Usted Transmite el Programa. Por ejemplo, puede ser razonable satisfacer las condiciones proporcionando un URI o hipervínculo a un recurso que incluya la información requerida.
+Usted puede satisfacer las condiciones de la Sección 3a de cualquier manera razonable basada en el medio, los medios y el contexto en el que Usted Transmite el Programa. Por ejemplo, puede ser razonable satisfacer las condiciones proporcionando un URI o hipervínculo a un recurso que incluya la información requerida.
 
-    b. **Inclusión de La Afirmación Sagrada.** Cuando Usted Transmita el Programa o cualquier Versión Modificada, en cualquier forma (Código Fuente o Código Objeto), Usted DEBE asegurarse de que La Afirmación Sagrada («Cristo ha Resucitado») se incluya y se muestre de manera prominente y legible junto o como parte integral de cualquier aviso de copyright, aviso de licencia o Avisos Legales Apropiados asociados con la obra. Este requisito se aplica a todas las copias o partes sustanciales, y a cualquier interfaz de usuario donde se muestren otros avisos.
+b. **Inclusión de La Afirmación Sagrada.** Cuando Usted Transmita el Programa o cualquier Versión Modificada, en cualquier forma (Código Fuente o Código Objeto), Usted DEBE asegurarse de que La Afirmación Sagrada («Cristo ha Resucitado») se incluya y se muestre de manera prominente y legible junto o como parte integral de cualquier aviso de copyright, aviso de licencia o Avisos Legales Apropiados asociados con la obra. Este requisito se aplica a todas las copias o partes sustanciales, y a cualquier interfaz de usuario donde se muestren otros avisos.
 
-    c. **CompartirIgual.** Si Usted Transmite una Versión Modificada:
-        i. La Versión Modificada en su totalidad debe ser licenciada bajo esta Licencia (la **Licentia Publica Christiana (LPC)**), o una Licencia Compatible con LPC, a cualquiera que entre en posesión de una copia. Esta Licencia se aplicará, por lo tanto, a la totalidad de la Versión Modificada, y a todas sus partes, independientemente de cómo estén empaquetadas. Esta Licencia no da permiso para licenciar la Versión Modificada de ninguna otra manera, pero no invalida tal permiso si Usted lo ha recibido por separado.
-        ii. Usted debe incluir el texto de, o el URI o hipervínculo a, la licencia que Usted aplique.
-        iii. Usted no puede ofrecer ni imponer términos o condiciones adicionales o diferentes sobre, ni aplicar Medidas Tecnológicas Efectivas a, la Versión Modificada que restrinjan el ejercicio de los derechos concedidos bajo la licencia que Usted aplique.
+c. **Compartir Igual.** Si Usted Transmite una Versión Modificada:
+    i. La Versión Modificada en su totalidad debe ser licenciada bajo esta Licencia (la **Licentia Publica Christiana (LPC)**), o una Licencia Compatible con LPC, a cualquiera que entre en posesión de una copia. Esta Licencia se aplicará, por lo tanto, a la totalidad de la Versión Modificada, y a todas sus partes, independientemente de cómo estén empaquetadas. Esta Licencia no da permiso para licenciar la Versión Modificada de ninguna otra manera, pero no invalida tal permiso si Usted lo ha recibido por separado.
+    ii. Usted debe incluir el texto de, o el URI o hipervínculo a, la licencia que Usted aplique.
+    iii. Usted no puede ofrecer ni imponer términos o condiciones adicionales o diferentes sobre, ni aplicar Medidas Tecnológicas Efectivas a, la Versión Modificada que restrinjan el ejercicio de los derechos concedidos bajo la licencia que Usted aplique.
 
     d. **Transmisión de Formas No Fuente.** Si Usted Transmite una Obra Cubierta en forma de Código Objeto, también debe Transmitir la Fuente Correspondiente legible por máquina bajo los términos de esta Licencia, de una de estas maneras:
         i. Transmitir el Código Objeto en, o incorporado en, un producto físico (incluyendo un medio de distribución físico), acompañado de la Fuente Correspondiente fijada en un medio físico duradero usado habitualmente para el intercambio de software; o,
