@@ -29,7 +29,7 @@ Guía de instalación de Gentoo
     <img src="https://img.shields.io/github/issues/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge" alt="Issues"/>
   </a>
   <a href="https://github.com/fraxgut/guia-instalacion-gentoo/blob/main/LICENCE">
-    <img src="https://img.shields.io/badge/LICENCE-VPL%2BACR-%2362A98B?style=for-the-badge" alt="Licence"/>
+    <img src="https://img.shields.io/badge/LICENCE-LPC-%2362A98B?style=for-the-badge" alt="Licence"/>
   </a>
   <a href="https://linkedin.com/in/fraxgut">
     <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&amp;logo=linkedin&amp;colorB=555" alt="LinkedIn"/>
