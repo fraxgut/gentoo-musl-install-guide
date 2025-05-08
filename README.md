@@ -1344,7 +1344,7 @@ Si tienes sugerencias para mejorar esto, por favor haz un fork del repositorio y
 <!-- LICENCIA -->
 ## Licencia
 
-Distribuido bajo la licencia VPL+ACR. Consulta `LICENCE` para más información.
+Distribuido bajo la licencia VPL+ACR. Consulta `LICENCE.md` para más información.
 
 <p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
