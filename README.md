@@ -306,7 +306,7 @@ Esta sección prepara el disco con encriptación LUKS, LVM y BTRFS.
         ```bash
         # /dev/sdx1: EFI System Partition (ESP), ~1GiB, FAT32
         # /dev/sdx2: Partición para LUKS (resto del disco), Linux Filesystem
-        export DISK_LABEL="GentooSys" # Elige un nombre corto y descriptivo
+        export DISK_LABEL="gentoosys" # Elige un nombre corto y descriptivo
         sgdisk --clear \
                --new=1:0:+1GiB --typecode=1:ef00 --change-name=1:EFI \
                --new=2:0:0   --typecode=2:8300 --change-name=2:${DISK_LABEL} \
@@ -319,7 +319,7 @@ Esta sección prepara el disco con encriptación LUKS, LVM y BTRFS.
         # /dev/sdx1: BIOS Boot Partition (para GRUB), ~1MiB, tipo ef02
         # /dev/sdx2: Partición /boot separada, ~1GiB, ext2/ext4
         # /dev/sdx3: Partición para LUKS (resto del disco), Linux Filesystem
-        export DISK_LABEL="GentooSys" # Elige un nombre corto y descriptivo
+        export DISK_LABEL="gentoosys" # Elige un nombre corto y descriptivo
         sgdisk --clear \
                --new=1:0:+1MiB  --typecode=1:ef02 --change-name=1:GRUB \
                --new=2:0:+1GiB  --typecode=2:8300 --change-name=2:BOOT \
@@ -379,7 +379,7 @@ Se crea un Grupo de Volúmenes (VG) y un Volumen Lógico (LV) dentro del contene
         ```
 2.  Formatea el Volumen Lógico LVM como BTRFS:
     ```bash
-    export BTRFS_LABEL="GentooBTRFS"
+    export BTRFS_LABEL="gentoobtrfs"
     mkfs.btrfs --force --label ${BTRFS_LABEL} /dev/${VG_NAME}/${LV_NAME}
     ```
 
@@ -493,6 +493,7 @@ Usaremos un archivo dentro del subvolumen `@swap` como espacio de intercambio.
     truncate -s 0 /mnt/gentoo/var/swap/swapfile
     chattr +C /mnt/gentoo/var/swap/swapfile # Deshabilita CoW (IMPORTANTE)
     # Verifica que no tenga compresión (debería heredar 'none' si el subvol lo tiene, pero por si acaso)
+    # Este comando debería dar error si el CoW se aplicó correctamente
     btrfs property set /mnt/gentoo/var/swap/swapfile compression none
     ```
 3.  Asigna el espacio (usa `dd`). Asegúrate de que `bs*count` iguale el tamaño deseado:
@@ -638,7 +639,7 @@ chmod 1777 /dev/shm
     # --- Variables Básicas de Compilación ---
     # Ajusta '-march=native' si tienes problemas o compilas para otra máquina.
     # O2 es un buen balance, O3 puede ser más rápido pero a veces inestable.
-    COMMON_FLAGS="-march=native -O2 -pipe"
+    COMMON_FLAGS="-march=native -O3 -pipe"
     CFLAGS="${COMMON_FLAGS}"
     CXXFLAGS="${COMMON_FLAGS}"
     FCFLAGS="${COMMON_FLAGS}" # Fortran
@@ -649,7 +650,7 @@ chmod 1777 /dev/shm
 
     # --- Opciones de Paralelización ---
     # NPROC = Número de hilos de CPU. 'nproc' lo detecta.
-    NPROC=$(nproc)
+    NPROC=$(nproc) # Ejecutar $(nproc) en CLI y reemplazar con el valor obtenido
     MAKEOPTS="-j${NPROC} -l${NPROC}" # -l para limitar carga media
     EMERGE_DEFAULT_OPTS="--jobs ${NPROC} --load-average ${NPROC}"
 
