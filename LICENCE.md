@@ -1,5 +1,4 @@
-# Licentia Publica Christiana (LPC) v. 1.0
-<p align="center"><strong>(Licencia Pública Cristiana)</strong></p>
+# Licentia Publica Christiana (LPC) v. 1.0 (Licencia Pública Cristiana)
 
 ## Preámbulo
 Esta Licencia, la **Licentia Publica Christiana (LPC)**, también denominada Licencia Pública Cristiana («Licencia»), es una licencia libre y copyleft para programas y otras clases de obras. Está diseñada para garantizar y promover la libertad de compartir, estudiar, modificar y mejorar dichas obras para todos los usuarios, fomentando un espíritu de comunidad y administración fundamentado en valores cristianos perdurables. Busca asegurar que todas las versiones de una obra, incluidas las versiones modificadas, permanezcan disponibles para la comunidad bajo términos que respeten estas libertades, principios y la afirmación central de fe detallada en este documento.
