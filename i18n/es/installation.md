@@ -19,16 +19,17 @@ del sistema instalado. El diseño de almacenamiento está en
 1. [Antes de empezar](#antes-de-empezar)
 2. [El entorno de instalación](#el-entorno-de-instalación)
 3. [El disco](#el-disco)
-4. [El stage3](#el-stage3)
-5. [Entrar al chroot](#entrar-al-chroot)
-6. [Portage y el perfil](#portage-y-el-perfil)
-7. [Localización con musl](#localización-con-musl)
-8. [El núcleo](#el-núcleo)
-9. [El initramfs](#el-initramfs)
-10. [El cargador de arranque](#el-cargador-de-arranque)
-11. [Red, usuarios y servicios](#red-usuarios-y-servicios)
-12. [Primer arranque](#primer-arranque)
-13. [Después de instalar](#después-de-instalar)
+4. [Valores que debes sustituir](#valores-que-debes-sustituir)
+5. [El stage3](#el-stage3)
+6. [Entrar al chroot](#entrar-al-chroot)
+7. [Portage y el perfil](#portage-y-el-perfil)
+8. [Localización con musl](#localización-con-musl)
+9. [El núcleo](#el-núcleo)
+10. [El initramfs](#el-initramfs)
+11. [El cargador de arranque](#el-cargador-de-arranque)
+12. [Red, usuarios y servicios](#red-usuarios-y-servicios)
+13. [Primer arranque](#primer-arranque)
+14. [Después de instalar](#después-de-instalar)
 
 ## Antes de empezar
 
@@ -92,6 +93,38 @@ Al terminar esa sección, el sistema de archivos raíz debe estar montado en
 ```bash
 findmnt -R /mnt/gentoo
 ```
+
+## Valores que debes sustituir
+
+En los comandos de esta guía aparecen dos tipos de valor.
+
+**Valores que describen tu máquina.** Cada uno está equivocado mientras no lo
+cambies:
+
+| Valor              | Qué es                                             | Dónde aparece                 |
+|--------------------|----------------------------------------------------|-------------------------------|
+| `/dev/nvme0n1`     | El disco de destino. Un nombre erróneo borra el disco equivocado. | `DRIVE`        |
+| `/dev/sdX`         | El dispositivo USB del medio de instalación        | El paso del medio en vivo     |
+| `yourhostname`     | El nombre de la máquina                            | `/etc/hostname`, `/etc/hosts` |
+| `yourusername`     | Tu nombre de usuario                               | `useradd`                     |
+| `America/Santiago` | Tu zona horaria                                    | `/etc/env.d/00musl`           |
+| `es_CL.UTF-8`      | Tu localización                                    | `/etc/env.d/00musl`           |
+| `-j16 -l16`        | El número de hilos de tu CPU, según `nproc`        | `MAKEOPTS`                    |
+
+**Nombres que elige esta guía.** Funcionan tal como están. Si cambias uno,
+cámbialo en todos los lugares donde aparece, porque los pasos posteriores lo
+vuelven a leer:
+
+| Nombre        | Qué nombra                                 | Lo vuelve a leer                       |
+|---------------|--------------------------------------------|----------------------------------------|
+| `cryptroot`   | El mapeo LUKS desbloqueado                 | fstab, línea del núcleo, recuperación  |
+| `gentoosys`   | La etiqueta de partición del contenedor    | `LUKS_PART_LABEL`, recuperación        |
+| `gentoobtrfs` | La etiqueta del sistema de archivos Btrfs  | `BTRFS_LABEL`                          |
+| `EFI`, `BOOT` | Las etiquetas de la partición de arranque  | Montajes, fstab, recuperación          |
+| `vg_gentoo`   | El grupo de volúmenes de la variante LVM   | Línea de órdenes del núcleo            |
+
+La guía exporta el primer grupo a variables de entorno, de modo que defines
+cada valor una sola vez. Vuelve a definirlas si sales del intérprete y regresas.
 
 ## El stage3
 
@@ -417,17 +450,49 @@ generada debe contener los parámetros anteriores.
 
 ## Red, usuarios y servicios
 
+### El nombre de la máquina
+
+El nombre identifica la máquina en cada red a la que se conecta, así que debe
+ser único dentro de esas redes. Dos máquinas con el mismo nombre en una misma
+red local colisionan, y mDNS renombra la segunda como `nombre-2`. No necesita
+ser único en el mundo.
+
+La sintaxis la fija la RFC 1123:
+
+- De 1 a 63 caracteres.
+- Letras, dígitos y el guion. Puede empezar por un dígito.
+- El guion nunca abre ni cierra el nombre.
+- Sin puntos ni guiones bajos. El punto separa las etiquetas de un dominio.
+
+La convención es escribirlo en minúsculas, porque DNS ignora la diferencia
+entre mayúsculas y minúsculas.
+
 El servicio `hostname` de OpenRC lee primero `/etc/hostname`, y recurre a la
 variable `hostname` de `/etc/conf.d/hostname` cuando ese archivo está vacío.
-Escribe el nombre que quieras:
 
 ```bash
-echo "tunombredehost" > /etc/hostname
+printf '%s\n' "yourhostname" > /etc/hostname
+```
+
+OpenRC necesita además ese mismo nombre en `/etc/hosts`. Esa entrada permite
+que la máquina resuelva su propio nombre mediante una consulta local:
+
+```
+127.0.0.1   yourhostname.localdomain yourhostname localhost
+::1         yourhostname.localdomain yourhostname localhost
+```
+
+### Usuarios
+
+```bash
 passwd                                   # contraseña definitiva de root
 
-useradd -m -G wheel,users,audio,video,portage tuusuario
-passwd tuusuario
+useradd -m -G wheel,users,audio,video,portage yourusername
+passwd yourusername
 ```
+
+El grupo `wheel` obtiene privilegios de root a través de `doas`. El grupo
+`portage` permite a la cuenta leer los directorios de compilación.
 
 Instala el gestor de red y los servicios del sistema:
 

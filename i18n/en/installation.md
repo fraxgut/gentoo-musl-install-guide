@@ -18,16 +18,17 @@ toolchain is in [toolchain.md](toolchain.md).
 1. [Before you start](#before-you-start)
 2. [The installation environment](#the-installation-environment)
 3. [The disk](#the-disk)
-4. [The stage3](#the-stage3)
-5. [Enter the chroot](#enter-the-chroot)
-6. [Portage and the profile](#portage-and-the-profile)
-7. [Locales with musl](#locales-with-musl)
-8. [The kernel](#the-kernel)
-9. [The initramfs](#the-initramfs)
-10. [The bootloader](#the-bootloader)
-11. [Network, users and services](#network-users-and-services)
-12. [First boot](#first-boot)
-13. [After the installation](#after-the-installation)
+4. [Values you replace](#values-you-replace)
+5. [The stage3](#the-stage3)
+6. [Enter the chroot](#enter-the-chroot)
+7. [Portage and the profile](#portage-and-the-profile)
+8. [Locales with musl](#locales-with-musl)
+9. [The kernel](#the-kernel)
+10. [The initramfs](#the-initramfs)
+11. [The bootloader](#the-bootloader)
+12. [Network, users and services](#network-users-and-services)
+13. [First boot](#first-boot)
+14. [After the installation](#after-the-installation)
 
 ## Before you start
 
@@ -88,6 +89,37 @@ At the end of that section, the root filesystem must be at `/mnt/gentoo`.
 ```bash
 findmnt -R /mnt/gentoo
 ```
+
+## Values you replace
+
+Two kinds of value appear in the commands of this guide.
+
+**Values that describe your machine.** Each one stays wrong until you change
+it:
+
+| Value              | What it is                                    | Where it appears              |
+|--------------------|-----------------------------------------------|-------------------------------|
+| `/dev/nvme0n1`     | The target disk. A wrong name erases the wrong disk. | `DRIVE`                |
+| `/dev/sdX`         | The USB device for the installation medium    | The live medium step          |
+| `yourhostname`     | The name of the machine                       | `/etc/hostname`, `/etc/hosts` |
+| `yourusername`     | Your login name                               | `useradd`                     |
+| `America/Santiago` | Your time zone                                | `/etc/env.d/00musl`           |
+| `en_GB.UTF-8`      | Your locale                                   | `/etc/env.d/00musl`           |
+| `-j16 -l16`        | Your CPU thread count, from `nproc`           | `MAKEOPTS`                    |
+
+**Names that this guide chooses.** They work as they are. If you change one,
+change it everywhere it appears, because later steps read the name back:
+
+| Name          | What it names                        | Read back by                         |
+|---------------|--------------------------------------|--------------------------------------|
+| `cryptroot`   | The unlocked LUKS mapping            | fstab, kernel command line, recovery |
+| `gentoosys`   | The partition label of the container | `LUKS_PART_LABEL`, recovery          |
+| `gentoobtrfs` | The Btrfs filesystem label           | `BTRFS_LABEL`                        |
+| `EFI`, `BOOT` | The boot partition labels            | Mount steps, fstab, recovery         |
+| `vg_gentoo`   | The volume group of the LVM variant  | Kernel command line                  |
+
+The guide exports the first group into shell variables, thus you set each value
+one time. Set them again if you leave the shell and return.
 
 ## The stage3
 
@@ -408,17 +440,47 @@ must contain the parameters above.
 
 ## Network, users and services
 
-The OpenRC `hostname` service reads `/etc/hostname` first, and it uses the
-`hostname` variable in `/etc/conf.d/hostname` when that file is empty. Write
-the name you want:
+### The hostname
+
+The name identifies the machine on each network that it joins, thus it must be
+unique on those networks. Two machines with the same name on one LAN collide,
+and mDNS renames the second to `name-2`. The name needs no global uniqueness.
+
+RFC 1123 gives the syntax:
+
+- 1 to 63 characters.
+- Letters, digits and the hyphen. A digit can start the name.
+- A hyphen never starts the name and never ends it.
+- No dots and no underscores. A dot separates the labels of a domain name.
+
+Lowercase is the convention, because DNS ignores case.
+
+The OpenRC `hostname` service reads `/etc/hostname` first. It uses the
+`hostname` variable in `/etc/conf.d/hostname` when that file is empty.
 
 ```bash
-echo "yourhostname" > /etc/hostname
+printf '%s\n' "yourhostname" > /etc/hostname
+```
+
+OpenRC needs the same name in `/etc/hosts`. That entry lets the machine resolve
+its own name through a local lookup:
+
+```
+127.0.0.1   yourhostname.localdomain yourhostname localhost
+::1         yourhostname.localdomain yourhostname localhost
+```
+
+### Users
+
+```bash
 passwd                                   # permanent root password
 
-useradd -m -G wheel,users,audio,video,portage yourname
-passwd yourname
+useradd -m -G wheel,users,audio,video,portage yourusername
+passwd yourusername
 ```
+
+The `wheel` group gets root privileges through `doas`. The `portage` group
+lets the account read the build directories.
 
 Install the network manager and the system services:
 
