@@ -36,8 +36,8 @@ default/linux/amd64/23.0/musl/llvm       (exp)   →  Clang, LLD, libc++
 
 No existe un perfil oficial que los combine, ni un stage3
 `musl-llvm-hardened`. La biblioteca C y la cadena de herramientas quedan
-fijadas al desempaquetar el stage3, así que la elección se toma antes de
-instalar y no se cambia después sin reconstruir el sistema.
+fijadas al desempaquetar el stage3. La elección se toma antes de instalar, y
+cambiarla después exige reconstruir el sistema.
 
 La guía parte del stage3 `musl-llvm-openrc`, selecciona el perfil `musl/llvm` y
 **apila sobre él las características del perfil `hardened`** mediante un perfil
@@ -46,7 +46,7 @@ y hereda de todos ellos.
 
 Este camino tiene precedente. En los foros de Gentoo hay quien instaló desde el
 tarball musl-clang y añadió después el endurecimiento con un perfil
-personalizado, y la wiki documenta el apilamiento con esa misma sintaxis para
+personalizado. La wiki documenta el apilamiento con esa misma sintaxis para
 construir perfiles LLVM de escritorio.
 
 ## Qué aporta cada perfil
@@ -152,9 +152,9 @@ La primera orden debe listar las cuatro banderas; la segunda debe responder
 ## Fricción conocida
 
 `features/hardened/make.defaults` establece `USE="... -jit -orc"`. En un
-sistema construido sobre GCC esas banderas apenas se notan, pero aquí
-desactivan el compilador en tiempo de ejecución de LLVM y su capa ORC, de la
-que dependen algunos consumidores. Mesa es el caso habitual: el renderizador
+sistema construido sobre GCC esas banderas apenas se notan. Aquí desactivan el
+compilador en tiempo de ejecución de LLVM y su capa ORC, de la que dependen
+algunos consumidores. Mesa es el caso habitual: el renderizador
 por software y varias rutas de OpenCL usan el JIT de LLVM.
 
 Si algo que necesitas depende de esas capacidades, reactívalas por paquete en

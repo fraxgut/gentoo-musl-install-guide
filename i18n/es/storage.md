@@ -193,9 +193,9 @@ export LUKS_PART_LABEL=${DISK_LABEL}
 ## Cifrado con LUKS2
 
 `cryptsetup` usa Argon2id como función de derivación por defecto desde la
-versión 2.4.0. La RFC 9106 trata Argon2id como la variante principal, porque
-combina la resistencia frente a ataques de canal lateral de Argon2i con la
-resistencia frente a compromisos entre tiempo y memoria de Argon2d.
+versión 2.4.0. La RFC 9106 trata Argon2id como la variante principal, porque combina dos
+defensas. De Argon2i hereda la resistencia frente a ataques de canal lateral.
+De Argon2d, la resistencia frente a compromisos entre tiempo y memoria.
 
 ```bash
 cryptsetup luksFormat \
@@ -211,9 +211,9 @@ cryptsetup luksFormat \
 ```
 
 `--iter-time 5000` concede cinco segundos a la derivación de la clave.
-`cryptsetup` calibra con ese presupuesto la memoria y las iteraciones que el
-equipo tolera, de modo que el coste de un ataque por fuerza bruta se ajusta al
-hardware disponible en lugar de a una constante fija.
+Con ese presupuesto, `cryptsetup` calibra la memoria y las iteraciones que el
+equipo tolera. El coste de un ataque por fuerza bruta se ajusta así al hardware
+disponible, en lugar de a una constante fija.
 
 La frase de paso protege todo lo demás. Elige una que resista un ataque de
 diccionario: varias palabras aleatorias superan a una cadena corta con
@@ -309,8 +309,8 @@ para el árbol de espacio libre, presente en cualquier núcleo moderno.
 
 `compress-force` obliga a Btrfs a intentar comprimir cada extensión. Cuando el
 resultado comprimido resultaría mayor que el original, Btrfs almacena los datos
-sin comprimir, de modo que ningún archivo crece; lo que se gasta son ciclos de
-CPU en un intento fallido.
+sin comprimir. Ningún archivo crece, y lo que se gasta son ciclos de CPU en un
+intento fallido.
 
 La documentación de Btrfs recomienda `compress` a secas para uso general,
 porque las heurísticas actuales aciertan bastante. La guía elige
@@ -322,9 +322,10 @@ entre versiones del núcleo.
 
 ### Elegir el nivel
 
-Btrfs agrupa los niveles de zstd en tres tramos: de 1 a 3 casi en tiempo real,
-de 4 a 8 más lentos con mejor razón de compresión, y de 9 a 15 con un esfuerzo
-notablemente mayor cuya ganancia de tamaño puede ser pequeña.
+Btrfs agrupa los niveles de zstd en tres tramos. Los niveles 1 a 3 trabajan
+casi en tiempo real. Los niveles 4 a 8 son más lentos y comprimen mejor. Los
+niveles 9 a 15 exigen mucho más esfuerzo, y su ganancia de tamaño puede ser
+pequeña.
 
 El detalle que decide la elección es asimétrico: **el coste de comprimir crece
 con el nivel, mientras que el de descomprimir se mantiene prácticamente
@@ -467,9 +468,9 @@ mount -o rw,nosuid,nodev,relatime \
 
 ## Espacio de intercambio
 
-Btrfs incorpora desde la versión 6.1 de `btrfs-progs` una orden que crea el
-archivo de intercambio con los atributos correctos —sin copia en escritura, sin
-compresión— y ejecuta `mkswap` sobre él:
+Desde la versión 6.1 de `btrfs-progs`, Btrfs incorpora una orden para esto.
+Crea el archivo de intercambio con los atributos correctos, sin copia en
+escritura y sin compresión, y ejecuta `mkswap` sobre él:
 
 ```bash
 btrfs filesystem mkswapfile --size 8G /mnt/gentoo/var/swap/swapfile
