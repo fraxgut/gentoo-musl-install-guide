@@ -9,154 +9,304 @@ Toolchain: the LLVM/Clang profile, hardening and link-time optimisation
 
 > 🌐 **Idioma:** [English](../en/toolchain.md) · **Español**
 
-### Paso 6: Configuración Post-Instalación (LLVM y LTO)
+Este documento explica cómo la instalación combina musl, el endurecimiento del
+perfil `hardened` y la cadena de herramientas LLVM/Clang, y cómo se activa la
+optimización en tiempo de enlace.
 
-Estos pasos son **opcionales** y muy avanzados. Convierten el sistema para usar Clang/LLVM como compilador principal y aplican optimizaciones LTO. **Esto puede introducir inestabilidad y aumentar significativamente los tiempos de compilación.** Procede con precaución.
+## Índice
 
-#### Configuración de LLVM/Clang como Compilador del Sistema
+1. [El problema de los perfiles](#el-problema-de-los-perfiles)
+2. [Qué aporta cada perfil](#qué-aporta-cada-perfil)
+3. [El perfil apilado](#el-perfil-apilado)
+4. [Fricción conocida](#fricción-conocida)
+5. [Configuración de make.conf](#configuración-de-makeconf)
+6. [Optimización en tiempo de enlace](#optimización-en-tiempo-de-enlace)
+7. [Reconstrucción del sistema](#reconstrucción-del-sistema)
+8. [El núcleo con Clang](#el-núcleo-con-clang)
 
-1.  **Instalar Paquetes LLVM/Clang:**
-    *   Añade USE flags necesarias para libcxx/libunwind.
-    ```bash
-    echo "sys-libs/llvm-libunwind static-libs" >> /etc/portage/package.use/llvm
-    echo "sys-libs/libcxx static-libs" >> /etc/portage/package.use/llvm
-    echo "sys-libs/libcxxabi static-libs" >> /etc/portage/package.use/llvm
-    emerge sys-devel/clang sys-devel/llvm sys-libs/compiler-rt sys-libs/llvm-libunwind sys-devel/lld sys-libs/libcxx sys-libs/libcxxabi
-    ```
-2.  **Añadir Overlays Específicos:** `toolchain-clang` y `clang-musl-overlay`.
-    ```bash
-    eselect repository add toolchain-clang git https://github.com/2b57/toolchain-clang.git
-    # Crea el archivo de configuración para clang-musl-overlay
-    cat <<EOF > /etc/portage/repos.conf/clang-musl.conf
-    [clang-musl]
-    location = /var/db/repos/clang-musl
-    sync-type = git
-    sync-uri = https://github.com/clang-musl-overlay/clang-musl-overlay.git
-    sync-depth = 1
-    auto-sync = yes
-    EOF
-    emerge --sync # Sincroniza los nuevos repos
-    ```
-3.  **Seleccionar Perfil Clang/MUSL:** Cambia al perfil que usa Clang.
-    ```bash
-    eselect profile list
-    # Busca y selecciona el perfil .../clang/musl/hardened (o similar)
-    # eselect profile set --force <NUMERO_PERFIL_CLANG>
-    ```
-4.  **Configurar Entorno para Clang:**
-    *   Crea un archivo de entorno para el kernel:
-    ```bash
-    mkdir -p /etc/portage/env
-    echo "LLVM=1 LLVM_IAS=1" > /etc/portage/env/kernel-clang
-    # Asocia este entorno a los paquetes del kernel
-    mkdir -p /etc/portage/package.env
-    echo "sys-kernel/* kernel-clang" >> /etc/portage/package.env/kernel
-    ```
-    *   Añade workarounds si son necesarios (ejemplo para LTO):
-    ```bash
-    mkdir -p /etc/portage/package.cflags
-    # echo "sys-devel/llvm *FLAGS-="-fipa-pta"" >> /etc/portage/package.cflags/ltoworkarounds.conf
-    ```
-5.  **Reconstruir Toolchain con Clang:**
-    *   Limpia paquetes GCC si el perfil lo requiere (revisa la salida de `emerge`): `emerge -c gcc` (¡con cuidado!)
-    *   Reinstala los componentes clave de LLVM/Clang usando Clang.
-    ```bash
-    emerge --keep-going sys-devel/clang sys-devel/llvm sys-libs/compiler-rt sys-libs/llvm-libunwind sys-devel/lld
-    ```
-6.  **Actualizar `make.conf` para Usar Clang/LLD:**
-    ```bash
-    nano /etc/portage/make.conf
-    ```
-    Ajusta/Añade las variables de compilación:
-    ```ini
-    # ... (otras variables)
-    CC="clang"
-    CXX="clang++"
-    AR="llvm-ar"
-    NM="llvm-nm"
-    RANLIB="llvm-ranlib"
-    # CFLAGS y CXXFLAGS ya definidos (-march=native -O2 -pipe)
+## El problema de los perfiles
 
-    # Configuración de LDFLAGS para usar lld y librerías de Clang
-    LDFLAGS="${LDFLAGS} -rtlib=compiler-rt -unwindlib=libunwind -fuse-ld=lld -Wl,--as-needed"
+Gentoo publica perfiles separados para musl con endurecimiento y para musl con
+LLVM:
 
-    # ... (resto de make.conf)
-    ```
-7.  **Actualizar Entorno y Enlaces:**
-    ```bash
-    env-update && source /etc/profile
-    # Configura llvm-conf para crear wrappers (reemplaza X con tu versión de LLVM)
-    # emerge sys-devel/llvm-conf # Si no está instalado
-    # llvm-conf --enable-shared --enable-assertions --enable-optimized --enable-targets=host --link-shared --bindir=/usr/bin --libdir=/usr/lib64 --includedir=/usr/include --prefix=/usr --sysconfdir=/etc --datadir=/usr/share --infodir=/usr/share/info --mandir=/usr/share/man X
-    # O usa los wrappers de eselect-clang si están disponibles
-    ```
-8.  **Reconstruir el Mundo con Clang:** ¡Esto llevará **MUCHO** tiempo!
-    ```bash
-    emerge -e @world
-    # -e: rebuild everything
-    ```
+```
+default/linux/amd64/23.0/musl/hardened   (exp)   →  GCC
+default/linux/amd64/23.0/musl/llvm       (exp)   →  Clang, LLD, libc++
+```
 
-#### Compilación del Kernel con LLVM/Clang
+No existe un perfil oficial que los combine, ni un stage3
+`musl-llvm-hardened`. La biblioteca C y la cadena de herramientas quedan
+fijadas al desempaquetar el stage3, así que la elección se toma antes de
+instalar y no se cambia después sin reconstruir el sistema.
 
-Una vez que el sistema base usa Clang:
+La guía parte del stage3 `musl-llvm-openrc`, selecciona el perfil `musl/llvm` y
+**apila sobre él las características del perfil `hardened`** mediante un perfil
+propio. Portage permite esa composición: un perfil puede declarar varios padres
+y hereda de todos ellos.
+
+Este camino tiene precedente. En los foros de Gentoo hay quien instaló desde el
+tarball musl-clang y añadió después el endurecimiento con un perfil
+personalizado, y la wiki documenta el apilamiento con esa misma sintaxis para
+construir perfiles LLVM de escritorio.
+
+## Qué aporta cada perfil
+
+Conviene saber qué se gana y qué queda pendiente, porque la diferencia es
+menor de lo que sugieren los nombres.
+
+Los perfiles 23.0 activan por defecto, **en todos los casos**:
+
+- Ejecutables independientes de posición (PIE)
+- Protección de pila `-fstack-protector-strong`
+- Protección frente a colisiones de pila
+- RELRO y `BIND_NOW`
+
+El perfil `hardened` añade sobre esa base:
+
+| Aporte                              | Origen                                    |
+|-------------------------------------|-------------------------------------------|
+| `USE="hardened pic xtpax"`          | `features/hardened/make.defaults`         |
+| `USE="cet"` en amd64                | `features/hardened/amd64/make.defaults`   |
+| `PROFILE_IS_HARDENED=1`             | `features/hardened/make.defaults`         |
+| `pie` forzada en `use.force`         | `features/hardened/use.force`             |
+| `sys-apps/elfix` en el conjunto base | `features/hardened/packages`              |
+| `xattr` forzada en tar, coreutils y portage | `features/hardened/package.use.force` |
+| `-D_FORTIFY_SOURCE=3` en vez de 2   | Cadena de herramientas del perfil          |
+| Aserciones de la biblioteca estándar | Cadena de herramientas del perfil          |
+
+Las dos últimas filas son las únicas que el apilamiento no resuelve por sí
+solo, porque provienen de la configuración de GCC y no de una variable del
+perfil. Ambas se recuperan a mano en `make.conf`, como se indica más abajo.
+
+Una observación honesta sobre `xtpax`: la bandera marca binarios con atributos
+extendidos de PaX, y el propio perfil establece `PAX_MARKINGS="none"`. Sin un
+núcleo con PaX —que ya no se distribuye públicamente— el marcado no cambia
+nada en tiempo de ejecución. La guía conserva la bandera porque forma parte del
+conjunto que define el perfil y su coste es nulo, no porque aporte una defensa
+activa.
+
+## El perfil apilado
+
+Portage necesita que el perfil viva en un repositorio. Crea uno local:
+
+```bash
+emerge app-eselect/eselect-repository dev-vcs/git
+eselect repository create local
+```
+
+Comprueba que `metadata/layout.conf` declare el formato de perfil que admite la
+sintaxis `repositorio:ruta`. `eselect repository create` no siempre la escribe:
+
+```bash
+cat /var/db/repos/local/metadata/layout.conf
+```
+
+```ini
+masters = gentoo
+profile-formats = portage-2
+```
+
+Crea el perfil y declara sus padres:
+
+```bash
+mkdir -p /var/db/repos/local/profiles/musl-llvm-hardened
+echo 8 > /var/db/repos/local/profiles/musl-llvm-hardened/eapi
+
+cat > /var/db/repos/local/profiles/musl-llvm-hardened/parent <<'EOF'
+gentoo:default/linux/amd64/23.0/musl/llvm
+gentoo:features/hardened
+EOF
+```
+
+El orden importa. Portage procesa los padres en secuencia y acumula las
+variables incrementales como `USE`, de modo que `features/hardened` aporta sus
+banderas sin descartar las del perfil LLVM. Las variables que no son
+incrementales —`CC`, `CXX`, `LD` y el resto de las herramientas que define
+`features/llvm`— permanecen intactas, porque el perfil `hardened` no las toca.
+
+Registra el perfil para que `eselect` lo muestre:
+
+```bash
+echo "$(portageq envvar ARCH) musl-llvm-hardened exp" \
+    >> /var/db/repos/local/profiles/profiles.desc
+```
+
+Selecciónalo:
+
+```bash
+eselect profile list
+eselect profile set <número>
+eselect profile show
+```
+
+Verifica que el apilamiento surtió efecto:
+
+```bash
+portageq envvar USE | tr ' ' '\n' | grep -E '^(hardened|pic|xtpax|cet)$'
+portageq envvar CC
+```
+
+La primera orden debe listar las cuatro banderas; la segunda debe responder
+`clang`.
+
+## Fricción conocida
+
+`features/hardened/make.defaults` establece `USE="... -jit -orc"`. En un
+sistema construido sobre GCC esas banderas apenas se notan, pero aquí
+desactivan el compilador en tiempo de ejecución de LLVM y su capa ORC, de la
+que dependen algunos consumidores. Mesa es el caso habitual: el renderizador
+por software y varias rutas de OpenCL usan el JIT de LLVM.
+
+Si algo que necesitas depende de esas capacidades, reactívalas por paquete en
+lugar de desarmar el perfil:
+
+```bash
+mkdir -p /etc/portage/package.use
+echo "media-libs/mesa llvm" >> /etc/portage/package.use/mesa
+```
+
+El resto del sistema conserva `-jit -orc`.
+
+## Configuración de make.conf
+
+```ini
+# /etc/portage/make.conf
+
+# --- Cadena de herramientas ---
+# El perfil musl/llvm ya define CC, CXX, LD y las utilidades de LLVM.
+# Declararlas otra vez aquí sólo duplica lo que el perfil garantiza.
+
+# --- Endurecimiento ---
+# El perfil 23.0 aporta PIE, SSP, protección frente a colisiones de pila,
+# RELRO y BIND_NOW. Estas dos macros cubren lo que el perfil hardened
+# obtiene de la configuración de GCC y que Clang no hereda: el nivel 3 de
+# FORTIFY_SOURCE y las aserciones de la biblioteca estándar de C++.
+HARDENING_FLAGS="-D_FORTIFY_SOURCE=3"
+HARDENING_CXXFLAGS="-D_LIBCPP_HARDENING_MODE=_LIBCPP_HARDENING_MODE_FAST"
+
+# --- Optimización ---
+# ThinLTO es la variante de LTO que recomienda Gentoo para Clang: enlaza
+# en paralelo y consume mucha menos memoria que el LTO monolítico.
+# Los avisos convertidos en errores detectan incompatibilidades entre
+# unidades de traducción que sólo se manifiestan al enlazar.
+WARNING_FLAGS="-Werror=odr -Werror=strict-aliasing"
+
+COMMON_FLAGS="-O3 -pipe -march=native -flto=thin ${HARDENING_FLAGS} ${WARNING_FLAGS}"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS} ${HARDENING_CXXFLAGS}"
+LDFLAGS="${COMMON_FLAGS} ${LDFLAGS}"
+
+# --- Paralelismo ---
+# Sustituye el valor por el que informe 'nproc': make.conf no expande
+# órdenes.
+MAKEOPTS="-j16 -l16"
+EMERGE_DEFAULT_OPTS="--jobs 4 --load-average 16 --keep-going"
+
+# --- USE ---
+# 'lto' hace que los paquetes que consultan la bandera construyan con LTO.
+# El perfil apilado ya aporta hardened, pic, xtpax y cet.
+USE="lto"
+
+# --- Licencias ---
+ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
+
+# --- Ramas ---
+# El sistema base sigue la rama estable. Los paquetes que requieren la
+# rama de pruebas se habilitan uno por uno en package.accept_keywords.
+ACCEPT_KEYWORDS=""
+```
+
+`-O3` es una elección deliberada de esta guía; Gentoo recomienda `-O2` como
+valor general. Si un paquete falla al compilar con `-O3`, baja su nivel de
+forma individual con `/etc/portage/env` en lugar de rebajar todo el sistema.
+
+`-ffast-math` no aparece en la configuración global, y no debería. Relaja
+garantías de la aritmética de punto flotante que muchos paquetes suponen
+vigentes. Aplícalo por paquete si tienes un motivo y has medido el resultado.
+
+## Optimización en tiempo de enlace
+
+Gentoo admite LTO directamente. El overlay `gentooLTO`, que la versión anterior
+de esta guía utilizaba, está en modo de mantenimiento y su propio README
+recomienda usar el soporte de Gentoo.
+
+Con Clang, la variante correcta es ThinLTO:
+
+```
+-flto=thin
+```
+
+ThinLTO divide el trabajo por unidad de traducción y lo enlaza en paralelo, lo
+que reduce el tiempo y la memoria frente al LTO monolítico. En una compilación
+grande la diferencia de memoria decide si la máquina termina o se queda sin
+RAM.
+
+Los avisos `-Werror=odr` y `-Werror=strict-aliasing` señalan problemas que sólo
+aparecen al enlazar con LTO. Conviene saber que Clang aún no implementa esos
+diagnósticos por completo, de modo que su presencia documenta la intención y
+protegerá en cuanto el compilador los emita.
+
+Cuando un paquete falle al compilar con LTO, desactívalo sólo para él:
+
+```bash
+mkdir -p /etc/portage/env
+cat > /etc/portage/env/no-lto <<'EOF'
+COMMON_FLAGS="-O2 -pipe -march=native"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+LDFLAGS="-Wl,--as-needed"
+EOF
+
+echo "categoría/paquete no-lto" >> /etc/portage/package.env/no-lto
+```
+
+## Reconstrucción del sistema
+
+Cambiar de perfil y de banderas exige reconstruir todo lo instalado para que el
+sistema sea coherente:
+
+```bash
+emerge --ask --verbose --update --deep --newuse @world
+emerge --ask --emptytree @world
+```
+
+La segunda orden reconstruye cada paquete, incluidos los que no cambiaron de
+versión. En una máquina de escritorio tarda horas o días según el hardware y el
+software instalado. Ejecútala cuando puedas dejar el equipo trabajando.
+
+Comprueba después que el endurecimiento llegó a los binarios:
+
+```bash
+emerge app-misc/pax-utils
+scanelf -e /usr/bin/emerge
+checksec --file=/usr/bin/clang     # app-admin/checksec
+```
+
+## El núcleo con Clang
+
+El núcleo se construye con LLVM mediante las variables `LLVM=1` y `LLVM_IAS=1`,
+que seleccionan Clang, LLD y el ensamblador integrado.
+
+Asocia ese entorno a las fuentes del núcleo:
+
+```bash
+mkdir -p /etc/portage/env /etc/portage/package.env
+echo 'KBUILD_BUILD_ENV="LLVM=1 LLVM_IAS=1"' > /etc/portage/env/kernel-clang
+echo "sys-kernel/* kernel-clang" >> /etc/portage/package.env/kernel
+```
+
+Y compila:
 
 ```bash
 cd /usr/src/linux
-# Limpia compilaciones anteriores
-make clean
-# Configura si es necesario (make menuconfig)
-# Compila usando Clang (las variables de entorno deberían funcionar si usaste package.env)
-make -j$(nproc) LLVM=1 LLVM_IAS=1
-make modules_install LLVM=1 LLVM_IAS=1
-make install LLVM=1 LLVM_IAS=1
-# Regenera initramfs
-KERNEL_VERSION=$(basename /boot/vmlinuz-*) # Re-detecta por si acaso
-dracut --force --kver ${KERNEL_VERSION}
-# Actualiza GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
-
+make LLVM=1 LLVM_IAS=1 -j"$(nproc)"
+make LLVM=1 LLVM_IAS=1 modules_install
+make LLVM=1 LLVM_IAS=1 install
 ```
-#### Activación de Optimizaciones LTO (GentooLTO)
 
-Esto aplica LTO (Link-Time Optimization) a la mayoría de los paquetes. **Aumenta aún más los tiempos de compilación y el uso de RAM, y el riesgo de problemas.**
+Los detalles de configuración del núcleo, del initramfs y del cargador de
+arranque están en [installation.md](installation.md).
 
-1.  **Añadir Overlays LTO:**
-    ```bash
-    eselect repository enable mv # Dependencia
-    eselect repository enable lto-overlay
-    emerge --sync
-    ```
-2.  **Instalar Herramientas LTO:**
-    *   Puede requerir aceptar keywords inestables.
-    ```bash
-    echo "sys-config/ltoize ~amd64" >> /etc/portage/package.accept_keywords/lto
-    echo "app-portage/lto-rebuild ~amd64" >> /etc/portage/package.accept_keywords/lto
-    emerge sys-config/ltoize app-portage/lto-rebuild
-    ```
-3.  **Configurar `make.conf` para LTO:**
-    *   `ltoize` crea archivos de configuración en `/etc/portage/make.conf/`. El principal es `lto.conf`.
-    *   Edita `/etc/portage/make.conf` y añade `source /etc/portage/make.conf/lto.conf` cerca del principio.
-    *   Ajusta las `CFLAGS`, `CXXFLAGS`, `LDFLAGS` según las recomendaciones de `ltoize` (normalmente añade flags como `-flto=auto`, `-fno-plt`). **Lee la documentación de GentooLTO.**
-    ```bash
-    nano /etc/portage/make.conf
-    # Añadir al principio:
-    # source /etc/portage/make.conf/lto.conf
+---
 
-    # Modificar CFLAGS/CXXFLAGS/LDFLAGS según ltoize:
-    # CFLAGS="${COMMON_FLAGS} -flto=auto" # Ejemplo
-    # CXXFLAGS="${COMMON_FLAGS} -flto=auto" # Ejemplo
-    # LDFLAGS="${LDFLAGS} -flto=auto" # Ejemplo
-    ```
-4.  **Ejecutar `ltoize`:** Analiza los paquetes instalados y genera configuraciones de USE flags y máscaras para LTO.
-    ```bash
-    ltoize # Revisa la salida y los archivos generados en /etc/portage/
-    ```
-5.  **Reconstruir el Mundo con LTO:** ¡Esto será **EXTREMADAMENTE LARGO** y consumirá mucha RAM!
-    ```bash
-    lto-rebuild -r # Reconstruye paquetes esenciales primero
-    emerge -e --keep-going @world # Reconstruye todo lo demás
-    ```
-
-<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
-
-<!-- SOLUCIÓN DE PROBLEMAS -->
+> 🌐 **Idioma:** [English](../en/toolchain.md) · **Español**
