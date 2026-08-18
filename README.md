@@ -41,7 +41,7 @@ Guía de instalación de Gentoo
 <br />
 <div align="center">
   <a href="https://github.com/fraxgut/guia-instalacion-gentoo">
-    <img src="images/Logo.png" alt="Logo" width="80" height="80">
+    <img src="assets/gentoo-logo.png" alt="Gentoo Linux logo" width="80" height="80">
   </a>
 
 <h3 align="center">Guía Avanzada de Instalación de Gentoo GNU/Linux</h3>
