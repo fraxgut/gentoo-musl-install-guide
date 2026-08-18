@@ -27,7 +27,7 @@ OpenRC · LUKS2 · Btrfs · LLVM/Clang · ThinLTO · Zen kernel
 
 ## 🌐 Select your language
 
-- <img src="assets/flag-spqr.svg" alt="" height="18"> **[Latina](i18n/la/README.md)**
+- <img src="assets/flag-spqr.svg" alt="" height="20"> **[Latina](i18n/la/README.md)**
 - 🇪🇸 **[Español](i18n/es/README.md)**
 - 🇬🇧 **[English](i18n/en/README.md)**
 
@@ -61,16 +61,18 @@ document](i18n/en/toolchain.md) shows the method and its limits.
 
 ## Documentation
 
-Each language has the same file tree:
+Each language holds the same six documents and names them in its own language.
+`README.md` keeps its name everywhere, because GitHub renders only that name
+when you open a directory.
 
 ```
-i18n/en/                       i18n/es/
-├── README.md                  ├── README.md
-├── installation.md            ├── installation.md
-├── storage.md                 ├── storage.md
-├── toolchain.md               ├── toolchain.md
-├── optimisation.md            ├── optimisation.md
-└── troubleshooting.md         └── troubleshooting.md
+i18n/la/                i18n/es/                  i18n/en/
+├── README.md           ├── README.md             ├── README.md
+├── institutio.md       ├── instalacion.md        ├── installation.md
+├── receptaculum.md     ├── almacenamiento.md     ├── storage.md
+├── instrumenta.md      ├── herramientas.md       ├── toolchain.md
+├── optimatio.md        ├── optimizacion.md       ├── optimisation.md
+└── remedia.md          └── problemas.md          └── troubleshooting.md
 ```
 
 ## Warnings
