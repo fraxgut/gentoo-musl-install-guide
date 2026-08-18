@@ -1,7 +1,7 @@
 <!--
 README.md
 @fraxgut
-VPL+ACR
+CC-BY-SA-4.0
 Guía de instalación de Gentoo
 -->
 
@@ -28,8 +28,8 @@ Guía de instalación de Gentoo
   <a href="https://github.com/fraxgut/guia-instalacion-gentoo/issues">
     <img src="https://img.shields.io/github/issues/fraxgut/guia-instalacion-gentoo.svg?style=for-the-badge" alt="Issues"/>
   </a>
-  <a href="https://github.com/fraxgut/guia-instalacion-gentoo/blob/main/LICENCE">
-    <img src="https://img.shields.io/badge/LICENCE-LPC-%2362A98B?style=for-the-badge" alt="Licence"/>
+  <a href="https://github.com/fraxgut/guia-instalacion-gentoo/blob/main/LICENCE.md">
+    <img src="https://img.shields.io/badge/licence-CC%20BY--SA%204.0-%2362A98B?style=for-the-badge" alt="Licence"/>
   </a>
   <a href="https://linkedin.com/in/fraxgut">
     <img src="https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&amp;logo=linkedin&amp;colorB=555" alt="LinkedIn"/>
@@ -1345,7 +1345,12 @@ Si tienes sugerencias para mejorar esto, por favor haz un fork del repositorio y
 <!-- LICENCIA -->
 ## Licencia
 
-Distribuido bajo la licencia VPL+ACR. Consulta `LICENCE.md` para más información.
+Salvo indicación en contrario, esta documentación se distribuye bajo la licencia
+Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0).
+Consulta [LICENCE.md](LICENCE.md).
+
+El nombre y el logotipo de Gentoo pertenecen a la Gentoo Foundation y quedan
+fuera de esta licencia.
 
 <p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
 
