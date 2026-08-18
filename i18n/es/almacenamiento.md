@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Storage layout: partitioning, LUKS2, Btrfs subvolumes and the swapfile
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/receptaculum.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/storage.md)**
+
 # Arquitectura de almacenamiento
 
-> 🌐 **Idioma:** [Latina](../la/receptaculum.md) · **Español** · [English](../en/storage.md)
+</div>
+
+---
 
 Este documento describe el diseño de almacenamiento de la guía y las
 decisiones que lo sustentan. El procedimiento completo de instalación está en
@@ -603,4 +609,8 @@ LVM no administra nada: usa el esquema por defecto de esta guía.
 
 ---
 
-> 🌐 **Idioma:** [Latina](../la/receptaculum.md) · **Español** · [English](../en/storage.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/receptaculum.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/storage.md)**
+
+</div>

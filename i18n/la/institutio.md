@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 The installation procedure from the live medium to the first boot
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/instalacion.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/installation.md)**
+
 # Institutio
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/instalacion.md) · [English](../en/installation.md)
+</div>
+
+---
 
 Haec est ratio integra, a medio institutionis usque ad primum initium
 systematis instituti. Dispositio receptaculi in [receptaculum.md](receptaculum.md)
@@ -538,4 +544,8 @@ systema quod incipit habes, et ex eo id reficere potes.
 
 ---
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/instalacion.md) · [English](../en/installation.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/instalacion.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/installation.md)**
+
+</div>

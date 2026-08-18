@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 The installation procedure from the live medium to the first boot
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/institutio.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/instalacion.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **English**
+
 # Installation
 
-> 🌐 **Language:** [Latina](../la/institutio.md) · [Español](../es/instalacion.md) · **English**
+</div>
+
+---
 
 This is the full procedure, from the installation medium to the first boot of
 the installed system. The storage design is in [storage.md](storage.md). The
@@ -536,4 +542,8 @@ something, you then have a system that boots, and you can repair it from there.
 
 ---
 
-> 🌐 **Language:** [Latina](../la/institutio.md) · [Español](../es/instalacion.md) · **English**
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/institutio.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/instalacion.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **English**
+
+</div>

@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Recovery procedures for boot, storage and build failures
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/remedia.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/troubleshooting.md)**
+
 # Solución de problemas
 
-> 🌐 **Idioma:** [Latina](../la/remedia.md) · **Español** · [English](../en/troubleshooting.md)
+</div>
+
+---
 
 Los fallos de esta instalación se concentran en tres momentos: el arranque, el
 montaje del almacenamiento y la compilación. Esta página los recorre por
@@ -268,4 +274,8 @@ Configura la conexión con `nmtui`.
 
 ---
 
-> 🌐 **Idioma:** [Latina](../la/remedia.md) · **Español** · [English](../en/troubleshooting.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/remedia.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/troubleshooting.md)**
+
+</div>

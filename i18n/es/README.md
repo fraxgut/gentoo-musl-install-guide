@@ -5,12 +5,20 @@ CC-BY-SA-4.0
 Spanish landing page and index for the installation guide
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/README.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/README.md)**
+
+<a href="https://www.gentoo.org/"><img src="../../assets/gentoo-logo.png" alt="Gentoo Linux logo" width="72" height="72"></a>
+
 # Guía avanzada de instalación de Gentoo Linux
 
-> 🌐 **Idioma:** [Latina](../la/README.md) · **Español** · [English](../en/README.md)
+**Instalación de Gentoo Linux en AMD64 sobre musl, con OpenRC, LUKS2, Btrfs,
+LLVM/Clang, LTO y el núcleo Zen**
 
-Instalación de Gentoo Linux en AMD64 sobre musl, con OpenRC, LUKS2, Btrfs,
-LLVM/Clang, LTO y el núcleo Zen.
+</div>
+
+---
 
 ## Sobre esta guía
 
@@ -108,4 +116,8 @@ Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — franco.gutierre
 
 ---
 
-> 🌐 **Idioma:** [Latina](../la/README.md) · **Español** · [English](../en/README.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/README.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/README.md)**
+
+</div>

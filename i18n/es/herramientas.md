@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Toolchain: the LLVM/Clang profile, hardening and link-time optimisation
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/instrumenta.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/toolchain.md)**
+
 # Cadena de herramientas LLVM y LTO
 
-> 🌐 **Idioma:** [Latina](../la/instrumenta.md) · **Español** · [English](../en/toolchain.md)
+</div>
+
+---
 
 Este documento explica cómo la instalación combina musl, el endurecimiento del
 perfil `hardened` y la cadena de herramientas LLVM/Clang, y cómo se activa la
@@ -309,4 +315,8 @@ arranque están en [installation.md](instalacion.md).
 
 ---
 
-> 🌐 **Idioma:** [Latina](../la/instrumenta.md) · **Español** · [English](../en/toolchain.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/instrumenta.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/toolchain.md)**
+
+</div>

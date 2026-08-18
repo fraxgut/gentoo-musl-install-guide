@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Optimisation tiers, hardware gates and the escape hatches that keep them safe
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/optimizacion.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/optimisation.md)**
+
 # Optimatio
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/optimizacion.md) · [English](../en/optimisation.md)
+</div>
+
+---
 
 Hic libellus fortiter optimat, et id intra ordinem fixum praelationum agit:
 
@@ -459,4 +465,8 @@ genlop -t categoria/fasciculus
 
 ---
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/optimizacion.md) · [English](../en/optimisation.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/optimizacion.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/optimisation.md)**
+
+</div>

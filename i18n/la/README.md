@@ -5,12 +5,20 @@ CC-BY-SA-4.0
 Latin landing page and index for the installation guide
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/README.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/README.md)**
+
+<a href="https://www.gentoo.org/"><img src="../../assets/gentoo-logo.png" alt="Gentoo Linux logo" width="72" height="72"></a>
+
 # Index institutionis Gentoo Linux provectae
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/README.md) · [English](../en/README.md)
+**Institutio systematis Gentoo Linux in architectura AMD64 cum musl, OpenRC,
+LUKS2, Btrfs, LLVM/Clang, ThinLTO et nucleo Zen**
 
-Institutio systematis Gentoo Linux in architectura AMD64 cum musl, OpenRC,
-LUKS2, Btrfs, LLVM/Clang, ThinLTO et nucleo Zen.
+</div>
+
+---
 
 ## De hoc libello
 
@@ -107,4 +115,8 @@ Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — franco.gutierre
 
 ---
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/README.md) · [English](../en/README.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/README.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/README.md)**
+
+</div>

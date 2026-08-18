@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 The installation procedure from the live medium to the first boot
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/institutio.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/installation.md)**
+
 # Instalación
 
-> 🌐 **Idioma:** [Latina](../la/institutio.md) · **Español** · [English](../en/installation.md)
+</div>
+
+---
 
 Procedimiento completo, desde el medio de instalación hasta el primer arranque
 del sistema instalado. El diseño de almacenamiento está en
@@ -549,4 +555,8 @@ el cual repararlo.
 
 ---
 
-> 🌐 **Idioma:** [Latina](../la/institutio.md) · **Español** · [English](../en/installation.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/institutio.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/installation.md)**
+
+</div>

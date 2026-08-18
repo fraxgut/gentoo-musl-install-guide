@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Toolchain: the LLVM/Clang profile, hardening and link-time optimisation
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/herramientas.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/toolchain.md)**
+
 # Instrumenta LLVM et LTO
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/herramientas.md) · [English](../en/toolchain.md)
+</div>
+
+---
 
 Hoc documentum ostendit quomodo institutio musl, munitionem profili `hardened`
 et instrumenta LLVM/Clang coniungat. Etiam ostendit quomodo optimationem in
@@ -306,4 +312,8 @@ initialem praebet.
 
 ---
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/herramientas.md) · [English](../en/toolchain.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/herramientas.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/toolchain.md)**
+
+</div>

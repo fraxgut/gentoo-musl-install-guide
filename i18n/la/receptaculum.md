@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Storage layout: partitioning, LUKS2, Btrfs subvolumes and the swapfile
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/almacenamiento.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/storage.md)**
+
 # Dispositio receptaculi
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/almacenamiento.md) · [English](../en/storage.md)
+</div>
+
+---
 
 Hoc documentum dispositionem receptaculi huius libelli ostendit. Causam
 cuiusque consilii quoque praebet. Ratio institutionis integra in
@@ -582,4 +588,8 @@ administrat. Dispositione praedefinita huius libelli utere.
 
 ---
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/almacenamiento.md) · [English](../en/storage.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/almacenamiento.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/storage.md)**
+
+</div>

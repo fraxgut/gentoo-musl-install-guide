@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Toolchain: the LLVM/Clang profile, hardening and link-time optimisation
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/instrumenta.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/herramientas.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **English**
+
 # LLVM toolchain and LTO
 
-> 🌐 **Language:** [Latina](../la/instrumenta.md) · [Español](../es/herramientas.md) · **English**
+</div>
+
+---
 
 This document shows how the installation combines musl, the hardening of the
 `hardened` profile and the LLVM/Clang toolchain. It also shows how to enable
@@ -306,4 +312,8 @@ initramfs and the bootloader.
 
 ---
 
-> 🌐 **Language:** [Latina](../la/instrumenta.md) · [Español](../es/herramientas.md) · **English**
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/instrumenta.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/herramientas.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **English**
+
+</div>

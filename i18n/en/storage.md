@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Storage layout: partitioning, LUKS2, Btrfs subvolumes and the swapfile
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/receptaculum.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/almacenamiento.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **English**
+
 # Storage layout
 
-> 🌐 **Language:** [Latina](../la/receptaculum.md) · [Español](../es/almacenamiento.md) · **English**
+</div>
+
+---
 
 This document shows the storage design of the guide. It also gives the reason
 for each decision. The full installation procedure is in
@@ -580,4 +586,8 @@ nothing. Use the default layout of this guide.
 
 ---
 
-> 🌐 **Language:** [Latina](../la/receptaculum.md) · [Español](../es/almacenamiento.md) · **English**
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/receptaculum.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/almacenamiento.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **English**
+
+</div>

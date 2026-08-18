@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Recovery procedures for boot, storage and build failures
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/remedia.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/problemas.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **English**
+
 # Troubleshooting
 
-> 🌐 **Language:** [Latina](../la/remedia.md) · [Español](../es/problemas.md) · **English**
+</div>
+
+---
 
 The failures of this installation occur at three moments: the boot, the mount
 of the storage, and the build. This page groups them by symptom.
@@ -268,4 +274,8 @@ Then configure the connection with `nmtui`.
 
 ---
 
-> 🌐 **Language:** [Latina](../la/remedia.md) · [Español](../es/problemas.md) · **English**
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/remedia.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/problemas.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **English**
+
+</div>

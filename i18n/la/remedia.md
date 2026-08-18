@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Recovery procedures for boot, storage and build failures
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/problemas.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/troubleshooting.md)**
+
 # Remedia
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/problemas.md) · [English](../en/troubleshooting.md)
+</div>
+
+---
 
 Defectus huius institutionis tribus momentis accidunt: in initio, in
 appositione receptaculi, et in constructione. Haec pagina eos secundum signum
@@ -266,4 +272,8 @@ Deinde nexum cum `nmtui` compone.
 
 ---
 
-> 🌐 **Lingua:** **Latina** · [Español](../es/problemas.md) · [English](../en/troubleshooting.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **Latina** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **[Español](../es/problemas.md)** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/troubleshooting.md)**
+
+</div>

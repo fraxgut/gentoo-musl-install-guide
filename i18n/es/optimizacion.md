@@ -5,9 +5,15 @@ CC-BY-SA-4.0
 Optimisation tiers, hardware gates and the escape hatches that keep them safe
 -->
 
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/optimatio.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/optimisation.md)**
+
 # Optimización
 
-> 🌐 **Idioma:** [Latina](../la/optimatio.md) · **Español** · [English](../en/optimisation.md)
+</div>
+
+---
 
 Esta guía optimiza con fuerza, y lo hace dentro de un orden de prioridades
 fijo:
@@ -468,4 +474,8 @@ genlop -t categoría/paquete
 
 ---
 
-> 🌐 **Idioma:** [Latina](../la/optimatio.md) · **Español** · [English](../en/optimisation.md)
+<div align="center">
+
+<img src="../../assets/flag-spqr.svg" alt="" height="14"> **[Latina](../la/optimatio.md)** · <img src="../../assets/flag-burgundy.svg" alt="" height="14"> **Español** · <img src="../../assets/flag-england.svg" alt="" height="14"> **[English](../en/optimisation.md)**
+
+</div>
