@@ -27,16 +27,19 @@ follows the Gentoo Name and Logo Usage Guidelines:
 
 ## Third-party material
 
-The waved outline in `assets/flag-spqr.svg` follows the shared flag
-silhouette of the Noto Emoji project, so the marker matches the flag emoji
-beside it in size and shape:
+The waved outline in the language markers `assets/flag-spqr.svg`,
+`assets/flag-burgundy.svg` and `assets/flag-england.svg` follows the shared
+flag silhouette of the Noto Emoji project, so the markers match a flag emoji
+in size and shape:
 
     Noto Emoji — Copyright the Noto Project Authors
     https://github.com/googlefonts/noto-emoji
     Licensed under the Apache License, Version 2.0
 
-The laurel wreath and the lettering in that file are original work, and they
-carry the licence of this repository.
+The laurel wreath, the lettering, the Cross of Burgundy and the Cross of St
+George in those files are original work, and they carry the licence of this
+repository. The three charges themselves are historical devices in the public
+domain.
 
 ## Licence text
 

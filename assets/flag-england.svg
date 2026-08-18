@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+assets/flag-england.svg
+@fraxgut
+CC-BY-SA-4.0
+Language marker for the English translation: the Cross of St George
+
+The waved outline follows the shared flag silhouette of Noto Emoji
+(Apache-2.0, googlefonts/noto-emoji). The cross is original work.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"
+     width="1000" height="1000" role="img" aria-label="English">
+  <title>English</title>
+  <defs><clipPath id="wave"><path d="M8,195.25 C178.83,110.03 349.03,140.83 521.26,167.28 C676.47,191.12 833.42,211.85 992,132.75 L992,804.75 C821.17,889.97 650.97,859.17 478.74,832.72 C323.53,808.88 166.58,788.15 8,867.25 Z"/></clipPath></defs>
+  <path d="M8,195.25 C178.83,110.03 349.03,140.83 521.26,167.28 C676.47,191.12 833.42,211.85 992,132.75 L992,804.75 C821.17,889.97 650.97,859.17 478.74,832.72 C323.53,808.88 166.58,788.15 8,867.25 Z" fill="#f7f7f5"/>
+  <g clip-path="url(#wave)">
+    <path d="M8.0,464.1 L992.0,401.6 L992.0,536.0 L8.0,598.5 Z" fill="#c8102e"/>
+    <path d="M435.1,154.2 L564.9,173.8 L564.9,845.8 L435.1,826.2 Z" fill="#c8102e"/>
+  </g>
+</svg>
