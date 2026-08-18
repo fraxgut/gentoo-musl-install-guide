@@ -350,13 +350,22 @@ lsinitrd /boot/initramfs-*.img | grep -E 'crypt|btrfs'
 
 ## El cargador de arranque
 
-GRUB 2.14 incorpora el soporte de Argon2 en el propio proyecto. La versión
-anterior de esta guía descargaba un parche externo contra GRUB 2.06 para
-resolverlo; ese parche ya no corresponde y no debe aplicarse.
+GRUB 2.14 incorpora el soporte de Argon2 en el propio proyecto y es estable en
+amd64. Basta con emergerlo: funciona con el contenedor LUKS2 tal cual está.
 
-Con `/boot` fuera del contenedor cifrado, GRUB no necesita abrir LUKS: lee el
-núcleo y el initramfs en claro, y el descifrado ocurre después, dentro del
-initramfs. Por eso `GRUB_ENABLE_CRYPTODISK` **no** aparece en esta
+`/boot` queda fuera del contenedor cifrado. GRUB lee el núcleo y el initramfs
+en claro y los arranca; el initramfs abre después el contenedor. El sistema
+pide así la frase de paso una sola vez, tras el menú de GRUB:
+
+```
+firmware → GRUB → núcleo + initramfs → frase de paso → raíz Btrfs → OpenRC
+```
+
+Un diseño que cifre también `/boot` pide la frase dos veces: primero GRUB, para
+poder leer `/boot`, y después el initramfs. Ambos programas corren en entornos
+separados, y GRUB no entrega al núcleo ninguna sesión ya desbloqueada. Las dos
+peticiones aceptan la misma frase y abren el mismo keyslot. Esta guía conserva
+la petición única, y por eso `GRUB_ENABLE_CRYPTODISK` queda fuera de la
 configuración.
 
 ```bash
@@ -408,8 +417,12 @@ generada debe contener los parámetros anteriores.
 
 ## Red, usuarios y servicios
 
+El servicio `hostname` de OpenRC lee primero `/etc/hostname`, y recurre a la
+variable `hostname` de `/etc/conf.d/hostname` cuando ese archivo está vacío.
+Escribe el nombre que quieras:
+
 ```bash
-echo "gentoo" > /etc/hostname
+echo "tunombredehost" > /etc/hostname
 passwd                                   # contraseña definitiva de root
 
 useradd -m -G wheel,users,audio,video,portage tuusuario

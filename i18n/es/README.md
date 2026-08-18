@@ -66,6 +66,7 @@ comprueba dos veces el nombre del dispositivo.
 - [x] ThinLTO con el soporte de Gentoo
 - [x] Núcleo Zen construido con LLVM
 - [x] Intercambio nativo de Btrfs con hibernación
+- [ ] Secure Boot, para autenticar la cadena de arranque que queda fuera de LUKS
 - [ ] SELinux
 - [ ] Configuración del núcleo de ejemplo
 - [ ] Instantáneas automáticas y arranque desde instantánea

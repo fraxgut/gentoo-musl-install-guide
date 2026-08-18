@@ -58,9 +58,35 @@ partición en claro, de modo que nunca necesita abrir LUKS. Argon2id se procesa
 una sola vez, dentro del initramfs, donde `cryptsetup` dispone de la memoria y
 del tiempo de CPU que la función requiere.
 
-Quien prefiera cifrar también `/boot` debe habilitar `GRUB_ENABLE_CRYPTODISK`
-y aceptar que GRUB pida la frase de paso por su cuenta. La guía no toma ese
-camino.
+El sistema pide así la frase de paso una sola vez, tras el menú de GRUB. Un
+diseño que cifre también `/boot` habilita `GRUB_ENABLE_CRYPTODISK` y la pide
+dos veces: GRUB para poder leer `/boot`, y el initramfs de nuevo para el
+dispositivo raíz. Esta guía conserva la petición única.
+
+### La cadena de arranque
+
+LUKS entrega confidencialidad a todo lo que vive dentro del contenedor. GRUB,
+el núcleo y el initramfs quedan fuera, porque la máquina debe leerlos antes de
+disponer de la frase de paso.
+
+Eso separa dos propiedades de seguridad distintas. Quien se lleve el disco no
+lee ninguno de tus datos. Quien tenga acceso físico repetido puede modificar el
+núcleo o el initramfs, y un initramfs modificado captura la frase de paso en el
+arranque siguiente.
+
+Cifrar `/boot` responde a eso sólo en parte, porque el propio GRUB sigue siendo
+legible y modificable. La respuesta completa verifica una firma sobre lo que la
+máquina arranca:
+
+```
+Secure Boot  →  verificación de firma  →  GRUB, núcleo, initramfs
+                                                ↓
+                                          LUKS2 + Argon2id
+```
+
+Con los componentes de arranque firmados, la guía puede mantener `/boot` en
+claro y conservar la petición única de la frase de paso. Ese trabajo está en la
+hoja de ruta.
 
 ### Por qué Btrfs directamente sobre LUKS2
 
@@ -262,20 +288,22 @@ noatime,compress=zstd:1,space_cache=v2,nodiscard,subvol=@portage
 
 Tres observaciones sobre lo que **no** aparece:
 
-`ssd` está ausente a propósito. Btrfs consulta la topología del dispositivo de
-bloque y detecta por sí mismo si es rotacional. Las antiguas optimizaciones de
-disposición específicas para SSD se retiraron porque en el hardware actual no
-producían beneficio y podían aumentar la fragmentación. Fuerza la opción
-únicamente si una capa virtual expone la propiedad de forma incorrecta.
+**Btrfs detecta por sí mismo el tipo de dispositivo.** Consulta la topología
+del dispositivo de bloque y determina si es rotacional, de modo que la guía le
+deja ese trabajo. Fuerza `ssd` a mano únicamente si una capa virtual expone la
+propiedad de forma incorrecta. Las antiguas optimizaciones de disposición
+específicas para SSD se retiraron porque en el hardware actual no producían
+beneficio y podían aumentar la fragmentación.
 
-`defaults` tampoco aparece. Agrupa opciones que ya están activas y alarga la
-línea sin decir nada.
+**La guía escribe las opciones que quiere.** `defaults` agrupa opciones que ya
+están activas, así que la lista se mantiene corta y cada entrada significa
+algo.
 
-`space_cache=v2` sí aparece, aunque hoy sea el comportamiento por defecto. La
-guía prefiere declarar la configuración deseada antes que depender de lo que
-el núcleo elija en cada versión. El único coste es de compatibilidad: un
-núcleo sin soporte para el árbol de espacio libre no montará el sistema de
-archivos en escritura, situación irrelevante para una instalación moderna.
+**`space_cache=v2` va explícito,** aunque hoy sea el comportamiento por
+defecto. La guía declara la configuración deseada, y esa declaración se
+mantiene estable aunque cambien los valores por defecto del núcleo. El único
+coste es de compatibilidad: montar en escritura exige un núcleo con soporte
+para el árbol de espacio libre, presente en cualquier núcleo moderno.
 
 ## Compresión
 
@@ -284,9 +312,9 @@ resultado comprimido resultaría mayor que el original, Btrfs almacena los datos
 sin comprimir, de modo que ningún archivo crece; lo que se gasta son ciclos de
 CPU en un intento fallido.
 
-La documentación de Btrfs no recomienda `compress-force` de forma general,
-porque las heurísticas actuales aciertan bastante. La guía lo usa igualmente
-por dos razones. La primera es la cobertura: un archivo puede empezar con datos
+La documentación de Btrfs recomienda `compress` a secas para uso general,
+porque las heurísticas actuales aciertan bastante. La guía elige
+`compress-force` por dos razones. La primera es la cobertura: un archivo puede empezar con datos
 incompresibles y continuar con datos muy compresibles, y sin `force` una
 decisión temprana puede excluir todo lo que viene después. La segunda es
 declarativa: preferimos una política explícita sobre una heurística que cambia

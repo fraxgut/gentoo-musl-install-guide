@@ -65,6 +65,7 @@ two times.
 - [x] ThinLTO with the Gentoo support
 - [x] Zen kernel built with LLVM
 - [x] Native Btrfs swap with hibernation
+- [ ] Secure Boot, to authenticate the boot chain that stays outside LUKS
 - [ ] SELinux
 - [ ] An example kernel configuration
 - [ ] Automatic snapshots and boot from a snapshot

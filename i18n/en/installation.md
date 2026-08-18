@@ -342,14 +342,22 @@ lsinitrd /boot/initramfs-*.img | grep -E 'crypt|btrfs'
 
 ## The bootloader
 
-GRUB 2.14 has Argon2 support in the project itself. The previous revision of
-this guide downloaded an external patch against GRUB 2.06. That patch is
-obsolete. Do not apply it.
+GRUB 2.14 carries Argon2 support upstream, and it is stable on amd64. Emerge
+it, and it works with the LUKS2 container as it is.
 
-`/boot` stays outside the encrypted container, thus GRUB does not open LUKS.
-GRUB reads the kernel and the initramfs in plain form. The decryption occurs
-later, in the initramfs. For this reason, `GRUB_ENABLE_CRYPTODISK` is **not**
-in this configuration.
+`/boot` stays outside the encrypted container. GRUB reads the kernel and the
+initramfs in plain form and starts them. The initramfs then opens LUKS. The
+system thus asks for the passphrase one time, after the GRUB menu:
+
+```
+firmware → GRUB → kernel + initramfs → passphrase → Btrfs root → OpenRC
+```
+
+A layout that also encrypts `/boot` asks for the passphrase two times. GRUB
+asks first, to read `/boot`, and the initramfs asks again. The two programs run
+in separate environments, and GRUB gives the kernel no unlocked session. Both
+prompts take the same passphrase and open the same keyslot. This guide keeps
+the single prompt, and `GRUB_ENABLE_CRYPTODISK` stays out of the configuration.
 
 ```bash
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf   # or "pc" on BIOS
@@ -400,8 +408,12 @@ must contain the parameters above.
 
 ## Network, users and services
 
+The OpenRC `hostname` service reads `/etc/hostname` first, and it uses the
+`hostname` variable in `/etc/conf.d/hostname` when that file is empty. Write
+the name you want:
+
 ```bash
-echo "gentoo" > /etc/hostname
+echo "yourhostname" > /etc/hostname
 passwd                                   # permanent root password
 
 useradd -m -G wheel,users,audio,video,portage yourname

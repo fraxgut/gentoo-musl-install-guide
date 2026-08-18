@@ -226,9 +226,9 @@ vigentes. Aplícalo por paquete si tienes un motivo y has medido el resultado.
 
 ## Optimización en tiempo de enlace
 
-Gentoo admite LTO directamente. El overlay `gentooLTO`, que la versión anterior
-de esta guía utilizaba, está en modo de mantenimiento y su propio README
-recomienda usar el soporte de Gentoo.
+Gentoo admite LTO directamente, así que toda la configuración vive en
+`make.conf`. El overlay `gentooLTO` está en modo de mantenimiento y su propio
+README remite a ese mismo soporte de Gentoo.
 
 Con Clang, la variante correcta es ThinLTO:
 

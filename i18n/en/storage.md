@@ -57,8 +57,34 @@ result. GRUB reads the kernel and the initramfs from a plain partition, thus
 GRUB does not open LUKS. Argon2id runs one time, in the initramfs, where
 `cryptsetup` has the memory and the CPU time that the function needs.
 
-If you prefer to encrypt `/boot` also, set `GRUB_ENABLE_CRYPTODISK`. GRUB then
-asks for the passphrase itself. This guide does not use that design.
+The system thus asks for the passphrase one time, after the GRUB menu. A layout
+that also encrypts `/boot` sets `GRUB_ENABLE_CRYPTODISK`, and it asks two
+times: GRUB asks to read `/boot`, and the initramfs asks again for the root
+device. This guide keeps the single prompt.
+
+### The boot chain
+
+LUKS gives confidentiality to everything in the container. GRUB, the kernel and
+the initramfs stay outside it, because the machine must read them before it has
+the passphrase.
+
+This splits the two security properties. An attacker who takes the disk reads
+none of your data. An attacker with repeated physical access can modify the
+kernel or the initramfs, and the modified initramfs can capture the passphrase
+at the next boot.
+
+Encryption of `/boot` answers that only in part, because GRUB itself stays
+readable and modifiable. The complete answer verifies a signature on what the
+machine starts:
+
+```
+Secure Boot  →  signature check  →  GRUB, kernel, initramfs
+                                          ↓
+                                    LUKS2 + Argon2id
+```
+
+Signed boot components let the guide keep `/boot` in plain form and keep the
+single passphrase prompt. That work is on the roadmap.
 
 ### Why Btrfs goes directly on LUKS2
 
@@ -250,22 +276,21 @@ And for `@portage`:
 noatime,compress=zstd:1,space_cache=v2,nodiscard,subvol=@portage
 ```
 
-Three notes about the options that are **not** in that list:
+Three notes on how the guide selected that list:
 
-`ssd` is absent on purpose. Btrfs reads the topology of the block device and
-finds itself if the device is rotational. The old layout optimisations for SSDs
-went away, because they gave no benefit on current hardware and could increase
-fragmentation. Set the option only if a virtual layer shows the property
-incorrectly.
+**Btrfs finds the device type itself.** It reads the topology of the block
+device and finds if the device is rotational. The guide leaves that work to
+Btrfs. Set `ssd` by hand only if a virtual layer shows the property
+incorrectly. The old layout optimisations for SSDs went away, because they gave
+no benefit on current hardware and could increase fragmentation.
 
-`defaults` is also absent. It groups options that are already active. It makes
-the line longer and tells the reader nothing.
+**The guide writes the options it wants.** `defaults` groups options that are
+already active, thus the list stays short and each entry carries meaning.
 
-`space_cache=v2` is present, although it is now the default behaviour. The
-guide states the intended configuration. It does not follow the value that each
-kernel version selects. The only cost is compatibility: a kernel without free
-space tree support cannot mount the filesystem for write operations. That
-condition does not apply to a modern installation.
+**`space_cache=v2` is explicit,** although it is now the default behaviour. The
+guide states the intended configuration, and that statement stays stable as the
+kernel defaults change. The one cost is compatibility: write operations need a
+kernel with free space tree support, which each modern kernel has.
 
 ## Compression
 
@@ -274,8 +299,9 @@ compressed result is larger than the input, Btrfs writes the data without
 compression. Thus no file becomes larger. The cost is the CPU time of an
 unsuccessful try.
 
-The Btrfs documentation does not recommend `compress-force` for general use,
-because the current heuristics are good. This guide uses it for two reasons.
+The Btrfs documentation recommends plain `compress` for general use, because
+the current heuristics are good. This guide selects `compress-force` for two
+reasons.
 The first reason is coverage. A file can start with incompressible data and
 continue with very compressible data. Without `force`, an early decision can
 exclude all the data that comes after it. The second reason is a preference for
