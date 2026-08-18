@@ -7,7 +7,7 @@ Project landing page and language selector
 
 <div align="center">
 
-<img src="assets/gentoo-logo.png" alt="Gentoo Linux logo" width="80" height="80">
+<a href="https://www.gentoo.org/"><img src="assets/gentoo-logo.png" alt="Gentoo Linux logo" width="80" height="80"></a>
 
 # Gentoo musl Installation Guide
 
@@ -92,4 +92,8 @@ Commons Attribution-ShareAlike 4.0 International Licence (CC BY-SA 4.0). See
 
 The Gentoo name and logo belong to the Gentoo Foundation. This licence does not
 cover them. Their use follows the [Gentoo Name and Logo Usage
-Guidelines](https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html).
+Guidelines](https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html),
+and the logo above links to the Gentoo website as those guidelines ask.
+
+This guide is a personal project. It speaks for its author alone, and the
+Gentoo Foundation has no part in it.

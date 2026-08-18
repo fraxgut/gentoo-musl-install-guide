@@ -77,8 +77,11 @@ licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional
 (CC BY-SA 4.0). Consulta [LICENCE.md](../../LICENCE.md).
 
 El nombre y el logotipo de Gentoo pertenecen a la Gentoo Foundation y quedan
-fuera de esta licencia. Su uso se rige por las Gentoo Name and Logo Usage
-Guidelines.
+fuera de esta licencia. Su uso se rige por las [Gentoo Name and Logo Usage
+Guidelines](https://www.gentoo.org/inside-gentoo/foundation/name-logo-guidelines.html).
+
+Esta guía es un proyecto personal. Habla únicamente por su autor, y la Gentoo
+Foundation no participa en ella.
 
 ## Contribuir
 
@@ -88,7 +91,7 @@ traducciones.
 
 ## Contacto
 
-Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — contacto@fraxgut.net
+Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — franco.gutierrez.1@ug.uchile.cl
 
 ## Referencias
 
