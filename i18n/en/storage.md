@@ -7,7 +7,7 @@ Storage layout: partitioning, LUKS2, Btrfs subvolumes and the swapfile
 
 # Storage layout
 
-> 🌐 **Language:** **English** · [Español](../es/storage.md)
+> 🌐 **Language:** [Latina](../la/receptaculum.md) · [Español](../es/almacenamiento.md) · **English**
 
 This document shows the storage design of the guide. It also gives the reason
 for each decision. The full installation procedure is in
@@ -580,4 +580,4 @@ nothing. Use the default layout of this guide.
 
 ---
 
-> 🌐 **Language:** **English** · [Español](../es/storage.md)
+> 🌐 **Language:** [Latina](../la/receptaculum.md) · [Español](../es/almacenamiento.md) · **English**

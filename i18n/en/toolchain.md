@@ -7,7 +7,7 @@ Toolchain: the LLVM/Clang profile, hardening and link-time optimisation
 
 # LLVM toolchain and LTO
 
-> 🌐 **Language:** **English** · [Español](../es/toolchain.md)
+> 🌐 **Language:** [Latina](../la/instrumenta.md) · [Español](../es/herramientas.md) · **English**
 
 This document shows how the installation combines musl, the hardening of the
 `hardened` profile and the LLVM/Clang toolchain. It also shows how to enable
@@ -306,4 +306,4 @@ initramfs and the bootloader.
 
 ---
 
-> 🌐 **Language:** **English** · [Español](../es/toolchain.md)
+> 🌐 **Language:** [Latina](../la/instrumenta.md) · [Español](../es/herramientas.md) · **English**

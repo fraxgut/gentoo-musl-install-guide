@@ -7,12 +7,12 @@ The installation procedure from the live medium to the first boot
 
 # Instalación
 
-> 🌐 **Idioma:** [English](../en/installation.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/institutio.md) · **Español** · [English](../en/installation.md)
 
 Procedimiento completo, desde el medio de instalación hasta el primer arranque
 del sistema instalado. El diseño de almacenamiento está en
-[storage.md](storage.md) y la cadena de herramientas en
-[toolchain.md](toolchain.md).
+[storage.md](almacenamiento.md) y la cadena de herramientas en
+[toolchain.md](herramientas.md).
 
 ## Índice
 
@@ -84,7 +84,7 @@ ip -brief addr                    # muestra la dirección a la que conectar
 ## El disco
 
 El particionado, el contenedor LUKS2, los subvolúmenes Btrfs y el archivo de
-intercambio están descritos paso a paso en [storage.md](storage.md). Complétalo
+intercambio están descritos paso a paso en [storage.md](almacenamiento.md). Complétalo
 antes de continuar.
 
 Al terminar esa sección, el sistema de archivos raíz debe estar montado en
@@ -220,7 +220,7 @@ emerge-webrsync
 
 Selecciona el perfil. La guía usa un perfil propio que apila las
 características de `hardened` sobre `musl/llvm`; su construcción está en
-[toolchain.md](toolchain.md). Mientras tanto, selecciona el perfil base:
+[toolchain.md](herramientas.md). Mientras tanto, selecciona el perfil base:
 
 ```bash
 eselect profile list | grep musl
@@ -228,7 +228,7 @@ eselect profile set default/linux/amd64/23.0/musl/llvm
 ```
 
 Escribe `/etc/portage/make.conf` con la configuración descrita en
-[toolchain.md](toolchain.md), y añade las banderas de CPU detectadas y los
+[toolchain.md](herramientas.md), y añade las banderas de CPU detectadas y los
 espejos:
 
 ```bash
@@ -506,7 +506,7 @@ rc-update add chronyd default
 rc-update add cronie default
 ```
 
-`cronie` ejecuta el recorte semanal descrito en [storage.md](storage.md).
+`cronie` ejecuta el recorte semanal descrito en [storage.md](almacenamiento.md).
 
 Autoriza al grupo `wheel` a elevar privilegios:
 
@@ -534,14 +534,14 @@ reboot
 Retira el medio de instalación. GRUB debe aparecer, y el initramfs debe pedir
 la frase de paso de LUKS antes de montar la raíz.
 
-Si algo falla, [troubleshooting.md](troubleshooting.md) recorre las causas
+Si algo falla, [troubleshooting.md](problemas.md) recorre las causas
 habituales.
 
 ## Después de instalar
 
 El sistema ya arranca con musl, OpenRC, Clang y el núcleo Zen. Lo que queda es
 el perfil apilado con las características de endurecimiento y la reconstrucción
-del sistema con LTO, ambos descritos en [toolchain.md](toolchain.md).
+del sistema con LTO, ambos descritos en [toolchain.md](herramientas.md).
 
 Conviene hacerlo con el sistema instalado y arrancando, no dentro del chroot:
 si la reconstrucción deja algo inservible, tendrás un sistema que arranca desde
@@ -549,4 +549,4 @@ el cual repararlo.
 
 ---
 
-> 🌐 **Idioma:** [English](../en/installation.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/institutio.md) · **Español** · [English](../en/installation.md)

@@ -7,7 +7,7 @@ Optimisation tiers, hardware gates and the escape hatches that keep them safe
 
 # Optimización
 
-> 🌐 **Idioma:** [English](../en/optimisation.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/optimatio.md) · **Español** · [English](../en/optimisation.md)
 
 Esta guía optimiza con fuerza, y lo hace dentro de un orden de prioridades
 fijo:
@@ -468,4 +468,4 @@ genlop -t categoría/paquete
 
 ---
 
-> 🌐 **Idioma:** [English](../en/optimisation.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/optimatio.md) · **Español** · [English](../en/optimisation.md)

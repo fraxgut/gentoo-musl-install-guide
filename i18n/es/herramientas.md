@@ -7,7 +7,7 @@ Toolchain: the LLVM/Clang profile, hardening and link-time optimisation
 
 # Cadena de herramientas LLVM y LTO
 
-> 🌐 **Idioma:** [English](../en/toolchain.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/instrumenta.md) · **Español** · [English](../en/toolchain.md)
 
 Este documento explica cómo la instalación combina musl, el endurecimiento del
 perfil `hardened` y la cadena de herramientas LLVM/Clang, y cómo se activa la
@@ -305,8 +305,8 @@ make LLVM=1 LLVM_IAS=1 install
 ```
 
 Los detalles de configuración del núcleo, del initramfs y del cargador de
-arranque están en [installation.md](installation.md).
+arranque están en [installation.md](instalacion.md).
 
 ---
 
-> 🌐 **Idioma:** [English](../en/toolchain.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/instrumenta.md) · **Español** · [English](../en/toolchain.md)

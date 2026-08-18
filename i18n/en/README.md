@@ -7,7 +7,7 @@ English landing page and index for the installation guide
 
 # Advanced Gentoo Linux installation guide
 
-> 🌐 **Language:** **English** · [Español](../es/README.md)
+> 🌐 **Language:** [Latina](../la/README.md) · [Español](../es/README.md) · **English**
 
 A Gentoo Linux installation on AMD64 with musl, OpenRC, LUKS2, Btrfs,
 LLVM/Clang, LTO and the Zen kernel.
@@ -106,4 +106,4 @@ Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — franco.gutierre
 
 ---
 
-> 🌐 **Language:** **English** · [Español](../es/README.md)
+> 🌐 **Language:** [Latina](../la/README.md) · [Español](../es/README.md) · **English**

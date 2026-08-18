@@ -7,7 +7,7 @@ Recovery procedures for boot, storage and build failures
 
 # Solución de problemas
 
-> 🌐 **Idioma:** [English](../en/troubleshooting.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/remedia.md) · **Español** · [English](../en/troubleshooting.md)
 
 Los fallos de esta instalación se concentran en tres momentos: el arranque, el
 montaje del almacenamiento y la compilación. Esta página los recorre por
@@ -182,7 +182,7 @@ Desactívalo para el paquete afectado en vez de para todo el sistema:
 echo "categoría/paquete no-lto" >> /etc/portage/package.env/no-lto
 ```
 
-La definición del entorno `no-lto` está en [toolchain.md](toolchain.md).
+La definición del entorno `no-lto` está en [toolchain.md](herramientas.md).
 
 ### El paquete no compila con Clang
 
@@ -268,4 +268,4 @@ Configura la conexión con `nmtui`.
 
 ---
 
-> 🌐 **Idioma:** [English](../en/troubleshooting.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/remedia.md) · **Español** · [English](../en/troubleshooting.md)

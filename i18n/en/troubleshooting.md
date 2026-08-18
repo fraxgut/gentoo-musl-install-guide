@@ -7,7 +7,7 @@ Recovery procedures for boot, storage and build failures
 
 # Troubleshooting
 
-> 🌐 **Language:** **English** · [Español](../es/troubleshooting.md)
+> 🌐 **Language:** [Latina](../la/remedia.md) · [Español](../es/problemas.md) · **English**
 
 The failures of this installation occur at three moments: the boot, the mount
 of the storage, and the build. This page groups them by symptom.
@@ -268,4 +268,4 @@ Then configure the connection with `nmtui`.
 
 ---
 
-> 🌐 **Language:** **English** · [Español](../es/troubleshooting.md)
+> 🌐 **Language:** [Latina](../la/remedia.md) · [Español](../es/problemas.md) · **English**

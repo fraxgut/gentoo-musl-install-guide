@@ -7,11 +7,11 @@ Storage layout: partitioning, LUKS2, Btrfs subvolumes and the swapfile
 
 # Arquitectura de almacenamiento
 
-> 🌐 **Idioma:** [English](../en/storage.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/receptaculum.md) · **Español** · [English](../en/storage.md)
 
 Este documento describe el diseño de almacenamiento de la guía y las
 decisiones que lo sustentan. El procedimiento completo de instalación está en
-[installation.md](installation.md).
+[installation.md](instalacion.md).
 
 ## Índice
 
@@ -502,7 +502,7 @@ btrfs inspect-internal map-swapfile -r /mnt/gentoo/var/swap/swapfile
 
 El número resultante se pasa al núcleo como `resume_offset`, junto con
 `resume=` apuntando al dispositivo descifrado. La configuración completa está
-en [installation.md](installation.md).
+en [installation.md](instalacion.md).
 
 ## fstab
 
@@ -603,4 +603,4 @@ LVM no administra nada: usa el esquema por defecto de esta guía.
 
 ---
 
-> 🌐 **Idioma:** [English](../en/storage.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/receptaculum.md) · **Español** · [English](../en/storage.md)

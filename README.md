@@ -19,7 +19,7 @@ OpenRC · LUKS2 · Btrfs · LLVM/Clang · ThinLTO · Zen kernel
 <img src="https://img.shields.io/badge/architecture-AMD64-informational?style=for-the-badge" alt="Architecture: AMD64"/>
 <img src="https://img.shields.io/badge/libc-musl-informational?style=for-the-badge" alt="libc: musl"/>
 <img src="https://img.shields.io/badge/init-OpenRC-informational?style=for-the-badge" alt="Init: OpenRC"/>
-<img src="https://img.shields.io/badge/languages-2-blue?style=for-the-badge" alt="Languages: 2"/>
+<img src="https://img.shields.io/badge/languages-3-blue?style=for-the-badge" alt="Languages: 3"/>
 
 </div>
 
@@ -27,8 +27,9 @@ OpenRC · LUKS2 · Btrfs · LLVM/Clang · ThinLTO · Zen kernel
 
 ## 🌐 Select your language
 
-- 🇬🇧 **[English](i18n/en/README.md)**
+- <img src="assets/flag-spqr.svg" alt="" height="13"> **[Latina](i18n/la/README.md)**
 - 🇪🇸 **[Español](i18n/es/README.md)**
+- 🇬🇧 **[English](i18n/en/README.md)**
 
 ---
 

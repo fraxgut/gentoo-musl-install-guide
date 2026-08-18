@@ -7,7 +7,7 @@ The installation procedure from the live medium to the first boot
 
 # Installation
 
-> 🌐 **Language:** **English** · [Español](../es/installation.md)
+> 🌐 **Language:** [Latina](../la/institutio.md) · [Español](../es/instalacion.md) · **English**
 
 This is the full procedure, from the installation medium to the first boot of
 the installed system. The storage design is in [storage.md](storage.md). The
@@ -536,4 +536,4 @@ something, you then have a system that boots, and you can repair it from there.
 
 ---
 
-> 🌐 **Language:** **English** · [Español](../es/installation.md)
+> 🌐 **Language:** [Latina](../la/institutio.md) · [Español](../es/instalacion.md) · **English**

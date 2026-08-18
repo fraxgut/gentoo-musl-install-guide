@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+assets/flag-spqr.svg
+@fraxgut
+CC-BY-SA-4.0
+Language marker for the Latin translation: an SPQR field in gold on vexillum red
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 22" width="32" height="22"
+     role="img" aria-label="Latina">
+  <title>Latina</title>
+  <rect width="32" height="22" rx="2" fill="#8f1420"/>
+  <rect x="0.5" y="0.5" width="31" height="21" rx="1.75" fill="none"
+        stroke="#d4a017" stroke-width="1"/>
+  <text x="16" y="15.4" text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="9.5" font-weight="bold" letter-spacing="0.4"
+        fill="#e8c14a">SPQR</text>
+</svg>

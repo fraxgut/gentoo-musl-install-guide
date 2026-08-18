@@ -81,31 +81,49 @@ in this repository is a change that makes an existing installation invalid.
 
 ## Translations
 
-Each language has the same file tree under `i18n/`. The file names stay in
-English in every language. Only the content is translated. You can thus compare
-the two directories file by file.
+The repository carries three languages, in this order of priority: Latin,
+Spanish, English. Each one holds the same six documents, and each one names
+them in its own language. `README.md` keeps its name everywhere, because GitHub
+renders only that name when a reader opens the directory.
 
-A change to the content of a document should also change the other language:
+| Subject | Latin | Spanish | English |
+|---|---|---|---|
+| Landing page | `README.md` | `README.md` | `README.md` |
+| Installation | `institutio.md` | `instalacion.md` | `installation.md` |
+| Storage | `receptaculum.md` | `almacenamiento.md` | `storage.md` |
+| Toolchain | `instrumenta.md` | `herramientas.md` | `toolchain.md` |
+| Optimisation | `optimatio.md` | `optimizacion.md` | `optimisation.md` |
+| Troubleshooting | `remedia.md` | `problemas.md` | `troubleshooting.md` |
+
+A change to the content of one document should also change the other two:
 
 ```
-i18n/en/storage.md    →    i18n/es/storage.md
+i18n/la/receptaculum.md  ←→  i18n/es/almacenamiento.md  ←→  i18n/en/storage.md
 ```
 
 If you cannot translate your change, say so in the pull request. A maintainer
 then does the translation. An untranslated change is better than no change.
 
-Use `docs(en)` or `docs(es)` when a commit touches one language alone.
+Use `docs(la)`, `docs(es)` or `docs(en)` when a commit touches one language
+alone.
 
 ## Language rules
 
-English text follows ASD-STE100 Simplified Technical English: the active voice,
-the simple tenses, one instruction in one sentence, and short sentences.
+Each language has a fixed variety:
 
-Spanish text follows a formal register. It uses complete words and the correct
-accents.
+**Latin** is technical Neo-Latin, with the vocabulary of Vicipaedia Latina and
+the Lexicon Recentis Latinitatis: `plica` for a file, `nucleus` for the kernel,
+`tessera` for a passphrase. Proper nouns stay undeclined.
 
-Both languages keep the same technical content. A translation that removes a
-warning or a condition is incorrect.
+**Spanish** is formal Chilean Spanish. It avoids chilenismos and Rioplatense
+forms alike, uses `tú` or `usted` and never `vos`, and keeps every accent.
+
+**English** is Oxford English with British spelling, and it follows ASD-STE100
+Simplified Technical English: the active voice, the simple tenses, one
+instruction in one sentence.
+
+All three keep the same technical content. A translation that removes a warning
+or a condition is incorrect.
 
 ## How to propose a change
 

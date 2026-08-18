@@ -7,7 +7,7 @@ Spanish landing page and index for the installation guide
 
 # Guía avanzada de instalación de Gentoo Linux
 
-> 🌐 **Idioma:** [English](../en/README.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/README.md) · **Español** · [English](../en/README.md)
 
 Instalación de Gentoo Linux en AMD64 sobre musl, con OpenRC, LUKS2, Btrfs,
 LLVM/Clang, LTO y el núcleo Zen.
@@ -39,11 +39,11 @@ del núcleo.
 
 ## Documentación
 
-1. [Instalación](installation.md) — del medio de instalación al primer arranque.
-2. [Arquitectura de almacenamiento](storage.md) — particionado, LUKS2, Btrfs, compresión, TRIM e intercambio.
-3. [Cadena de herramientas LLVM y LTO](toolchain.md) — el perfil apilado, el endurecimiento y la optimización.
-4. [Optimización](optimisation.md) — los niveles, las puertas por hardware y las vías de escape.
-5. [Solución de problemas](troubleshooting.md) — recuperación por síntoma.
+1. [Instalación](instalacion.md) — del medio de instalación al primer arranque.
+2. [Arquitectura de almacenamiento](almacenamiento.md) — particionado, LUKS2, Btrfs, compresión, TRIM e intercambio.
+3. [Cadena de herramientas LLVM y LTO](herramientas.md) — el perfil apilado, el endurecimiento y la optimización.
+4. [Optimización](optimizacion.md) — los niveles, las puertas por hardware y las vías de escape.
+5. [Solución de problemas](problemas.md) — recuperación por síntoma.
 
 ## Advertencias
 
@@ -108,4 +108,4 @@ Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — franco.gutierre
 
 ---
 
-> 🌐 **Idioma:** [English](../en/README.md) · **Español**
+> 🌐 **Idioma:** [Latina](../la/README.md) · **Español** · [English](../en/README.md)
