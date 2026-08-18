@@ -9,87 +9,98 @@ Spanish landing page and index for the installation guide
 
 > 🌐 **Idioma:** [English](../en/README.md) · **Español**
 
-## Sobre el proyecto
+Instalación de Gentoo Linux en AMD64 sobre musl, con OpenRC, LUKS2, Btrfs,
+LLVM/Clang, LTO y el núcleo Zen.
 
-Esta guía proporciona un camino detallado para instalar una variante específica y avanzada de Gentoo GNU/Linux. No es una guía introductoria general, sino un tutorial paso a paso enfocado en la combinación de tecnologías mencionada.
+## Sobre esta guía
 
-**La configuración resultante busca:**
+Esta guía documenta una configuración concreta, no una instalación general de
+Gentoo. Cada pieza responde a una decisión explícita, y el texto explica el
+motivo además del procedimiento.
 
-*   **Seguridad:** Mediante el perfil "Hardened" y la encriptación de disco completo (LUKS). (La configuración de SELinux está planeada).
-*   **Flexibilidad y Modernidad:** Usando BTRFS para instantáneas y gestión de volúmenes flexible, combinado con LVM.
-*   **Alternativa a glibc:** Empleando MUSL como librería C estándar, conocida por ser más ligera y simple.
-*   **Rendimiento y Optimización:** Utilizando el kernel Zen, el compilador LLVM/Clang y optimizaciones LTO (Link-Time Optimization) para intentar obtener el máximo rendimiento del hardware.
+Está dirigida a personas con experiencia previa en Gentoo. Da por supuestos el
+manejo de `emerge`, las banderas USE, los perfiles y la configuración manual
+del núcleo.
 
-### Audiencia Objetivo
+## Configuración objetivo
 
-Esta guía está dirigida a **usuarios experimentados de Linux y Gentoo**. Se asume familiaridad con la línea de comandos, conceptos de particionado, sistemas de archivos, compilación de software (especialmente el kernel) y la filosofía general de Gentoo (Portage, USE flags, etc.). **No se recomienda para principiantes en Gentoo.**
+| Componente              | Elección                                          |
+|-------------------------|---------------------------------------------------|
+| Arquitectura            | AMD64                                             |
+| Biblioteca C            | musl                                              |
+| Sistema de inicio       | OpenRC                                            |
+| Cifrado                 | LUKS2 con Argon2id                                |
+| Sistema de archivos     | Btrfs con subvolúmenes                            |
+| Cadena de herramientas  | Clang, LLD y libc++                               |
+| Optimización            | ThinLTO                                           |
+| Núcleo                  | Zen                                               |
+| Endurecimiento          | Perfil `hardened` apilado sobre `musl/llvm`       |
+| Volúmenes lógicos       | LVM como variante opcional                        |
 
-### Objetivos de esta Configuración
+## Documentación
 
-*   **Sistema Base Robusto:** Establecer una base Gentoo Hardened con MUSL.
-*   **Almacenamiento Avanzado:** Implementar LUKS sobre LVM sobre BTRFS.
-*   **Toolchain Moderno:** Usar LLVM/Clang como compilador principal.
-*   **Optimización Agresiva:** Aplicar LTO a nivel de sistema.
-*   **Kernel Optimizado:** Utilizar el kernel Zen.
+1. [Instalación](installation.md) — del medio de instalación al primer arranque.
+2. [Arquitectura de almacenamiento](storage.md) — particionado, LUKS2, Btrfs, compresión, TRIM e intercambio.
+3. [Cadena de herramientas LLVM y LTO](toolchain.md) — el perfil apilado, el endurecimiento y la optimización.
+4. [Solución de problemas](troubleshooting.md) — recuperación por síntoma.
 
-<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
+## Advertencias
 
-<!-- PREREQUISITOS -->
-## Hoja de Ruta
+Los perfiles `musl/llvm` y `musl/hardened` están marcados como experimentales
+en el árbol de Gentoo. El software que compila con GCC y glibc no siempre
+compila con Clang y musl.
 
-- [X] Gentoo GNU Linux AMD64
-    - [X] BTRFS
-    - [X] LVM
-    - [X] LUKS
-    - [X] Musl
-    - [X] LLVM/Clang
-    - [X] Zen kernel
-    - [X] LTO
-- [ ] SELinux (Configuración e integración)
-- [ ] Mejoras en la sección de configuración del Kernel (Ej. `.config` de ejemplo)
-- [ ] Guía de configuración de hibernación con BTRFS+LUKS+Swapfile
+La biblioteca C, la cadena de herramientas y el sistema de inicio quedan
+fijados al desempaquetar el stage3. Cambiarlos después exige reconstruir el
+sistema, así que la elección se hace antes de instalar.
 
-Consulta [Issues](https://github.com/fraxgut/guia-instalacion-gentoo/issues) para ver la lista completa de funciones propuestas y problemas conocidos.
+Los procedimientos de particionado destruyen datos. Haz copias de seguridad y
+comprueba dos veces el nombre del dispositivo.
 
-<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
+## Hoja de ruta
 
-<!-- CONTRIBUIR -->
+- [x] Btrfs sobre LUKS2 con subvolúmenes
+- [x] musl con OpenRC
+- [x] Clang, LLD y libc++ desde el stage3 oficial
+- [x] Endurecimiento apilado sobre el perfil LLVM
+- [x] ThinLTO con el soporte de Gentoo
+- [x] Núcleo Zen construido con LLVM
+- [x] Intercambio nativo de Btrfs con hibernación
+- [ ] SELinux
+- [ ] Configuración del núcleo de ejemplo
+- [ ] Instantáneas automáticas y arranque desde instantánea
+
 ## Licencia
 
-Salvo indicación en contrario, esta documentación se distribuye bajo la licencia
-Creative Commons Atribución-CompartirIgual 4.0 Internacional (CC BY-SA 4.0).
-Consulta [LICENCE.md](LICENCE.md).
+Salvo indicación en contrario, esta documentación se distribuye bajo la
+licencia Creative Commons Atribución-CompartirIgual 4.0 Internacional
+(CC BY-SA 4.0). Consulta [LICENCE.md](../../LICENCE.md).
 
 El nombre y el logotipo de Gentoo pertenecen a la Gentoo Foundation y quedan
-fuera de esta licencia.
+fuera de esta licencia. Su uso se rige por las Gentoo Name and Logo Usage
+Guidelines.
 
-<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
+## Contribuir
 
-<!-- CONTACTO -->
+Las contribuciones son bienvenidas. [CONTRIBUTING.md](../../CONTRIBUTING.md)
+describe las convenciones de commits y cómo mantener sincronizadas las
+traducciones.
+
 ## Contacto
 
-Franco Gutiérrez - [@fraxgut](https://twitter.com/fraxgut) - contacto@fraxgut.net
+Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — contacto@fraxgut.net
 
-Enlace del Proyecto: [https://github.com/fraxgut/guia-instalacion-gentoo](https://github.com/fraxgut/guia-instalacion-gentoo)
+## Referencias
 
-<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
+- [Manual de Gentoo para AMD64](https://wiki.gentoo.org/wiki/Handbook:AMD64)
+- [Proyecto musl de Gentoo](https://wiki.gentoo.org/wiki/Project:Musl)
+- [Perfiles personalizados de Portage](https://wiki.gentoo.org/wiki/Portage/Profiles/Custom_profiles)
+- [LLVM/Clang en Gentoo](https://wiki.gentoo.org/wiki/LLVM)
+- [LTO en Gentoo](https://wiki.gentoo.org/wiki/LTO)
+- [Documentación de Btrfs](https://btrfs.readthedocs.io/)
+- [Cifrado de disco completo con dm-crypt](https://wiki.gentoo.org/wiki/Dm-crypt_full_disk_encryption)
+- [Dracut en Gentoo](https://wiki.gentoo.org/wiki/Dracut)
 
-<!-- RECONOCIMIENTOS -->
-## Reconocimientos
+---
 
-Recursos y proyectos útiles que inspiraron o se usaron como referencia:
-
-*   [Manual Oficial de Gentoo AMD64](https://wiki.gentoo.org/wiki/Handbook:AMD64)
-*   [Wiki de Gentoo: Proyecto MUSL](https://wiki.gentoo.org/wiki/Project:Musl)
-*   [Wiki de Gentoo: LVM](https://wiki.gentoo.org/wiki/LVM)
-*   [Wiki de Gentoo: BTRFS](https://wiki.gentoo.org/wiki/Btrfs)
-*   [Wiki de Gentoo: LUKS](https://wiki.gentoo.org/wiki/Dm-crypt/Full_disk_encryption)
-*   [Wiki de Gentoo: Dracut](https://wiki.gentoo.org/wiki/Dracut)
-*   [Proyecto GURU](https://wiki.gentoo.org/wiki/Project:GURU)
-*   [Proyecto GentooLTO](https://github.com/InBetweenNames/gentooLTO)
-*   [Overlay toolchain-clang](https://github.com/2b57/toolchain-clang)
-*   [Overlay clang-musl-overlay](https://github.com/clang-musl-overlay/clang-musl-overlay)
-*   [Plantilla Best-README-Template](https://github.com/othneildrew/Best-README-Template)
-
-<p align="right">(<a href="#readme-top">ir al inicio</a>)</p>
-
+> 🌐 **Idioma:** [English](../en/README.md) · **Español**
