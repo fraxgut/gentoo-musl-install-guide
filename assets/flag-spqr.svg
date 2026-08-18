@@ -7,6 +7,8 @@ Language marker for the Latin translation: SPQR inside a laurel wreath
 
 The waved outline follows the shared flag silhouette of Noto Emoji
 (Apache-2.0, googlefonts/noto-emoji). The charge is original work.
+Flat cloth coordinates map onto the wave by arc length, so the charge
+foreshortens where the cloth tilts away.
 -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="4 129 992 742"
      width="992" height="742" role="img" aria-label="Latina">
@@ -14,34 +16,34 @@ The waved outline follows the shared flag silhouette of Noto Emoji
   <defs><clipPath id="wave"><path d="M8,195.25 C178.83,110.03 349.03,140.83 521.26,167.28 C676.47,191.12 833.42,211.85 992,132.75 L992,804.75 C821.17,889.97 650.97,859.17 478.74,832.72 C323.53,808.88 166.58,788.15 8,867.25 Z"/></clipPath></defs>
   <path d="M8,195.25 C178.83,110.03 349.03,140.83 521.26,167.28 C676.47,191.12 833.42,211.85 992,132.75 L992,804.75 C821.17,889.97 650.97,859.17 478.74,832.72 C323.53,808.88 166.58,788.15 8,867.25 Z" fill="#8f1420"/>
   <g clip-path="url(#wave)">
-    <ellipse rx="48.0" ry="22.0" fill="#cf9f33" transform="translate(619.0 746.2) rotate(148.4)"/>
-    <ellipse rx="46.6" ry="21.5" fill="#b8862299" transform="translate(691.4 731.7) rotate(134.9)"/>
-    <ellipse rx="45.2" ry="21.0" fill="#cf9f33" transform="translate(755.9 700.3) rotate(119.1)"/>
-    <ellipse rx="43.8" ry="20.5" fill="#b8862299" transform="translate(808.4 654.4) rotate(101.4)"/>
-    <ellipse rx="42.4" ry="20.0" fill="#cf9f33" transform="translate(845.1 598.8) rotate(82.3)"/>
-    <ellipse rx="41.0" ry="19.5" fill="#b8862299" transform="translate(863.4 539.8) rotate(63.0)"/>
-    <ellipse rx="39.6" ry="19.0" fill="#cf9f33" transform="translate(862.0 483.0) rotate(45.0)"/>
-    <ellipse rx="38.2" ry="18.5" fill="#b8862299" transform="translate(841.1 431.9) rotate(29.9)"/>
-    <ellipse rx="36.8" ry="18.0" fill="#cf9f33" transform="translate(802.5 387.4) rotate(18.5)"/>
-    <ellipse rx="35.4" ry="17.5" fill="#b8862299" transform="translate(749.0 348.9) rotate(10.1)"/>
-    <ellipse rx="34.0" ry="17.0" fill="#cf9f33" transform="translate(684.4 316.1) rotate(3.3)"/>
-    <ellipse rx="48.0" ry="22.0" fill="#cf9f33" transform="translate(381.0 712.4) rotate(-135.1)"/>
-    <ellipse rx="46.6" ry="21.5" fill="#b8862299" transform="translate(308.6 685.0) rotate(-128.5)"/>
-    <ellipse rx="45.2" ry="21.0" fill="#cf9f33" transform="translate(244.1 651.3) rotate(-121.7)"/>
-    <ellipse rx="43.8" ry="20.5" fill="#b8862299" transform="translate(191.6 611.8) rotate(-113.1)"/>
-    <ellipse rx="42.4" ry="20.0" fill="#cf9f33" transform="translate(154.9 566.1) rotate(-101.4)"/>
-    <ellipse rx="41.0" ry="19.5" fill="#b8862299" transform="translate(136.6 513.9) rotate(-86.0)"/>
-    <ellipse rx="39.6" ry="19.0" fill="#cf9f33" transform="translate(138.0 456.5) rotate(-67.6)"/>
-    <ellipse rx="38.2" ry="18.5" fill="#b8862299" transform="translate(158.9 397.9) rotate(-48.2)"/>
-    <ellipse rx="36.8" ry="18.0" fill="#cf9f33" transform="translate(197.5 343.6) rotate(-29.2)"/>
-    <ellipse rx="35.4" ry="17.5" fill="#b8862299" transform="translate(251.0 299.6) rotate(-11.6)"/>
-    <ellipse rx="34.0" ry="17.0" fill="#cf9f33" transform="translate(315.6 270.2) rotate(3.9)"/>
-    <path d="M619.0,746.2 L637.1,743.2 L654.7,739.3 L671.9,734.3 L688.5,728.3 L704.5,721.5 L719.9,713.6 L734.7,705.0 L748.6,695.5 L761.8,685.2 L774.2,674.2 L785.8,662.5 L796.4,650.3 L806.1,637.6 L814.9,624.5 L822.7,611.1 L829.4,597.4 L835.2,583.6 L839.9,569.6 L843.5,555.7 L846.1,541.7 L847.6,527.9 L848.0,514.2 L847.3,500.7 L845.6,487.4 L842.7,474.4 L838.8,461.7 L833.8,449.3 L827.8,437.2 L820.8,425.4 L812.8,413.9 L803.8,402.8 L793.8,391.9 L783.0,381.4 L771.2,371.2 L758.6,361.3 L745.2,351.6 L731.0,342.3 L716.2,333.2 L700.6,324.5 L684.4,316.1" fill="none" stroke="#b88622" stroke-width="13" stroke-linecap="round" opacity="0.85"/>
-    <path d="M381.0,712.4 L362.9,705.4 L345.3,698.0 L328.1,690.2 L311.5,682.0 L295.5,673.5 L280.1,664.7 L265.3,655.6 L251.4,646.2 L238.2,636.4 L225.8,626.4 L214.2,616.1 L203.6,605.5 L193.9,594.6 L185.1,583.4 L177.3,571.8 L170.6,560.0 L164.8,547.8 L160.1,535.3 L156.5,522.5 L153.9,509.4 L152.4,496.1 L152.0,482.5 L152.7,468.8 L154.4,454.9 L157.3,441.0 L161.2,427.0 L166.2,413.1 L172.2,399.2 L179.2,385.6 L187.2,372.3 L196.2,359.3 L206.2,346.7 L217.0,334.7 L228.8,323.2 L241.4,312.4 L254.8,302.3 L269.0,293.0 L283.8,284.5 L299.4,276.9 L315.6,270.2" fill="none" stroke="#b88622" stroke-width="13" stroke-linecap="round" opacity="0.85"/>
-    <path d="M454,760 Q500,794 546,760" fill="none" stroke="#b88622" stroke-width="14" stroke-linecap="round"/>
-    <text x="0" y="0" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="204" font-weight="bold" fill="#f7dc8a" transform="translate(293.0 542.0) rotate(2.2)">S</text>
-    <text x="0" y="0" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="204" font-weight="bold" fill="#f7dc8a" transform="translate(431.0 555.6) rotate(8.1)">P</text>
-    <text x="0" y="0" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="204" font-weight="bold" fill="#f7dc8a" transform="translate(569.0 576.4) rotate(8.1)">Q</text>
-    <text x="0" y="0" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="204" font-weight="bold" fill="#f7dc8a" transform="translate(707.0 590.2) rotate(2.2)">R</text>
+    <ellipse rx="48.0" ry="22.0" fill="#cf9f33" transform="translate(620.7 747.6) rotate(148.3)"/>
+    <ellipse rx="46.6" ry="21.5" fill="#b8862299" transform="translate(694.6 732.9) rotate(134.7)"/>
+    <ellipse rx="45.2" ry="21.0" fill="#cf9f33" transform="translate(760.7 701.1) rotate(118.7)"/>
+    <ellipse rx="43.8" ry="20.5" fill="#b8862299" transform="translate(814.2 654.5) rotate(100.8)"/>
+    <ellipse rx="42.4" ry="20.0" fill="#cf9f33" transform="translate(851.4 598.1) rotate(81.6)"/>
+    <ellipse rx="41.0" ry="19.5" fill="#b8862299" transform="translate(869.8 538.6) rotate(62.3)"/>
+    <ellipse rx="39.6" ry="19.0" fill="#cf9f33" transform="translate(868.4 481.5) rotate(44.3)"/>
+    <ellipse rx="38.2" ry="18.5" fill="#b8862299" transform="translate(847.4 430.4) rotate(29.3)"/>
+    <ellipse rx="36.8" ry="18.0" fill="#cf9f33" transform="translate(808.2 386.1) rotate(18.0)"/>
+    <ellipse rx="35.4" ry="17.5" fill="#b8862299" transform="translate(753.6 347.9) rotate(9.8)"/>
+    <ellipse rx="34.0" ry="17.0" fill="#cf9f33" transform="translate(687.4 315.2) rotate(3.1)"/>
+    <ellipse rx="48.0" ry="22.0" fill="#cf9f33" transform="translate(379.3 713.4) rotate(-135.1)"/>
+    <ellipse rx="46.6" ry="21.5" fill="#b8862299" transform="translate(305.4 685.9) rotate(-128.7)"/>
+    <ellipse rx="45.2" ry="21.0" fill="#cf9f33" transform="translate(239.4 652.3) rotate(-122.0)"/>
+    <ellipse rx="43.8" ry="20.5" fill="#b8862299" transform="translate(185.8 613.1) rotate(-113.6)"/>
+    <ellipse rx="42.4" ry="20.0" fill="#cf9f33" transform="translate(148.6 567.6) rotate(-102.0)"/>
+    <ellipse rx="41.0" ry="19.5" fill="#b8862299" transform="translate(130.2 515.4) rotate(-86.7)"/>
+    <ellipse rx="39.6" ry="19.0" fill="#cf9f33" transform="translate(131.6 457.7) rotate(-68.3)"/>
+    <ellipse rx="38.2" ry="18.5" fill="#b8862299" transform="translate(152.6 398.5) rotate(-48.8)"/>
+    <ellipse rx="36.8" ry="18.0" fill="#cf9f33" transform="translate(191.8 343.5) rotate(-29.7)"/>
+    <ellipse rx="35.4" ry="17.5" fill="#b8862299" transform="translate(246.5 298.8) rotate(-12.0)"/>
+    <ellipse rx="34.0" ry="17.0" fill="#cf9f33" transform="translate(312.6 269.0) rotate(3.7)"/>
+    <path d="M620.7,747.6 L639.1,744.6 L657.1,740.6 L674.6,735.6 L691.6,729.6 L708.0,722.6 L723.8,714.7 L738.9,705.9 L753.2,696.3 L766.7,685.8 L779.4,674.7 L791.2,662.9 L802.0,650.5 L811.9,637.6 L820.8,624.4 L828.7,610.8 L835.6,597.0 L841.4,583.0 L846.2,568.9 L849.9,554.8 L852.4,540.7 L853.9,526.8 L854.4,513.0 L853.7,499.5 L851.9,486.2 L849.0,473.1 L845.1,460.4 L840.1,448.0 L834.0,435.9 L826.9,424.1 L818.7,412.7 L809.5,401.6 L799.4,390.8 L788.3,380.3 L776.3,370.2 L763.4,360.3 L749.7,350.7 L735.2,341.4 L719.9,332.3 L704.0,323.6 L687.4,315.2" fill="none" stroke="#b88622" stroke-width="13" stroke-linecap="round" opacity="0.85"/>
+    <path d="M379.3,713.4 L360.9,706.4 L342.9,698.9 L325.4,691.1 L308.4,682.9 L292.0,674.4 L276.2,665.6 L261.2,656.5 L246.9,647.1 L233.3,637.5 L220.7,627.5 L208.9,617.2 L198.0,606.7 L188.1,595.8 L179.2,584.6 L171.3,573.1 L164.4,561.3 L158.6,549.1 L153.9,536.6 L150.2,523.7 L147.6,510.6 L146.1,497.2 L145.7,483.6 L146.4,469.8 L148.1,455.8 L151.0,441.8 L154.9,427.7 L160.0,413.6 L166.0,399.7 L173.2,385.9 L181.3,372.4 L190.5,359.2 L200.6,346.5 L211.7,334.3 L223.7,322.6 L236.6,311.7 L250.4,301.4 L264.9,292.0 L280.1,283.4 L296.1,275.7 L312.6,269.0" fill="none" stroke="#b88622" stroke-width="13" stroke-linecap="round" opacity="0.85"/>
+    <path d="M454,762 Q500,796 546,762" fill="none" stroke="#b88622" stroke-width="14" stroke-linecap="round"/>
+    <text x="0" y="0" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="204" font-weight="bold" fill="#f7dc8a" transform="translate(348.8 545.6) rotate(5.3)">S</text>
+    <text x="0" y="0" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="204" font-weight="bold" fill="#f7dc8a" transform="translate(449.4 558.2) rotate(8.4)">P</text>
+    <text x="0" y="0" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="204" font-weight="bold" fill="#f7dc8a" transform="translate(550.7 573.6) rotate(8.4)">Q</text>
+    <text x="0" y="0" text-anchor="middle" font-family="Georgia, 'Times New Roman', 'Liberation Serif', serif" font-size="204" font-weight="bold" fill="#f7dc8a" transform="translate(651.3 586.2) rotate(5.3)">R</text>
   </g>
 </svg>
