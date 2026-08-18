@@ -6,17 +6,12 @@ CC-BY-SA-4.0
 Language marker for the Latin translation: SPQR inside a laurel wreath
 
 The waved outline follows the shared flag silhouette of Noto Emoji
-(Apache-2.0, googlefonts/noto-emoji), which every regional flag glyph reuses.
-The marker therefore sits at the same size and shape as the flag emoji beside
-it. The wreath and the lettering are original work under the licence of this
-repository.
+(Apache-2.0, googlefonts/noto-emoji). The charge is original work.
 -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" width="1000" height="1000"
-     role="img" aria-label="Latina">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 129 992 742"
+     width="992" height="742" role="img" aria-label="Latina">
   <title>Latina</title>
-  <defs>
-    <clipPath id="wave"><path d="M8,195.25 C178.83,110.03 349.03,140.83 521.26,167.28 C676.47,191.12 833.42,211.85 992,132.75 L992,804.75 C821.17,889.97 650.97,859.17 478.74,832.72 C323.53,808.88 166.58,788.15 8,867.25 Z"/></clipPath>
-  </defs>
+  <defs><clipPath id="wave"><path d="M8,195.25 C178.83,110.03 349.03,140.83 521.26,167.28 C676.47,191.12 833.42,211.85 992,132.75 L992,804.75 C821.17,889.97 650.97,859.17 478.74,832.72 C323.53,808.88 166.58,788.15 8,867.25 Z"/></clipPath></defs>
   <path d="M8,195.25 C178.83,110.03 349.03,140.83 521.26,167.28 C676.47,191.12 833.42,211.85 992,132.75 L992,804.75 C821.17,889.97 650.97,859.17 478.74,832.72 C323.53,808.88 166.58,788.15 8,867.25 Z" fill="#8f1420"/>
   <g clip-path="url(#wave)">
     <ellipse rx="48.0" ry="22.0" fill="#cf9f33" transform="translate(619.0 746.2) rotate(148.4)"/>
