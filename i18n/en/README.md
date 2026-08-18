@@ -41,7 +41,8 @@ The guide is for people with experience in Gentoo. It assumes that you know
 1. [Installation](installation.md) — from the installation medium to the first boot.
 2. [Storage layout](storage.md) — partitioning, LUKS2, Btrfs, compression, TRIM and swap.
 3. [LLVM toolchain and LTO](toolchain.md) — the stacked profile, the hardening and the optimisation.
-4. [Troubleshooting](troubleshooting.md) — recovery by symptom.
+4. [Optimisation](optimisation.md) — the tiers, the hardware gates and the escape hatches.
+5. [Troubleshooting](troubleshooting.md) — recovery by symptom.
 
 ## Warnings
 

@@ -68,6 +68,7 @@ i18n/en/                       i18n/es/
 ├── installation.md            ├── installation.md
 ├── storage.md                 ├── storage.md
 ├── toolchain.md               ├── toolchain.md
+├── optimisation.md            ├── optimisation.md
 └── troubleshooting.md         └── troubleshooting.md
 ```
 

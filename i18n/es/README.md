@@ -42,7 +42,8 @@ del núcleo.
 1. [Instalación](installation.md) — del medio de instalación al primer arranque.
 2. [Arquitectura de almacenamiento](storage.md) — particionado, LUKS2, Btrfs, compresión, TRIM e intercambio.
 3. [Cadena de herramientas LLVM y LTO](toolchain.md) — el perfil apilado, el endurecimiento y la optimización.
-4. [Solución de problemas](troubleshooting.md) — recuperación por síntoma.
+4. [Optimización](optimisation.md) — los niveles, las puertas por hardware y las vías de escape.
+5. [Solución de problemas](troubleshooting.md) — recuperación por síntoma.
 
 ## Advertencias
 
