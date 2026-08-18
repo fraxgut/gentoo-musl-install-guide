@@ -27,7 +27,7 @@ OpenRC · LUKS2 · Btrfs · LLVM/Clang · ThinLTO · Zen kernel
 
 ## 🌐 Select your language
 
-- <img src="assets/flag-spqr.svg" alt="" height="13"> **[Latina](i18n/la/README.md)**
+- <img src="assets/flag-spqr.svg" alt="" height="18"> **[Latina](i18n/la/README.md)**
 - 🇪🇸 **[Español](i18n/es/README.md)**
 - 🇬🇧 **[English](i18n/en/README.md)**
 
