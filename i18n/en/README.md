@@ -1,6 +1,6 @@
 <!--
 i18n/en/README.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 English landing page and index for the installation guide
 -->
@@ -99,7 +99,7 @@ commit conventions and the rules to keep the translations synchronised.
 
 ## Contact
 
-Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — franco.gutierrez.1@ug.uchile.cl
+Franco Gutiérrez — [@guterion](https://github.com/guterion) — franco.gutierrez.1@ug.uchile.cl
 
 ## References
 

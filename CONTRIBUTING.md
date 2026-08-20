@@ -1,6 +1,6 @@
 <!--
 CONTRIBUTING.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 Contribution rules, commit conventions and translation synchronisation
 -->

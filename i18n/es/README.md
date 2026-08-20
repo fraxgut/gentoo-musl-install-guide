@@ -1,6 +1,6 @@
 <!--
 i18n/es/README.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 Spanish landing page and index for the installation guide
 -->
@@ -101,7 +101,7 @@ traducciones.
 
 ## Contacto
 
-Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — franco.gutierrez.1@ug.uchile.cl
+Franco Gutiérrez — [@guterion](https://github.com/guterion) — franco.gutierrez.1@ug.uchile.cl
 
 ## Referencias
 

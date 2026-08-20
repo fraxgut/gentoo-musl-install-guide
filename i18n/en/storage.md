@@ -1,6 +1,6 @@
 <!--
 i18n/en/storage.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 Storage layout: partitioning, LUKS2, Btrfs subvolumes and the swapfile
 -->

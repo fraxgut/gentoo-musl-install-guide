@@ -1,6 +1,6 @@
 <!--
 i18n/la/README.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 Latin landing page and index for the installation guide
 -->
@@ -100,7 +100,7 @@ commissionum et regulas quibus translationes inter se congruunt praebet.
 
 ## Ad quem scribas
 
-Franco Gutiérrez — [@fraxgut](https://github.com/fraxgut) — franco.gutierrez.1@ug.uchile.cl
+Franco Gutiérrez — [@guterion](https://github.com/guterion) — franco.gutierrez.1@ug.uchile.cl
 
 ## Fontes
 

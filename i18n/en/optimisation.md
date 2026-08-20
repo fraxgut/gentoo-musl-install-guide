@@ -1,6 +1,6 @@
 <!--
 i18n/en/optimisation.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 Optimisation tiers, hardware gates and the escape hatches that keep them safe
 -->

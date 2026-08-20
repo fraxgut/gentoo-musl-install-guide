@@ -1,6 +1,6 @@
 <!--
 i18n/es/installation.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 The installation procedure from the live medium to the first boot
 -->

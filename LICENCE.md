@@ -1,6 +1,6 @@
 <!--
 LICENCE.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 Licence terms for the documentation in this repository
 -->

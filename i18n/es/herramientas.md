@@ -1,6 +1,6 @@
 <!--
 i18n/es/toolchain.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 Toolchain: the LLVM/Clang profile, hardening and link-time optimisation
 -->

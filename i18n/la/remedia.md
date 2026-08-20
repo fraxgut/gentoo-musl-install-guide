@@ -1,6 +1,6 @@
 <!--
 i18n/la/remedia.md
-@fraxgut
+@guterion
 CC-BY-SA-4.0
 Recovery procedures for boot, storage and build failures
 -->
